@@ -8,5 +8,6 @@ namespace Team_Project_Paint.Class
 {
     class Clear
     {
+        ///test 
     }
 }
