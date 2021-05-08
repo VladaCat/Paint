@@ -1,0 +1,10 @@
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\bin\Debug\Team_Project_Paint.exe.config
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\bin\Debug\Team_Project_Paint.exe
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\bin\Debug\Team_Project_Paint.pdb
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\obj\Debug\Team_Project_Paint.csprojAssemblyReference.cache
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\obj\Debug\Team_Project_Paint.Paint.resources
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\obj\Debug\Team_Project_Paint.Properties.Resources.resources
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\obj\Debug\Team_Project_Paint.csproj.GenerateResource.cache
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\obj\Debug\Team_Project_Paint.csproj.CoreCompileInputs.cache
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\obj\Debug\Team_Project_Paint.exe
+C:\Users\Yana\source\repos\HW\Paint\Team_Project_Paint\Team_Project_Paint\obj\Debug\Team_Project_Paint.pdb

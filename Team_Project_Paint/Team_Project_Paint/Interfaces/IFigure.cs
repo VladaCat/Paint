@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Team_Project_Paint.Class
+namespace Team_Project_Paint.Interfaces
 {
-    class Clear
+    interface IFigure
     {
-        ///test 
     }
 }
