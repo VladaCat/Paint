@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Team_Project_Paint.Class
         {
             if (isFinished)
             {
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 graphics.FillEllipse(
                    new SolidBrush(Color),
                    Location.X - Thickness/2, //точки теперь рисуются не с верхнего левого угла, а с центра

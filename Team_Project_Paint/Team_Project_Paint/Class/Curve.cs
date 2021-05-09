@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,7 @@ namespace Team_Project_Paint.Class
                 }
                 foreach (Point point in points)
                 {
+                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
                     graphics.FillEllipse(new SolidBrush(Color),
                     point.X - Thickness / 2,
                     point.Y - Thickness / 2,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using Team_Project_Paint.Class;
@@ -22,6 +23,7 @@ namespace Team_Project_Paint
         public Paint()
         {
             InitializeComponent();
+            currentMode = "Curve";
             _currentBitmap = new Bitmap(800, 600);
             IShape currentShape = new Curve();
             currentShape.Thickness = _currentBrashSize;
@@ -49,6 +51,7 @@ namespace Team_Project_Paint
             //    newShape.Thickness = _currentBrashSize;
             //    shapeList.Add(newShape);
             //}
+            
             tempBitmap = new Bitmap(_currentBitmap);
             graphics = Graphics.FromImage(tempBitmap);
             pictureBoxMain.Image = _currentBitmap;
@@ -65,7 +68,6 @@ namespace Team_Project_Paint
                 graphics.Clear(Color.White);
                 graphics.DrawImage(_currentBitmap,0,0);
             }
-
             currentShape.DrawTemp(graphics);
             pictureBoxMain.Image = tempBitmap;
         } 
