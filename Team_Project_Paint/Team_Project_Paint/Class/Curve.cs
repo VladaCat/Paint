@@ -10,8 +10,17 @@ namespace Team_Project_Paint.Class
 {
     public class Curve : AbstractShape
     {
+        private Point location;
+        public virtual Point Location 
+        { 
+            get => location;
+            set => location = value;
+        }
+
         private List<Point> points = new List<Point>();
+
         private bool isFinished = false;
+
         private bool isStarted = false;
 
         public Curve() : base("Curve") { }
@@ -20,17 +29,26 @@ namespace Team_Project_Paint.Class
         {
             return isFinished;
         }
+
         public override void Draw(Graphics graphics)
         {
             if (points.Count > 1)
             {
-                graphics.DrawLines(
-                    new Pen(new SolidBrush(Color), Thickness),
-                    points.ToArray());
+                for (int i = 0; i < points.Count - 1; i++) 
+                {
+                    graphics.DrawLine(new Pen(new SolidBrush(Color), Thickness),points[i],points[i+1]);
+                }
+                foreach (Point point in points)
+                {
+                    graphics.FillEllipse(new SolidBrush(Color),
+                    point.X - Thickness / 2,
+                    point.Y - Thickness / 2,
+                    Thickness,
+                    Thickness);
+                }
             }
         }
-
-    
+   
         public override void MouseDown(object sender, MouseEventArgs e)
         {
             if (!isFinished && !isStarted)
@@ -40,6 +58,7 @@ namespace Team_Project_Paint.Class
                 isStarted = true;
             }
         }
+
         public override void MouseMove(object sender, MouseEventArgs e)
         {
             if (!isFinished && isStarted)
@@ -47,6 +66,7 @@ namespace Team_Project_Paint.Class
                 points.Add(e.Location);
             }
         }
+
         public override void MouseUp(object sender, MouseEventArgs e)
         {
             if (!isFinished && isStarted)
@@ -56,5 +76,17 @@ namespace Team_Project_Paint.Class
             }
         }
 
+        public override void DrawTemp(Graphics graphics)
+        {
+            graphics.FillEllipse(new SolidBrush(Color),
+            points.Last().X - Thickness / 2,
+            points.Last().Y - Thickness / 2,
+            Thickness,
+            Thickness);
+            if (points.Count > 1) 
+            {
+                graphics.DrawLine(new Pen(new SolidBrush(Color), Thickness), points[points.Count-2], points.Last());
+            }
+        }
     }
 }

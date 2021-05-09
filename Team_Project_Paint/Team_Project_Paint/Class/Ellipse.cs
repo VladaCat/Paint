@@ -8,16 +8,9 @@ using System.Windows.Forms;
 
 namespace Team_Project_Paint.Class
 {
-    public class Ellipse : AbstractShape
+    public class Ellipse : AbstractRectangleStyle
     {
-        private bool isFinished = false;
-        private bool isStarted = false;
-
         public Ellipse() : base("Ellipse") { }
-        public override bool IsFinished()
-        {
-            return isFinished;
-        }
         public override void Draw(Graphics graphics)
         {
             graphics.DrawEllipse(
@@ -26,35 +19,6 @@ namespace Team_Project_Paint.Class
                 Location.Y,
                 FinishLocation.X - Location.X,
                 FinishLocation.Y - Location.Y);
-        }
-
-        public override void MouseDown(object sender, MouseEventArgs e)
-        {
-            if (!isFinished && !isStarted)
-            {
-                Location = e.Location;
-                isStarted = true;
-                FinishLocation = e.Location;
-            }
-        }
-        public override void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (!isFinished && isStarted)
-            {
-                FinishLocation = new Point(
-                    e.Location.X,
-                    e.Location.Y);
-            }
-        }
-        public override void MouseUp(object sender, MouseEventArgs e)
-        {
-            if (!isFinished && isStarted)
-            {
-                FinishLocation = new Point(
-                    e.Location.X,
-                    e.Location.Y);
-                isFinished = true;
-            }
         }
     }
 }

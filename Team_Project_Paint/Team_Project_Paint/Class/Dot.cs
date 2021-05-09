@@ -10,6 +10,12 @@ namespace Team_Project_Paint.Class
 {
     public class Dot : AbstractShape
     {
+        private Point location;
+        public virtual Point Location 
+        {
+            get => location;
+            set => location = value;
+        }
 
         private bool isFinished = false;
 
@@ -18,14 +24,15 @@ namespace Team_Project_Paint.Class
         {
             return isFinished;
         }
+
         public override void Draw(Graphics graphics)
         {
             if (isFinished)
             {
                 graphics.FillEllipse(
                    new SolidBrush(Color),
-                   Location.X,
-                   Location.Y,
+                   Location.X - Thickness/2, //точки теперь рисуются не с верхнего левого угла, а с центра
+                   Location.Y - Thickness/2,
                    Thickness,
                    Thickness);
             }
@@ -38,6 +45,10 @@ namespace Team_Project_Paint.Class
                 Location = e.Location;
                 isFinished = true;
             }
+        }
+
+        public override void DrawTemp(Graphics graphics)
+        {
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Team_Project_Paint.Class
 {
    public class ShapeFactory
     {
-        public static Shape CreateShape(string shapename)
+        public static IShape CreateShape(string shapename)
         {
             switch (shapename)
             {
@@ -24,7 +24,7 @@ namespace Team_Project_Paint.Class
                 case "Line":
                     return new Line();
                 default:
-                    throw new ArgumentException("не правильное имя фигуры" + shapename);
+                    throw new ArgumentException("Incorrect figure name" + shapename);
             }
         }
     }

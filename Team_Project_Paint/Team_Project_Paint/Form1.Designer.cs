@@ -57,6 +57,8 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.opentoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -81,6 +83,7 @@
             // toolStrip1
             // 
             this.toolStrip1.AutoSize = false;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(50, 50);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DotButton,
             this.LineButton,
@@ -102,7 +105,7 @@
             this.DotButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DotButton.Name = "DotButton";
             this.DotButton.Size = new System.Drawing.Size(50, 50);
-            this.DotButton.Text = "toolStripButton1";
+            this.DotButton.Text = "Dot";
             this.DotButton.Click += new System.EventHandler(this.DotButton_Click);
             // 
             // LineButton
@@ -113,7 +116,7 @@
             this.LineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LineButton.Name = "LineButton";
             this.LineButton.Size = new System.Drawing.Size(50, 50);
-            this.LineButton.Text = "toolStripButton2";
+            this.LineButton.Text = "Line";
             this.LineButton.Click += new System.EventHandler(this.LineButton_Click);
             // 
             // CurveButton
@@ -124,7 +127,7 @@
             this.CurveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CurveButton.Name = "CurveButton";
             this.CurveButton.Size = new System.Drawing.Size(50, 50);
-            this.CurveButton.Text = "toolStripButton3";
+            this.CurveButton.Text = "Curve";
             this.CurveButton.Click += new System.EventHandler(this.CurveButton_Click);
             // 
             // RectangleButton
@@ -135,7 +138,7 @@
             this.RectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RectangleButton.Name = "RectangleButton";
             this.RectangleButton.Size = new System.Drawing.Size(50, 50);
-            this.RectangleButton.Text = "toolStripButton4";
+            this.RectangleButton.Text = "Rectangle";
             this.RectangleButton.Click += new System.EventHandler(this.RectangleButton_Click);
             // 
             // EllipseButton
@@ -146,7 +149,7 @@
             this.EllipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EllipseButton.Name = "EllipseButton";
             this.EllipseButton.Size = new System.Drawing.Size(50, 50);
-            this.EllipseButton.Text = "toolStripButton5";
+            this.EllipseButton.Text = "Ellipse";
             this.EllipseButton.Click += new System.EventHandler(this.EllipseButton_Click);
             // 
             // ClearButton
@@ -157,7 +160,7 @@
             this.ClearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(50, 50);
-            this.ClearButton.Text = "toolStripButton6";
+            this.ClearButton.Text = "Clear";
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // button1
@@ -227,7 +230,7 @@
             // button7
             // 
             this.button7.Image = global::Team_Project_Paint.Properties.Resources._2;
-            this.button7.Location = new System.Drawing.Point(622, 31);
+            this.button7.Location = new System.Drawing.Point(639, 31);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(35, 35);
             this.button7.TabIndex = 8;
@@ -277,7 +280,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(596, 64);
+            this.label2.Location = new System.Drawing.Point(620, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 14;
@@ -287,7 +290,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(610, 77);
+            this.label5.Location = new System.Drawing.Point(636, 78);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 16;
@@ -295,22 +298,39 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(670, 27);
+            this.trackBar1.Location = new System.Drawing.Point(704, 27);
             this.trackBar1.Maximum = 20;
-            this.trackBar1.Minimum = 3;
+            this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar1.Size = new System.Drawing.Size(45, 38);
             this.trackBar1.TabIndex = 17;
-            this.trackBar1.Value = 3;
+            this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(681, 69);
+            this.numericUpDown1.Location = new System.Drawing.Point(704, 69);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
             this.numericUpDown1.Size = new System.Drawing.Size(30, 20);
             this.numericUpDown1.TabIndex = 18;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // menuStrip1
             // 
@@ -325,6 +345,7 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opentoolStripMenuItem,
             this.saveToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -333,13 +354,24 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "jpg";
+            // 
+            // opentoolStripMenuItem
+            // 
+            this.opentoolStripMenuItem.Name = "opentoolStripMenuItem";
+            this.opentoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.opentoolStripMenuItem.Text = "Open";
+            this.opentoolStripMenuItem.Click += new System.EventHandler(this.opentoolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Paint
             // 
@@ -409,6 +441,8 @@
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem opentoolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

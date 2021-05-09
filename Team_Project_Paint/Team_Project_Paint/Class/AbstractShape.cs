@@ -9,28 +9,32 @@ using Team_Project_Paint.Interfaces;
 
 namespace Team_Project_Paint.Class
 {
-   public abstract class AbstractShape:Shape
+   public abstract class AbstractShape:IShape
     {
-        private Point finishlocation;
-        private Point location;
         private int thickness;
         private Color color;
         private string name;
-
         public AbstractShape(string name)
         {
             this.name = name;
+        }   
+        public virtual int Thickness 
+        { 
+            get => thickness;
+            set => thickness=value;
+        }
+        public virtual String Name 
+        {
+            get => name;
+        }
+        public virtual Color Color 
+        { 
+            get => color;
+            set => color = value;
         }
 
-        public virtual Point Location { get =>location; set => location=value; }
-        public virtual int Thickness { get => thickness; set => thickness=value; }
-        public virtual Point FinishLocation { get => finishlocation; set => finishlocation=value; }
-
-        public virtual String Name { get => name; }
-        public virtual Color Color { get => color; set => color = value; }
-
         public abstract void Draw(Graphics graphics);
-        
+        public abstract void DrawTemp(Graphics graphics);
 
         public abstract bool IsFinished();
       
