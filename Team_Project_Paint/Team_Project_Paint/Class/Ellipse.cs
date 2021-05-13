@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Class
 {
     public class Ellipse : AbstractRectangleStyle
     {
-        public Ellipse() : base("Ellipse") { }
+        public Ellipse() : base(NameForShapeFactory.Ellipse) { }
         public override void Draw(Graphics graphics)
         {
             graphics.SmoothingMode = SmoothingMode.AntiAlias;

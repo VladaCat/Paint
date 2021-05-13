@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Interfaces
 {
@@ -12,14 +13,14 @@ namespace Team_Project_Paint.Interfaces
     {
         int Thickness { get; set; }
         Color Color { get; set; }
-        String Name { get; }
+        NameForShapeFactory Name { get; }
 
         void MouseClick(object sender, MouseEventArgs e);
         void MouseDown(object sender, MouseEventArgs e);
         void MouseUp(object sender, MouseEventArgs e);
         void MouseMove(object sender, MouseEventArgs e);
         void Draw(Graphics graphics);
-        void DrawTemp(Graphics graphics);//new
+        void DrawTemp(Graphics graphics);
         bool IsFinished();
     }
 }

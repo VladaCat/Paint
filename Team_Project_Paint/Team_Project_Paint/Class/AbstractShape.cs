@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Enum;
 using Team_Project_Paint.Interfaces;
 
 namespace Team_Project_Paint.Class
@@ -13,8 +14,8 @@ namespace Team_Project_Paint.Class
     {
         private int thickness;
         private Color color;
-        private string name;
-        public AbstractShape(string name)
+        private NameForShapeFactory name;
+        public AbstractShape(NameForShapeFactory name)
         {
             this.name = name;
         }   
@@ -23,7 +24,7 @@ namespace Team_Project_Paint.Class
             get => thickness;
             set => thickness=value;
         }
-        public virtual String Name 
+        public virtual NameForShapeFactory Name 
         {
             get => name;
         }

@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Class
 {
     public class Line : AbstractRectangleStyle
     {
-        public Line() : base("Line") { }  
+        public Line() : base(NameForShapeFactory.Line) { }  
         public override void Draw(Graphics graphics)
         {
             graphics.DrawLine(

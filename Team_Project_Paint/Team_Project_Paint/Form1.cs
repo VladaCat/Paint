@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using Team_Project_Paint.Class;
+using Team_Project_Paint.Enum;
 using Team_Project_Paint.Interfaces;
 
 namespace Team_Project_Paint
@@ -16,14 +17,14 @@ namespace Team_Project_Paint
         private List<IShape> shapeList = new List<IShape>();
         private Bitmap _currentBitmap;
         private IShape currentShape;
-        private string currentMode;
+        private NameForShapeFactory currentMode;
         Bitmap tempBitmap;
         Graphics graphics;
 
         public Paint()
         {
             InitializeComponent();
-            currentMode = "Curve";
+            currentMode = NameForShapeFactory.Curve;
             _currentBitmap = new Bitmap(800, 600);
             IShape currentShape = new Curve();
             currentShape.Thickness = _currentBrashSize;
@@ -36,22 +37,7 @@ namespace Team_Project_Paint
         }
 
         private void rePaint()
-        {
-            //Graphics graphics = Graphics.FromImage(_currentBitmap);
-            //graphics.Clear(Color.White);
-            //foreach (IShape shape in shapeList)
-            //{
-            //    shape.Draw(graphics);
-            //}
-            //IShape lastShape = shapeList.Last();
-            //if (lastShape.IsFinished())
-            //{
-            //    IShape newShape = ShapeFactory.CreateShape(lastShape.Name);
-            //    newShape.Color = _currentColor;
-            //    newShape.Thickness = _currentBrashSize;
-            //    shapeList.Add(newShape);
-            //}
-            
+        {   
             tempBitmap = new Bitmap(_currentBitmap);
             graphics = Graphics.FromImage(tempBitmap);
             pictureBoxMain.Image = _currentBitmap;
@@ -59,7 +45,7 @@ namespace Team_Project_Paint
 
         private void rePaintTemp() 
         {
-            if (currentMode == "Curve")
+            if (currentMode == NameForShapeFactory.Curve)
             {
 
             }
@@ -112,57 +98,33 @@ namespace Team_Project_Paint
 
         private void DotButton_Click(object sender, EventArgs e)
         {
-            currentMode = "Dot";
-            //IShape shape = new Dot();
-            //shape.Color = _currentColor;
-            //shape.Thickness = _currentBrashSize;
-            //shapeList.Add(shape);
+            currentMode = NameForShapeFactory.Dot;
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
-            currentMode = "Line";
-            //IShape shape = new Line();
-            //shape.Color = _currentColor;
-            //shape.Thickness = _currentBrashSize;
-            //shapeList.Add(shape);
+            currentMode = NameForShapeFactory.Line;
         }
 
         private void CurveButton_Click(object sender, EventArgs e)
         {
-            currentMode = "Curve";
-            //IShape shape = new Curve();
-            //shape.Color = _currentColor;
-            //shape.Thickness = _currentBrashSize;
-            //shapeList.Add(shape);
+            currentMode = NameForShapeFactory.Curve;
         }
 
         private void RectangleButton_Click(object sender, EventArgs e)
         {
-            currentMode = "Rect";
-            //IShape shape = new Rect();
-            //shape.Color = _currentColor;
-            //shape.Thickness = _currentBrashSize;
-            //shapeList.Add(shape);
+            currentMode = NameForShapeFactory.Rect;
         }
 
         private void EllipseButton_Click(object sender, EventArgs e)
         {
-            currentMode = "Ellipse";
-            //IShape shape = new Ellipse();
-            //shape.Color = _currentColor;
-            //shape.Thickness = _currentBrashSize;
-            //shapeList.Add(shape);
+            currentMode = NameForShapeFactory.Ellipse;
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
             shapeList.Clear();
             _currentBitmap = new Bitmap(800, 600);
             currentShape = null;
-            //IShape currentShape = new Curve();
-            //currentShape.Thickness = _currentBrashSize;
-            //currentShape.Color = _currentColor;
-            //shapeList.Add(currentShape);
             rePaint();
         }
 
@@ -197,14 +159,12 @@ namespace Team_Project_Paint
             numericUpDown1.Value = _currentBrashSize;
         }
 
-        //прикол чтобы не рисовать 0й кистью прописали в свойствах на форме минимум и максимум у numericUpDown
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e) // отображение для трекбара 
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e) 
         {
             _currentBrashSize = (int)numericUpDown1.Value;
             trackBar1.Value = _currentBrashSize;
         }
 
-        //можно открывать и рисовать в существующих файлах
         private void opentoolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();

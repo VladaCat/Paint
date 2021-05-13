@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Class
 {
@@ -24,7 +25,7 @@ namespace Team_Project_Paint.Class
 
         private bool isStarted = false;
 
-        public Curve() : base("Curve") { }
+        public Curve() : base(NameForShapeFactory.Curve) { }
 
         public override bool IsFinished()
         {

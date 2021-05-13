@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Class
 {
@@ -28,7 +29,7 @@ namespace Team_Project_Paint.Class
             get => finishlocation;
             set => finishlocation = value;
         }
-        public AbstractRectangleStyle(string Name) : base(Name) { }
+        public AbstractRectangleStyle(NameForShapeFactory Name) : base(Name) { }
         public abstract override void Draw(Graphics graphics);
         public override bool IsFinished()
         {

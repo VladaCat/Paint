@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Class
 {
@@ -20,7 +21,7 @@ namespace Team_Project_Paint.Class
 
         private bool isFinished = false;
 
-        public Dot() : base("Dot") { }
+        public Dot() : base(NameForShapeFactory.Dot) { }
         public override bool IsFinished()
         {
             return isFinished;
@@ -33,7 +34,7 @@ namespace Team_Project_Paint.Class
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 graphics.FillEllipse(
                    new SolidBrush(Color),
-                   Location.X - Thickness/2, //точки теперь рисуются не с верхнего левого угла, а с центра
+                   Location.X - Thickness/2, 
                    Location.Y - Thickness/2,
                    Thickness,
                    Thickness);
