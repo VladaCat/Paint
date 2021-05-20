@@ -28,10 +28,6 @@ namespace Team_Project_Paint.Class
                 height = Math.Abs(FinishLocation.Y - Location.Y);
                 y = FinishLocation.Y;
             }
-
-            FinLocation = FinishLocation;
-            StartLocation = Location;
-
             graphics.DrawRectangle(
                 new Pen(new SolidBrush(Color), Thickness),
                 x,

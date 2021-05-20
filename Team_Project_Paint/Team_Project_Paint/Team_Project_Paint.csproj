@@ -52,7 +52,6 @@
     <Compile Include="Class\Dot.cs" />
     <Compile Include="Class\Ellipse.cs" />
     <Compile Include="Class\Line.cs" />
-    <Compile Include="Class\Select.cs" />
     <Compile Include="Class\Rect.cs" />
     <Compile Include="Class\ShapeFactory.cs" />
     <Compile Include="Enum\NameForShapeFactory.cs" />

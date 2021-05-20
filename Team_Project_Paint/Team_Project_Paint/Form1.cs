@@ -60,21 +60,11 @@ namespace Team_Project_Paint
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
                 currentShape = ShapeFactory.CreateShape(currentMode);
                 currentShape.Color = _currentColor;
                 currentShape.Thickness = _currentBrashSize;
                 shapeList.Add(currentShape);
                 currentShape.MouseDown(sender, e);
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                currentMode = NameForShapeFactory.Select;
-                var select = ShapeFactory.CreateShape(currentMode);
-                select.SelectShape(shapeList, e);
-            }
-
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
