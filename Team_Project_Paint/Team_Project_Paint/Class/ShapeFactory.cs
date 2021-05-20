@@ -32,9 +32,13 @@ namespace Team_Project_Paint.Class
             {
                 return new Select();
             }
+            else if (currentMode == NameForShapeFactory.Triangle) 
+            {
+                return new Triangle();
+            }
             else
             {
-                return new Line();
+                throw new Exception("This figure doesn't exist");
             }
         }
     }
