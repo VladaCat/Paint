@@ -13,8 +13,6 @@ namespace Team_Project_Paint.Class
    public abstract class AbstractShape:IShape
     {
         private int thickness;
-        private Point secLocation;
-        private Point finLocation;
         private Color color;
         private NameForShapeFactory name;
         public AbstractShape(NameForShapeFactory name)
@@ -36,18 +34,6 @@ namespace Team_Project_Paint.Class
             set => color = value;
         }
 
-        public virtual Point FinLocation
-        {
-            get => finLocation;
-            set => finLocation = value;
-        }
-
-        public virtual Point StartLocation
-        {
-            get => secLocation;
-            set => secLocation = value;
-        }
-
         public abstract void Draw(Graphics graphics);
         public abstract void DrawTemp(Graphics graphics);
 
@@ -60,11 +46,11 @@ namespace Team_Project_Paint.Class
         public virtual void MouseDown(object sender, MouseEventArgs e) { }
       
 
+
         public virtual void MouseMove(object sender, MouseEventArgs e) { }
 
 
         public virtual void MouseUp(object sender, MouseEventArgs e) { }
-
-        public virtual void SelectShape(List<IShape> shapeList, MouseEventArgs e) { }
+    
     }
 }

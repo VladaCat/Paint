@@ -28,10 +28,6 @@ namespace Team_Project_Paint.Class
             {
                 return new Curve();
             }
-            else if (currentMode == NameForShapeFactory.Select)
-            {
-                return new Select();
-            }
             else
             {
                 return new Line();
