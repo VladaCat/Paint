@@ -13,6 +13,7 @@ namespace Team_Project_Paint.Enum
         Ellipse,
         Curve,
         Line,
+        Triangle,
         Select
     }
         
