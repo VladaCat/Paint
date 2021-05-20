@@ -12,6 +12,11 @@ namespace Team_Project_Paint.Interfaces
    public interface IShape
     {
         int Thickness { get; set; }
+
+        Point FinLocation { get; set; }
+
+        Point StartLocation { get; set; }
+
         Color Color { get; set; }
         NameForShapeFactory Name { get; }
 
@@ -22,5 +27,6 @@ namespace Team_Project_Paint.Interfaces
         void Draw(Graphics graphics);
         void DrawTemp(Graphics graphics);
         bool IsFinished();
+        void SelectShape(List<IShape> shapeList, MouseEventArgs e);
     }
 }

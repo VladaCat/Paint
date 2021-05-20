@@ -12,7 +12,8 @@ namespace Team_Project_Paint.Enum
         Rect,
         Ellipse,
         Curve,
-        Line
+        Line,
+        Select
     }
         
 }
