@@ -25,7 +25,7 @@ namespace Team_Project_Paint
         {
             InitializeComponent();
             currentMode = NameForShapeFactory.Curve;
-            _currentBitmap = new Bitmap(800, 600);
+            _currentBitmap = new Bitmap(800, 1200);
             IShape currentShape = new Curve();
             currentShape.Thickness = _currentBrashSize;
             currentShape.Color = _currentColor;
@@ -65,6 +65,10 @@ namespace Team_Project_Paint
                 currentShape = ShapeFactory.CreateShape(currentMode);
                 currentShape.Color = _currentColor;
                 currentShape.Thickness = _currentBrashSize;
+                if (currentShape is Hexagon)
+                {
+                    (currentShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
+                }
                 shapeList.Add(currentShape);
                 currentShape.MouseDown(sender, e);
             }
@@ -134,6 +138,15 @@ namespace Team_Project_Paint
         {
             currentMode = NameForShapeFactory.Triangle;
         }
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            currentMode = NameForShapeFactory.Hexagon;
+        }
+
+        private void RoundingRectButton_Click(object sender, EventArgs e)
+        {
+            currentMode = NameForShapeFactory.RoundingRect;
+        }
         private void ClearButton_Click(object sender, EventArgs e)
         {
             shapeList.Clear();
@@ -187,6 +200,14 @@ namespace Team_Project_Paint
             {
                 CurrentColorButton.BackColor = colorDialog1.Color;
                 _currentColor = colorDialog1.Color;
+            }
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            if (currentShape is Hexagon)
+            {
+                (currentShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
             }
         }
     }

@@ -38,6 +38,7 @@
             this.EllipseButton = new System.Windows.Forms.ToolStripButton();
             this.TriangleButton = new System.Windows.Forms.ToolStripButton();
             this.ClearButton = new System.Windows.Forms.ToolStripButton();
+            this.HexagonButtom = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -60,11 +61,14 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.RoundingRectButton = new System.Windows.Forms.ToolStripButton();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxMain
@@ -73,7 +77,7 @@
             this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxMain.Name = "pictureBoxMain";
-            this.pictureBoxMain.Size = new System.Drawing.Size(899, 450);
+            this.pictureBoxMain.Size = new System.Drawing.Size(811, 445);
             this.pictureBoxMain.TabIndex = 0;
             this.pictureBoxMain.TabStop = false;
             this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
@@ -92,10 +96,12 @@
             this.RectangleButton,
             this.EllipseButton,
             this.TriangleButton,
-            this.ClearButton});
+            this.ClearButton,
+            this.HexagonButtom,
+            this.RoundingRectButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(899, 67);
+            this.toolStrip1.Size = new System.Drawing.Size(811, 91);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -156,11 +162,12 @@
             // 
             // TriangleButton
             // 
+            this.TriangleButton.AutoSize = false;
             this.TriangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TriangleButton.Image = ((System.Drawing.Image)(resources.GetObject("TriangleButton.Image")));
             this.TriangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TriangleButton.Name = "TriangleButton";
-            this.TriangleButton.Size = new System.Drawing.Size(54, 64);
+            this.TriangleButton.Size = new System.Drawing.Size(50, 50);
             this.TriangleButton.Text = "Triangle";
             this.TriangleButton.Click += new System.EventHandler(this.TriangleButton_Click);
             // 
@@ -175,11 +182,23 @@
             this.ClearButton.Text = "Clear";
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // HexagonButtom
+            // 
+            this.HexagonButtom.AutoSize = false;
+            this.HexagonButtom.BackColor = System.Drawing.Color.White;
+            this.HexagonButtom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.HexagonButtom.Image = ((System.Drawing.Image)(resources.GetObject("HexagonButtom.Image")));
+            this.HexagonButtom.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.HexagonButtom.Name = "HexagonButtom";
+            this.HexagonButtom.Size = new System.Drawing.Size(50, 50);
+            this.HexagonButtom.Text = "toolStripButton1";
+            this.HexagonButtom.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(539, 32);
+            this.button1.Location = new System.Drawing.Point(503, 49);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 25);
             this.button1.TabIndex = 2;
@@ -190,7 +209,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Orange;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(570, 32);
+            this.button2.Location = new System.Drawing.Point(534, 49);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 25);
             this.button2.TabIndex = 3;
@@ -201,7 +220,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.SkyBlue;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Location = new System.Drawing.Point(663, 32);
+            this.button3.Location = new System.Drawing.Point(627, 49);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(25, 25);
             this.button3.TabIndex = 4;
@@ -212,7 +231,7 @@
             // 
             this.button4.BackColor = System.Drawing.Color.Blue;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Location = new System.Drawing.Point(694, 32);
+            this.button4.Location = new System.Drawing.Point(658, 49);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(25, 25);
             this.button4.TabIndex = 5;
@@ -222,7 +241,7 @@
             // CurrentColorButton
             // 
             this.CurrentColorButton.BackColor = System.Drawing.Color.Black;
-            this.CurrentColorButton.Location = new System.Drawing.Point(487, 27);
+            this.CurrentColorButton.Location = new System.Drawing.Point(465, 43);
             this.CurrentColorButton.Name = "CurrentColorButton";
             this.CurrentColorButton.Size = new System.Drawing.Size(35, 35);
             this.CurrentColorButton.TabIndex = 6;
@@ -232,7 +251,7 @@
             // 
             this.button6.BackColor = System.Drawing.Color.Yellow;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Location = new System.Drawing.Point(601, 32);
+            this.button6.Location = new System.Drawing.Point(565, 49);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(25, 25);
             this.button6.TabIndex = 7;
@@ -242,7 +261,7 @@
             // ChengeColorButton
             // 
             this.ChengeColorButton.Image = global::Team_Project_Paint.Properties.Resources._2;
-            this.ChengeColorButton.Location = new System.Drawing.Point(781, 23);
+            this.ChengeColorButton.Location = new System.Drawing.Point(720, 43);
             this.ChengeColorButton.Name = "ChengeColorButton";
             this.ChengeColorButton.Size = new System.Drawing.Size(35, 35);
             this.ChengeColorButton.TabIndex = 8;
@@ -253,7 +272,7 @@
             // 
             this.button8.BackColor = System.Drawing.Color.Green;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Location = new System.Drawing.Point(632, 32);
+            this.button8.Location = new System.Drawing.Point(596, 49);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(25, 25);
             this.button8.TabIndex = 9;
@@ -264,7 +283,7 @@
             // 
             this.button9.BackColor = System.Drawing.Color.Purple;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.Location = new System.Drawing.Point(725, 32);
+            this.button9.Location = new System.Drawing.Point(689, 49);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(25, 25);
             this.button9.TabIndex = 10;
@@ -274,7 +293,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(484, 65);
+            this.label1.Location = new System.Drawing.Point(462, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 12;
@@ -283,7 +302,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(619, 65);
+            this.label3.Location = new System.Drawing.Point(614, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 13;
@@ -292,7 +311,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(768, 61);
+            this.label2.Location = new System.Drawing.Point(703, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 14;
@@ -302,7 +321,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(778, 74);
+            this.label5.Location = new System.Drawing.Point(713, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 16;
@@ -310,7 +329,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(842, 23);
+            this.trackBar1.Location = new System.Drawing.Point(761, 24);
             this.trackBar1.Maximum = 20;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
@@ -322,7 +341,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(842, 62);
+            this.numericUpDown1.Location = new System.Drawing.Point(761, 67);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             20,
             0,
@@ -350,7 +369,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(899, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(811, 24);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -385,11 +404,47 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // RoundingRectButton
+            // 
+            this.RoundingRectButton.AutoSize = false;
+            this.RoundingRectButton.BackColor = System.Drawing.Color.White;
+            this.RoundingRectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RoundingRectButton.Image = ((System.Drawing.Image)(resources.GetObject("RoundingRectButton.Image")));
+            this.RoundingRectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RoundingRectButton.Name = "RoundingRectButton";
+            this.RoundingRectButton.Size = new System.Drawing.Size(50, 50);
+            this.RoundingRectButton.Text = "toolStripButton2";
+            this.RoundingRectButton.Click += new System.EventHandler(this.RoundingRectButton_Click);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(367, 95);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(34, 20);
+            this.numericUpDown2.TabIndex = 20;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 450);
+            this.ClientSize = new System.Drawing.Size(811, 445);
+            this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.label5);
@@ -418,6 +473,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,6 +512,9 @@
         private System.Windows.Forms.ToolStripMenuItem opentoolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripButton TriangleButton;
+        private System.Windows.Forms.ToolStripButton HexagonButtom;
+        private System.Windows.Forms.ToolStripButton RoundingRectButton;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }
 
