@@ -35,6 +35,12 @@ namespace Team_Project_Paint.Class
             else if (currentMode == NameForShapeFactory.Triangle) 
             {
                 return new Triangle();
+            }else if(currentMode == NameForShapeFactory.Hexagon)
+            {
+                return new Hexagon();
+            }else if(currentMode== NameForShapeFactory.RoundingRect)
+            {
+                return new RoundingRect();
             }
             else
             {

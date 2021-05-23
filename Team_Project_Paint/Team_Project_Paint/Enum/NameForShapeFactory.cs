@@ -14,7 +14,9 @@ namespace Team_Project_Paint.Enum
         Curve,
         Line,
         Triangle,
-        Select
+        Select,
+        Hexagon,
+        RoundingRect
     }
         
 }
