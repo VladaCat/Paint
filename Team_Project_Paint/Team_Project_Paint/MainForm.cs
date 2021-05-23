@@ -71,15 +71,36 @@ namespace Team_Project_Paint
             else if (e.Button == MouseButtons.Right)
             {
                 currentMode = NameForShapeFactory.Select;
-                var select = ShapeFactory.CreateShape(currentMode);
-                select.SelectShape(shapeList, e);
+               
+                if (shapeList.Count > 0)
+                {
+                    currentShape = null;
+                    var select = ShapeFactory.CreateShape(currentMode);
+                    select.SelectShape(shapeList, e);
+                    shapeList.RemoveAt(select.Numb);
+                    _currentBitmap = new Bitmap(800, 600);
+                    rePaint();
+                    for (int i = 0; i < shapeList.Count; i++)
+                    {
+                        if (shapeList[i] != null)
+                        {
+                            shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                            rePaint();
+                        }
+                    }
+                }
+                else
+                {
+                    _currentBitmap = new Bitmap(800, 600);
+                    rePaint();
+                }
             }
 
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (currentShape != null)
+            if (currentShape != null && e.Button == MouseButtons.Left)
             {
                 currentShape.MouseUp(sender, e);
                 currentShape.Draw(Graphics.FromImage(_currentBitmap));
@@ -98,7 +119,7 @@ namespace Team_Project_Paint
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (currentShape != null)
+            if (currentShape != null && e.Button == MouseButtons.Left)
             {
                 currentShape = shapeList.Last();
                 currentShape.MouseClick(sender, e);

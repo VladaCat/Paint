@@ -47,6 +47,7 @@ namespace Team_Project_Paint.Class
             get => secLocation;
             set => secLocation = value;
         }
+        public int Numb { get ; set ; }
 
         public abstract void Draw(Graphics graphics);
         public abstract void DrawTemp(Graphics graphics);

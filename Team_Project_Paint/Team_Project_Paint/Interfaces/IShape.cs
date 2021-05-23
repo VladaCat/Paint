@@ -13,6 +13,8 @@ namespace Team_Project_Paint.Interfaces
     {
         int Thickness { get; set; }
 
+        int Numb { get; set; }
+
         Point FinLocation { get; set; }
 
         Point StartLocation { get; set; }

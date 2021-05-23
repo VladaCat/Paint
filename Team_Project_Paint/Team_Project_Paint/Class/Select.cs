@@ -29,8 +29,10 @@ namespace Team_Project_Paint.Class
                     if ((e.Y < tmp.StartLocation.Y + height) && (e.Y > tmp.StartLocation.Y))
                     {
                         isClicked = true;
+                        Numb = i;
                     }
             }
         }
+
     }
 }
