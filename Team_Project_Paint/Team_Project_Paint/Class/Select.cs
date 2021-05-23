@@ -11,8 +11,6 @@ namespace Team_Project_Paint.Class
 
         public Select() : base(NameForShapeFactory.Select) { }
 
-        public bool isClicked = false;
-
         public override void Draw(Graphics graphics)
         {
         }
@@ -26,11 +24,18 @@ namespace Team_Project_Paint.Class
                 int height = tmp.FinLocation.Y - tmp.StartLocation.Y;
 
                 if ((e.X < tmp.StartLocation.X + width) && (e.X > tmp.StartLocation.X))
+                {
                     if ((e.Y < tmp.StartLocation.Y + height) && (e.Y > tmp.StartLocation.Y))
                     {
                         isClicked = true;
                         Numb = i;
                     }
+                    else
+                    {
+                        isClicked = false;
+                    }
+                }
+
             }
         }
 

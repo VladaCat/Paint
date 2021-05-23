@@ -81,15 +81,18 @@ namespace Team_Project_Paint
                     currentShape = null;
                     var select = ShapeFactory.CreateShape(currentMode);
                     select.SelectShape(shapeList, e);
-                    shapeList.RemoveAt(select.Numb);
-                    _currentBitmap = new Bitmap(800, 600);
-                    rePaint();
-                    for (int i = 0; i < shapeList.Count; i++)
+                    if (select.isClicked)
                     {
-                        if (shapeList[i] != null)
+                        shapeList.RemoveAt(select.Numb);
+                        _currentBitmap = new Bitmap(800, 600);
+                        rePaint();
+                        for (int i = 0; i < shapeList.Count; i++)
                         {
-                            shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
-                            rePaint();
+                            if (shapeList[i] != null)
+                            {
+                                shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                                rePaint();
+                            }
                         }
                     }
                 }

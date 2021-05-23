@@ -15,6 +15,8 @@ namespace Team_Project_Paint.Interfaces
 
         int Numb { get; set; }
 
+        bool isClicked { get; set; }
+
         Point FinLocation { get; set; }
 
         Point StartLocation { get; set; }
