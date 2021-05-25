@@ -51,9 +51,9 @@ namespace Team_Project_Paint.Class
                         }
                     }
                 }
-                if ((e.X < tmp.FinishLocation.X) && (e.X > tmp.Location.X))
+                if (((e.X < tmp.FinishLocation.X) && (e.X > tmp.Location.X)) || ((e.X > tmp.FinishLocation.X) && (e.X < tmp.Location.X)))
                 {
-                    if ((e.Y < tmp.FinishLocation.Y) && (e.Y > tmp.Location.Y))
+                    if (((e.Y < tmp.FinishLocation.Y) && (e.Y > tmp.Location.Y)) || ((e.Y > tmp.FinishLocation.Y) && (e.Y < tmp.Location.Y)))
                     {
                         isClicked = true;
                         Numb = i;
