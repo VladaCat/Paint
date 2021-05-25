@@ -39,6 +39,7 @@
             this.TriangleButton = new System.Windows.Forms.ToolStripButton();
             this.ClearButton = new System.Windows.Forms.ToolStripButton();
             this.HexagonButtom = new System.Windows.Forms.ToolStripButton();
+            this.RoundingRectButton = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -61,8 +62,8 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.RoundingRectButton = new System.Windows.Forms.ToolStripButton();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.moveBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -77,7 +78,7 @@
             this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxMain.Name = "pictureBoxMain";
-            this.pictureBoxMain.Size = new System.Drawing.Size(811, 445);
+            this.pictureBoxMain.Size = new System.Drawing.Size(943, 445);
             this.pictureBoxMain.TabIndex = 0;
             this.pictureBoxMain.TabStop = false;
             this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
@@ -101,7 +102,7 @@
             this.RoundingRectButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(811, 91);
+            this.toolStrip1.Size = new System.Drawing.Size(943, 91);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -193,6 +194,18 @@
             this.HexagonButtom.Size = new System.Drawing.Size(50, 50);
             this.HexagonButtom.Text = "toolStripButton1";
             this.HexagonButtom.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // RoundingRectButton
+            // 
+            this.RoundingRectButton.AutoSize = false;
+            this.RoundingRectButton.BackColor = System.Drawing.Color.White;
+            this.RoundingRectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RoundingRectButton.Image = ((System.Drawing.Image)(resources.GetObject("RoundingRectButton.Image")));
+            this.RoundingRectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RoundingRectButton.Name = "RoundingRectButton";
+            this.RoundingRectButton.Size = new System.Drawing.Size(50, 50);
+            this.RoundingRectButton.Text = "toolStripButton2";
+            this.RoundingRectButton.Click += new System.EventHandler(this.RoundingRectButton_Click);
             // 
             // button1
             // 
@@ -369,7 +382,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(811, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(943, 24);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -404,18 +417,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // RoundingRectButton
-            // 
-            this.RoundingRectButton.AutoSize = false;
-            this.RoundingRectButton.BackColor = System.Drawing.Color.White;
-            this.RoundingRectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RoundingRectButton.Image = ((System.Drawing.Image)(resources.GetObject("RoundingRectButton.Image")));
-            this.RoundingRectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RoundingRectButton.Name = "RoundingRectButton";
-            this.RoundingRectButton.Size = new System.Drawing.Size(50, 50);
-            this.RoundingRectButton.Text = "toolStripButton2";
-            this.RoundingRectButton.Click += new System.EventHandler(this.RoundingRectButton_Click);
-            // 
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(367, 95);
@@ -439,11 +440,22 @@
             0});
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
+            // moveBtn
+            // 
+            this.moveBtn.Location = new System.Drawing.Point(813, 50);
+            this.moveBtn.Name = "moveBtn";
+            this.moveBtn.Size = new System.Drawing.Size(106, 45);
+            this.moveBtn.TabIndex = 21;
+            this.moveBtn.Text = "MOVE OFF";
+            this.moveBtn.UseVisualStyleBackColor = true;
+            this.moveBtn.Click += new System.EventHandler(this.moveBtn_Click);
+            // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 445);
+            this.ClientSize = new System.Drawing.Size(943, 445);
+            this.Controls.Add(this.moveBtn);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.trackBar1);
@@ -515,6 +527,7 @@
         private System.Windows.Forms.ToolStripButton HexagonButtom;
         private System.Windows.Forms.ToolStripButton RoundingRectButton;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button moveBtn;
     }
 }
 

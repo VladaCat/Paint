@@ -23,6 +23,7 @@ namespace Team_Project_Paint
         private Point _lastPonit;
         private Select move;
         private bool isClicked = false;
+        private bool isMove = false;
 
         public Paint()
         {
@@ -75,30 +76,30 @@ namespace Team_Project_Paint
                 shapeList.Add(currentShape);
                 currentShape.MouseDown(sender, e);
             }
-            //else if (e.Button == MouseButtons.Right) 
-            //{
-            //    _lastPonit = e.Location;
-            //    currentMode = NameForShapeFactory.Select;
-            //    var select = ShapeFactory.CreateShape(currentMode);
-            //    select.SelectShape(shapeList, e);
-            //    if (select.isClicked)
-            //    {
-            //        isClicked = true;
-            //        currentShape = shapeList[select.Numb];
-            //        shapeList.RemoveAt(select.Numb);
-            //        _currentBitmap = new Bitmap(800, 600);
-            //        rePaint();
-            //        for (int i = 0; i < shapeList.Count; i++)
-            //        {
-            //            if (shapeList[i] != null)
-            //            {
-            //                shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
-            //                rePaint();
-            //            }
-            //        }
-            //    }
-               
-            //}
+            else if (isMove && e.Button == MouseButtons.Right)
+            {
+                _lastPonit = e.Location;
+                currentMode = NameForShapeFactory.Select;
+                var select = ShapeFactory.CreateShape(currentMode);
+                select.SelectShape(shapeList, e);
+                if (select.isClicked)
+                {
+                    isClicked = true;
+                    currentShape = shapeList[select.Numb];
+                    shapeList.RemoveAt(select.Numb);
+                    _currentBitmap = new Bitmap(800, 600);
+                    rePaint();
+                    for (int i = 0; i < shapeList.Count; i++)
+                    {
+                        if (shapeList[i] != null)
+                        {
+                            shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                            rePaint();
+                        }
+                    }
+                }
+
+            }
             // перемещение 
         }
 
@@ -145,7 +146,7 @@ namespace Team_Project_Paint
                 currentShape.MouseClick(sender, e);
                 rePaint();
             }
-            else if (e.Button == MouseButtons.Right)
+            else if (!isMove && e.Button == MouseButtons.Right)
             {
                 currentMode = NameForShapeFactory.Select;
 
@@ -270,6 +271,20 @@ namespace Team_Project_Paint
             if (currentShape is Hexagon)
             {
                 (currentShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
+            }
+        }
+
+        private void moveBtn_Click(object sender, EventArgs e)
+        {
+            if (!isMove)
+            {
+                isMove = true;
+                moveBtn.Text = "MOVE ON";
+            }
+            else
+            {
+                isMove = false;
+                moveBtn.Text = "MOVE OFF";
             }
         }
     }
