@@ -38,9 +38,9 @@ namespace Team_Project_Paint.Class
                 var tmp = shapeList[i];
                 if (tmp.Name == NameForShapeFactory.Dot)
                 {
-                    if ((e.X > tmp.Location.X - 2 && e.X > tmp.Location.X + 2))
+                    if ((e.X >= tmp.Location.X - tmp.Thickness /2 && e.X <= tmp.Location.X + tmp.Thickness))
                     {
-                        if ((e.Y > tmp.Location.Y - 2 && e.Y < tmp.Location.Y + 2))
+                        if ((e.Y >= tmp.Location.Y - tmp.Thickness / 2 && e.Y <= tmp.Location.Y + tmp.Thickness))
                         {
                             isClicked = true;
                             Numb = i;
