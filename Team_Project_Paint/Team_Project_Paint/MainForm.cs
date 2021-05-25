@@ -22,6 +22,7 @@ namespace Team_Project_Paint
         Graphics graphics;
         private Point _lastPonit;
         private Select move;
+        private bool isClicked = false;
 
         public Paint()
         {
@@ -80,18 +81,23 @@ namespace Team_Project_Paint
                 currentMode = NameForShapeFactory.Select;
                 var select = ShapeFactory.CreateShape(currentMode);
                 select.SelectShape(shapeList, e);
-                currentShape = shapeList[select.Numb];
-                shapeList.RemoveAt(select.Numb);
-                _currentBitmap = new Bitmap(800, 600);
-                rePaint();
-                for (int i = 0; i < shapeList.Count; i++)
+                if (select.isClicked)
                 {
-                    if (shapeList[i] != null)
+                    isClicked = true;
+                    currentShape = shapeList[select.Numb];
+                    shapeList.RemoveAt(select.Numb);
+                    _currentBitmap = new Bitmap(800, 600);
+                    rePaint();
+                    for (int i = 0; i < shapeList.Count; i++)
                     {
-                        shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
-                        rePaint();
+                        if (shapeList[i] != null)
+                        {
+                            shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                            rePaint();
+                        }
                     }
                 }
+               
             }
 
         }
@@ -104,13 +110,14 @@ namespace Team_Project_Paint
                 currentShape.Draw(Graphics.FromImage(_currentBitmap));
                 rePaint();
             }
-            else if (e.Button == MouseButtons.Right)
+            else if (isClicked && e.Button == MouseButtons.Right)
             {
                 move = new Select();
                 move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
                 shapeList.Add(currentShape);
                 currentShape.Draw(Graphics.FromImage(_currentBitmap));
                 rePaint();
+                isClicked = false;
             }
         }
 
@@ -121,7 +128,7 @@ namespace Team_Project_Paint
                 currentShape.MouseMove(sender, e);
                 rePaintTemp();
             }
-            else if (currentShape != null && e.Button == MouseButtons.Right)
+            else if (isClicked && currentShape != null && e.Button == MouseButtons.Right)
             {
                 move = new Select();
                 move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
