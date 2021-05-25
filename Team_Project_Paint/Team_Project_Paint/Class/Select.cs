@@ -15,6 +15,22 @@ namespace Team_Project_Paint.Class
         {
         }
 
+        public void Move(int dx, int dy, IShape shape)
+        {
+            int startX = shape.Location.X + dx;
+            int startY = shape.Location.Y + dy;
+
+            int finX = shape.FinishLocation.X + dx;
+            int finY = shape.FinishLocation.Y + dy;
+
+            Point start = new Point(startX, startY);
+            Point finish = new Point(finX, finY);
+
+            shape.Location = start;
+            shape.FinishLocation = finish;
+
+        }
+
         public override void SelectShape(List<IShape> shapeList, MouseEventArgs e)
         {
             for (int i = 0; i < shapeList.Count; i++)
