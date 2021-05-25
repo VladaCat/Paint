@@ -20,12 +20,24 @@ namespace Team_Project_Paint.Class
             for (int i = 0; i < shapeList.Count; i++)
             {
                 var tmp = shapeList[i];
-                int width = tmp.FinLocation.X - tmp.StartLocation.X;
-                int height = tmp.FinLocation.Y - tmp.StartLocation.Y;
-
-                if ((e.X < tmp.StartLocation.X + width) && (e.X > tmp.StartLocation.X))
+                if (tmp.Name == NameForShapeFactory.Dot)
                 {
-                    if ((e.Y < tmp.StartLocation.Y + height) && (e.Y > tmp.StartLocation.Y))
+                    if ((e.X > tmp.Location.X - 2 && e.X > tmp.Location.X + 2))
+                    {
+                        if ((e.Y > tmp.Location.Y - 2 && e.Y < tmp.Location.Y + 2))
+                        {
+                            isClicked = true;
+                            Numb = i;
+                        }
+                        else
+                        {
+                            isClicked = false;
+                        }
+                    }
+                }
+                if ((e.X < tmp.FinishLocation.X) && (e.X > tmp.Location.X))
+                {
+                    if ((e.Y < tmp.FinishLocation.Y) && (e.Y > tmp.Location.Y))
                     {
                         isClicked = true;
                         Numb = i;
@@ -36,7 +48,9 @@ namespace Team_Project_Paint.Class
                     }
                 }
 
+
             }
+
         }
 
     }

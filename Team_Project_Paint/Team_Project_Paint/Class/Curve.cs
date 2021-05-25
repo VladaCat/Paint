@@ -12,12 +12,6 @@ namespace Team_Project_Paint.Class
 {
     public class Curve : AbstractShape
     {
-        private Point location;
-        public virtual Point Location 
-        { 
-            get => location;
-            set => location = value;
-        }
 
         private List<Point> points = new List<Point>();
 
@@ -36,9 +30,9 @@ namespace Team_Project_Paint.Class
         {
             if (points.Count > 1)
             {
-                for (int i = 0; i < points.Count - 1; i++) 
+                for (int i = 0; i < points.Count - 1; i++)
                 {
-                    graphics.DrawLine(new Pen(new SolidBrush(Color), Thickness),points[i],points[i+1]);
+                    graphics.DrawLine(new Pen(new SolidBrush(Color), Thickness), points[i], points[i + 1]);
                 }
                 foreach (Point point in points)
                 {
@@ -51,7 +45,7 @@ namespace Team_Project_Paint.Class
                 }
             }
         }
-   
+
         public override void MouseDown(object sender, MouseEventArgs e)
         {
             if (!isFinished && !isStarted)
@@ -86,9 +80,9 @@ namespace Team_Project_Paint.Class
             points.Last().Y - Thickness / 2,
             Thickness,
             Thickness);
-            if (points.Count > 1) 
+            if (points.Count > 1)
             {
-                graphics.DrawLine(new Pen(new SolidBrush(Color), Thickness), points[points.Count-2], points.Last());
+                graphics.DrawLine(new Pen(new SolidBrush(Color), Thickness), points[points.Count - 2], points.Last());
             }
         }
     }

@@ -12,12 +12,6 @@ namespace Team_Project_Paint.Class
 {
     public class Dot : AbstractShape
     {
-        private Point location;
-        public virtual Point Location 
-        {
-            get => location;
-            set => location = value;
-        }
 
         private bool isFinished = false;
 
@@ -34,8 +28,8 @@ namespace Team_Project_Paint.Class
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 graphics.FillEllipse(
                    new SolidBrush(Color),
-                   Location.X - Thickness/2, 
-                   Location.Y - Thickness/2,
+                   Location.X - Thickness / 2,
+                   Location.Y - Thickness / 2,
                    Thickness,
                    Thickness);
             }

@@ -15,20 +15,6 @@ namespace Team_Project_Paint.Class
 
         protected bool isStarted = false;
 
-        private Point finishlocation;
-
-        private Point location;
-
-        public virtual Point Location 
-        { 
-            get => location;
-            set => location = value;
-        }
-        public virtual Point FinishLocation 
-        { 
-            get => finishlocation;
-            set => finishlocation = value;
-        }
         public AbstractRectangleStyle(NameForShapeFactory Name) : base(Name) { }
         public abstract override void Draw(Graphics graphics);
         public override bool IsFinished()

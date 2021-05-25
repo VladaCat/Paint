@@ -35,8 +35,6 @@ namespace Team_Project_Paint
                 y = FinishLocation.Y;
             }
 
-            FinLocation = FinishLocation;
-            StartLocation = Location;
             graphics.SmoothingMode = SmoothingMode.AntiAlias;
             Pen pen = new Pen(Color, Thickness);
             pen.LineJoin =LineJoin.Round;

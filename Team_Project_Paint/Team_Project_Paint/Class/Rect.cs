@@ -33,8 +33,6 @@ namespace Team_Project_Paint.Class
                 y = FinishLocation.Y;
             }
 
-            FinLocation = FinishLocation;
-            StartLocation = Location;
             graphics.DrawRectangle(
                new Pen(Color, Thickness),
                 x,

@@ -17,9 +17,9 @@ namespace Team_Project_Paint.Interfaces
 
         bool isClicked { get; set; }
 
-        Point FinLocation { get; set; }
+        Point FinishLocation { get; set; }
 
-        Point StartLocation { get; set; }
+        Point Location { get; set; }
 
         Color Color { get; set; }
         NameForShapeFactory Name { get; }

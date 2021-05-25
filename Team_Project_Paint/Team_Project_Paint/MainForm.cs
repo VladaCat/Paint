@@ -132,6 +132,31 @@ namespace Team_Project_Paint
                 currentShape.MouseClick(sender, e);
                 rePaint();
             }
+            else if (e.Button == MouseButtons.Right)
+            {
+                currentMode = NameForShapeFactory.Select;
+
+                if (shapeList.Count > 0)
+                {
+                    currentShape = null;
+                    var select = ShapeFactory.CreateShape(currentMode);
+                    select.SelectShape(shapeList, e);
+                    if (select.isClicked)
+                    {
+                        shapeList.RemoveAt(select.Numb);
+                        _currentBitmap = new Bitmap(800, 600);
+                        rePaint();
+                        for (int i = 0; i < shapeList.Count; i++)
+                        {
+                            if (shapeList[i] != null)
+                            {
+                                shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                                rePaint();
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void DotButton_Click(object sender, EventArgs e)
