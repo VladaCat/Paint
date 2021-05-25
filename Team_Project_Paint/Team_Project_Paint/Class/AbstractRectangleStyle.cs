@@ -38,7 +38,7 @@ namespace Team_Project_Paint.Class
         }
         public override void MouseMove(object sender, MouseEventArgs e)
         {
-            if (!isFinished && isStarted)
+            if (!isFinished && isStarted && e.Button == MouseButtons.Left)
             {
                 FinishLocation = e.Location;
             }

@@ -21,6 +21,7 @@ namespace Team_Project_Paint
         Bitmap tempBitmap;
         Graphics graphics;
         private Point _lastPonit;
+        private Select move;
 
         public Paint()
         {
@@ -83,6 +84,14 @@ namespace Team_Project_Paint
                 shapeList.RemoveAt(select.Numb);
                 _currentBitmap = new Bitmap(800, 600);
                 rePaint();
+                for (int i = 0; i < shapeList.Count; i++)
+                {
+                    if (shapeList[i] != null)
+                    {
+                        shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                        rePaint();
+                    }
+                }
             }
 
         }
@@ -97,16 +106,26 @@ namespace Team_Project_Paint
             }
             else if (e.Button == MouseButtons.Right)
             {
-                var move = new Select();
+                move = new Select();
                 move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
+                shapeList.Add(currentShape);
+                currentShape.Draw(Graphics.FromImage(_currentBitmap));
+                rePaint();
             }
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (currentShape != null) 
+            if (currentShape != null && e.Button == MouseButtons.Left) 
             { 
                 currentShape.MouseMove(sender, e);
+                rePaintTemp();
+            }
+            else if (currentShape != null && e.Button == MouseButtons.Right)
+            {
+                move = new Select();
+                move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
+                _lastPonit = e.Location;
                 rePaintTemp();
             }
         }
