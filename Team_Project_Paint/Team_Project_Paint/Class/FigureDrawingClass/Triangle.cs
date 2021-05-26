@@ -10,7 +10,7 @@ namespace Team_Project_Paint.Class
 {
     class Triangle:AbstractRectangleStyle
     {
-        public Triangle() : base(NameForShapeFactory.Triangle) { }
+        public Triangle() : base(EShapeType.Triangle) { }
         public override void Draw(Graphics graphics)
         {
 

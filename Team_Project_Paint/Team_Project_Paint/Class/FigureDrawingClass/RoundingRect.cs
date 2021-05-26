@@ -15,7 +15,7 @@ namespace Team_Project_Paint
     */
     public class RoundingRect : AbstractRectangleStyle
     {
-        public RoundingRect() : base(NameForShapeFactory.RoundingRect) { }
+        public RoundingRect() : base(EShapeType.RoundingRect) { }
 
         int radius = 10;
         public override void Draw(Graphics graphics)

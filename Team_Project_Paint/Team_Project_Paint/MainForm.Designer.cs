@@ -64,6 +64,9 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.moveBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -81,10 +84,10 @@
             this.pictureBoxMain.Size = new System.Drawing.Size(943, 445);
             this.pictureBoxMain.TabIndex = 0;
             this.pictureBoxMain.TabStop = false;
-            this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
-            this.pictureBoxMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseClick);
+            this.pictureBoxMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
+            this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
+            this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseUp);
             // 
             // toolStrip1
             // 
@@ -193,7 +196,7 @@
             this.HexagonButtom.Name = "HexagonButtom";
             this.HexagonButtom.Size = new System.Drawing.Size(50, 50);
             this.HexagonButtom.Text = "toolStripButton1";
-            this.HexagonButtom.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.HexagonButtom.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
             // RoundingRectButton
             // 
@@ -216,7 +219,7 @@
             this.button1.Size = new System.Drawing.Size(25, 25);
             this.button1.TabIndex = 2;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button9_Click);
+            this.button1.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // button2
             // 
@@ -227,7 +230,7 @@
             this.button2.Size = new System.Drawing.Size(25, 25);
             this.button2.TabIndex = 3;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button9_Click);
+            this.button2.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // button3
             // 
@@ -238,7 +241,7 @@
             this.button3.Size = new System.Drawing.Size(25, 25);
             this.button3.TabIndex = 4;
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button9_Click);
+            this.button3.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // button4
             // 
@@ -249,7 +252,7 @@
             this.button4.Size = new System.Drawing.Size(25, 25);
             this.button4.TabIndex = 5;
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button9_Click);
+            this.button4.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // CurrentColorButton
             // 
@@ -269,7 +272,7 @@
             this.button6.Size = new System.Drawing.Size(25, 25);
             this.button6.TabIndex = 7;
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button9_Click);
+            this.button6.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // ChengeColorButton
             // 
@@ -290,7 +293,7 @@
             this.button8.Size = new System.Drawing.Size(25, 25);
             this.button8.TabIndex = 9;
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button9_Click);
+            this.button8.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // button9
             // 
@@ -301,7 +304,7 @@
             this.button9.Size = new System.Drawing.Size(25, 25);
             this.button9.TabIndex = 10;
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // label1
             // 
@@ -342,19 +345,19 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(761, 24);
+            this.trackBar1.Location = new System.Drawing.Point(777, 12);
             this.trackBar1.Maximum = 20;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(45, 38);
+            this.trackBar1.Size = new System.Drawing.Size(45, 69);
             this.trackBar1.TabIndex = 17;
             this.trackBar1.Value = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackBar1.Scroll += new System.EventHandler(this.TrackBar1_Scroll);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(761, 67);
+            this.numericUpDown1.Location = new System.Drawing.Point(777, 82);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             20,
             0,
@@ -374,7 +377,7 @@
             0,
             0,
             0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
             // 
             // menuStrip1
             // 
@@ -400,14 +403,14 @@
             this.opentoolStripMenuItem.Name = "opentoolStripMenuItem";
             this.opentoolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.opentoolStripMenuItem.Text = "Open";
-            this.opentoolStripMenuItem.Click += new System.EventHandler(this.opentoolStripMenuItem_Click);
+            this.opentoolStripMenuItem.Click += new System.EventHandler(this.OpentoolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveFileDialog1
             // 
@@ -438,23 +441,53 @@
             0,
             0,
             0});
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.NumericUpDown2_ValueChanged);
             // 
             // moveBtn
             // 
-            this.moveBtn.Location = new System.Drawing.Point(813, 50);
+            this.moveBtn.Location = new System.Drawing.Point(858, 49);
             this.moveBtn.Name = "moveBtn";
-            this.moveBtn.Size = new System.Drawing.Size(106, 45);
+            this.moveBtn.Size = new System.Drawing.Size(75, 45);
             this.moveBtn.TabIndex = 21;
             this.moveBtn.Text = "MOVE OFF";
             this.moveBtn.UseVisualStyleBackColor = true;
-            this.moveBtn.Click += new System.EventHandler(this.moveBtn_Click);
+            this.moveBtn.Click += new System.EventHandler(this.MoveBtn_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(822, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "20px";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(822, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "10px";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(828, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "1px";
             // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 445);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.moveBtn);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
@@ -528,6 +561,9 @@
         private System.Windows.Forms.ToolStripButton RoundingRectButton;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Button moveBtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
 

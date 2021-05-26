@@ -9,7 +9,7 @@ namespace Team_Project_Paint.Class
     public class Select : AbstractRectangleStyle
     {
 
-        public Select() : base(NameForShapeFactory.Select) { }
+        public Select() : base(EShapeType.Select) { }
 
         public override void Draw(Graphics graphics)
         {
@@ -36,7 +36,7 @@ namespace Team_Project_Paint.Class
             for (int i = 0; i < shapeList.Count; i++)
             {
                 var tmp = shapeList[i];
-                if (tmp.Name == NameForShapeFactory.Dot && !isClicked)
+                if (tmp.Name == EShapeType.Dot && !isClicked)
                 {
                     if ((e.X >= tmp.Location.X - tmp.Thickness /2 && e.X <= tmp.Location.X + tmp.Thickness))
                     {
@@ -52,7 +52,7 @@ namespace Team_Project_Paint.Class
                     }
                 }
 
-                if (((e.X < tmp.FinishLocation.X) && (e.X > tmp.Location.X)) && tmp.Name != NameForShapeFactory.Dot && !isClicked || ((e.X > tmp.FinishLocation.X) && (e.X < tmp.Location.X) && tmp.Name != NameForShapeFactory.Dot && !isClicked))
+                if (((e.X < tmp.FinishLocation.X) && (e.X > tmp.Location.X)) && tmp.Name != EShapeType.Dot && !isClicked || ((e.X > tmp.FinishLocation.X) && (e.X < tmp.Location.X) && tmp.Name != EShapeType.Dot && !isClicked))
                 {
                     if (((e.Y < tmp.FinishLocation.Y) && (e.Y > tmp.Location.Y)) || ((e.Y > tmp.FinishLocation.Y) && (e.Y < tmp.Location.Y)))
                     {

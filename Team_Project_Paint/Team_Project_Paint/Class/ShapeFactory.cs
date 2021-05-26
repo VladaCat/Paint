@@ -10,45 +10,29 @@ namespace Team_Project_Paint.Class
 {
    public class ShapeFactory
     {
-        public static IShape CreateShape(NameForShapeFactory currentMode)
+        public static IShape CreateShape(EShapeType currentMode)
         {
-            if (currentMode == NameForShapeFactory.Dot)
+            switch (currentMode)
             {
-                return new Dot();
-            }
-            else if (currentMode == NameForShapeFactory.Rect)
-            {
-                return new Rect();
-            }
-            else if (currentMode == NameForShapeFactory.Ellipse)
-            {
-                return new Ellipse();
-            }
-            else if (currentMode == NameForShapeFactory.Curve)
-            {
-                return new Curve();
-            }
-            else if (currentMode == NameForShapeFactory.Line)
-            {
-                return new Line();
-            }
-            else if (currentMode == NameForShapeFactory.Select)
-            {
-                return new Select();
-            }
-            else if (currentMode == NameForShapeFactory.Triangle) 
-            {
-                return new Triangle();
-            }else if(currentMode == NameForShapeFactory.Hexagon)
-            {
-                return new Hexagon();
-            }else if(currentMode== NameForShapeFactory.RoundingRect)
-            {
-                return new RoundingRect();
-            }
-            else
-            {
-                throw new Exception("This figure doesn't exist");
+                case EShapeType.Dot:
+                    return new Dot();
+                case EShapeType.Line:
+                    return new Line();
+                case EShapeType.Curve:
+                    return new Curve();
+                case EShapeType.Rect:
+                    return new Rect();
+                case EShapeType.Ellipse:
+                    return new Ellipse();
+                case EShapeType.Triangle:
+                    return new Triangle();
+                case EShapeType.Hexagon:
+                    return new Hexagon();
+                case EShapeType.RoundingRect:
+                    return new RoundingRect();
+                case EShapeType.Select:
+                    return new Select();
+                default: throw new Exception("This figure doesn't exist");
             }
         }
     }

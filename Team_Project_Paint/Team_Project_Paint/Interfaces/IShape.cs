@@ -22,7 +22,7 @@ namespace Team_Project_Paint.Interfaces
         Point Location { get; set; }
 
         Color Color { get; set; }
-        NameForShapeFactory Name { get; }
+        EShapeType Name { get; }
 
         void MouseClick(object sender, MouseEventArgs e);
         void MouseDown(object sender, MouseEventArgs e);

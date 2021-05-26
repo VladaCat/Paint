@@ -17,23 +17,25 @@ namespace Team_Project_Paint
          https://stackoverflow.com/questions/19210569/transcribing-a-polygon-on-a-circle#19210662
          */
 
-        private int cornes = 3;
-        public Hexagon() : base(NameForShapeFactory.Hexagon) { }
+        private int _cornes = 3;
+        public Size Size { get; set; }
+        public Hexagon() : base(EShapeType.Hexagon) { }
 
         public int Cornes
         {
             get
             {
-                return cornes;
+                return _cornes;
             }
             set
             {
                 if (!isFinished)
                 {
-                    cornes = value;
+                    _cornes = value;
                 }
             }
         }
+
         public override void Draw(Graphics graphics)
         {
             int x = Location.X;
@@ -56,7 +58,7 @@ namespace Team_Project_Paint
             }
             if (Cornes == 0)
             {
-                Cornes = cornes;
+                Cornes = _cornes;
             }
             width += Thickness;
             height += Thickness;
@@ -65,9 +67,10 @@ namespace Team_Project_Paint
             Rectangle rectangle = new Rectangle(Center, new Size(1, 1));
             rectangle.Inflate(Radius, Radius);
 
-            Image img = new Bitmap(800, 1200);
+            //Image img = new Bitmap(800, 1200);
+            Image img = new Bitmap(Size.Width, Size.Height);
             Graphics tmpGraphics = Graphics.FromImage(img);
-                InscribePolygon(tmpGraphics, rectangle, cornes);
+                InscribePolygon(tmpGraphics, rectangle, _cornes);
                 graphics.DrawImage(img, x, y);      
         }
 
