@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Class
@@ -21,13 +16,13 @@ namespace Team_Project_Paint.Class
             return _isFinished;
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(PaintGraphics graphics)
         {
             if (_isFinished)
             {
-                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                graphics.MySmoothingMode = SmoothingMode.AntiAlias;
                 graphics.FillEllipse(
-                   new SolidBrush(Color),
+                   new PaintSolidBrush(Color),
                    Location.X - Thickness / 2,
                    Location.Y - Thickness / 2,
                    Thickness,
@@ -35,16 +30,16 @@ namespace Team_Project_Paint.Class
             }
         }
 
-        public override void MouseClick(object sender, MouseEventArgs e)
+        public override void MouseClick(ShapePoint point)
         {
-            if (e.Button == MouseButtons.Left && !_isFinished)
+            if (!_isFinished)
             {
-                Location = e.Location;
+                Location =new ShapePoint(point.ToPoint());
                 _isFinished = true;
             }
         }
 
-        public override void DrawTemp(Graphics graphics)
+        public override void DrawTemp(PaintGraphics graphics)
         {
         }
     }

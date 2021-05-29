@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint.Class
@@ -16,38 +17,38 @@ namespace Team_Project_Paint.Class
         protected bool isStarted = false;
 
         public AbstractRectangleStyle(EShapeType Name) : base(Name) { }
-        public abstract override void Draw(Graphics graphics);
+        public abstract override void Draw(PaintGraphics graphics);
         public override bool IsFinished()
         {
             return isFinished;
         }
 
-        public override void DrawTemp(Graphics graphics)
+        public override void DrawTemp(PaintGraphics graphics)
         {
             Draw(graphics);
         }
 
-        public override void MouseDown(object sender, MouseEventArgs e)
+        public override void MouseDown(ShapePoint point)
         {
             if (!isFinished && !isStarted)
             {
-                Location = e.Location;
-                FinishLocation = e.Location;
+                Location =new ShapePoint(point.ToPoint());
+                FinishLocation = new ShapePoint(point.ToPoint());
                 isStarted = true;
             }
         }
-        public override void MouseMove(object sender, MouseEventArgs e)
-        {
-            if (!isFinished && isStarted && e.Button == MouseButtons.Left)
-            {
-                FinishLocation = e.Location;
-            }
-        }
-        public override void MouseUp(object sender, MouseEventArgs e)
+        public override void MouseMove(ShapePoint point)
         {
             if (!isFinished && isStarted)
             {
-                FinishLocation = e.Location;
+                FinishLocation = new ShapePoint(point.ToPoint());
+            }
+        }
+        public override void MouseUp(ShapePoint point)
+        {
+            if (!isFinished && isStarted)
+            {
+                FinishLocation =new ShapePoint(point.ToPoint());
                 isFinished = true;
             }
         }

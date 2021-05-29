@@ -30,8 +30,8 @@ namespace Team_Project_Paint.Class
                     return new Hexagon();
                 case EShapeType.RoundingRect:
                     return new RoundingRect();
-                case EShapeType.Select:
-                    return new Select();
+               /* case EShapeType.Select:
+                    return new Select();*/
                 default: throw new Exception("This figure doesn't exist");
             }
         }

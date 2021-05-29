@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using Team_Project_Paint.Class;
+using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.Enum;
 using Team_Project_Paint.Interfaces;
 
@@ -12,15 +12,15 @@ namespace Team_Project_Paint
 {
     public partial class Paint : Form
     {
-        private Color _currentColor = Color.Black;
+        private PaintColor _curentcolor = new PaintColor(0, 0, 0);
         private int _currentBrashSize = 1;
         private List<IShape> _shapeList = new List<IShape>();
         private Bitmap _currentBitmap;
         private IShape _currentShape;
         private EShapeType _currentMode;
         private Bitmap _tempBitmap;
-        private Graphics _graphics;
-        private Point _lastPonit;
+        private PaintGraphics _graphics;
+        private ShapePoint _lastPonit;
         private Select _move;
         private bool _isClicked = false;
         private bool _isMove = false;
@@ -29,45 +29,45 @@ namespace Team_Project_Paint
         {
             InitializeComponent();
             _currentMode = EShapeType.Curve;
-            _currentBitmap = new Bitmap(pictureBoxMain.Width,pictureBoxMain.Height);
+            _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             IShape currentShape = new Curve();
             currentShape.Thickness = _currentBrashSize;
-            currentShape.Color = _currentColor;
+            currentShape.Color = _curentcolor;
             _shapeList.Add(currentShape);
             numericUpDown1.Value = 1;
             pictureBoxMain.Image = _currentBitmap;
             _tempBitmap = new Bitmap(_currentBitmap);
-            _graphics = Graphics.FromImage(_tempBitmap);
+            _graphics = PaintGraphics.FromImage(_tempBitmap);
         }
 
         private void RePaint()
-        {   
+        {
             _tempBitmap = new Bitmap(_currentBitmap);
-            _graphics = Graphics.FromImage(_tempBitmap);
+            _graphics = PaintGraphics.FromImage(_tempBitmap);
             pictureBoxMain.Image = _currentBitmap;
         }
 
-        private void RePaintTemp() 
+        private void RePaintTemp()
         {
             if (_currentMode == EShapeType.Curve)
             {
 
             }
-            else 
+            else
             {
-                _graphics.Clear(Color.White);
-                _graphics.DrawImage(_currentBitmap,0,0);
+                _graphics.Clear(new PaintColor(255, 255, 255));
+                _graphics.DrawImage(_currentBitmap, 0, 0);
             }
             _currentShape.DrawTemp(_graphics);
             pictureBoxMain.Image = _tempBitmap;
-        } 
+        }
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 _currentShape = ShapeFactory.CreateShape(_currentMode);
-                _currentShape.Color = _currentColor;
+                _currentShape.Color = _curentcolor;
                 _currentShape.Thickness = _currentBrashSize;
                 if (_currentShape is Hexagon)
                 {
@@ -75,11 +75,11 @@ namespace Team_Project_Paint
                     (_currentShape as Hexagon).Size = pictureBoxMain.Size;
                 }
                 _shapeList.Add(_currentShape);
-                _currentShape.MouseDown(sender, e);
+                _currentShape.MouseDown(new ShapePoint(e.Location));
             }
-            else if (_isMove && e.Button == MouseButtons.Right)
+      /*      else if (_isMove && e.Button == MouseButtons.Right)
             {
-                _lastPonit = e.Location;
+                _lastPonit = new ShapePoint(e.Location);
                 _currentMode = EShapeType.Select;
                 var select = ShapeFactory.CreateShape(_currentMode);
                 select.SelectShape(_shapeList, e);
@@ -94,13 +94,13 @@ namespace Team_Project_Paint
                     {
                         if (_shapeList[i] != null)
                         {
-                            _shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                            _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
                             RePaint();
                         }
                     }
                 }
 
-            }
+            }*/
             // перемещение 
         }
 
@@ -108,35 +108,35 @@ namespace Team_Project_Paint
         {
             if (_currentShape != null && e.Button == MouseButtons.Left)
             {
-                _currentShape.MouseUp(sender, e);
-                _currentShape.Draw(Graphics.FromImage(_currentBitmap));
+                _currentShape.MouseUp(new ShapePoint(e.Location));
+                _currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
                 RePaint();
             }
-            else if (_isClicked && e.Button == MouseButtons.Right)
+          /*  else if (_isClicked && e.Button == MouseButtons.Right)
             {
                 _move = new Select();
                 _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
                 _shapeList.Add(_currentShape);
-                _currentShape.Draw(Graphics.FromImage(_currentBitmap));
+                _currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
                 RePaint();
                 _isClicked = false;
-            }
+            }*/
         }
 
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_currentShape != null && e.Button == MouseButtons.Left) 
-            { 
-                _currentShape.MouseMove(sender, e);
+            if (_currentShape != null && e.Button == MouseButtons.Left)
+            {
+                _currentShape.MouseMove(new ShapePoint(e.Location));
                 RePaintTemp();
             }
-            else if (_isClicked && _currentShape != null && e.Button == MouseButtons.Right)
+           /* else if (_isClicked && _currentShape != null && e.Button == MouseButtons.Right)
             {
                 _move = new Select();
                 _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
-                _lastPonit = e.Location;
+                _lastPonit = new ShapePoint(e.Location);
                 RePaintTemp();
-            }
+            }*/
         }
 
         private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -144,10 +144,10 @@ namespace Team_Project_Paint
             if (_currentShape != null && e.Button == MouseButtons.Left)
             {
                 _currentShape = _shapeList.Last();
-                _currentShape.MouseClick(sender, e);
+                _currentShape.MouseClick(new ShapePoint(e.Location));
                 RePaint();
             }
-            else if (!_isMove && e.Button == MouseButtons.Right)
+            /*else if (!_isMove && e.Button == MouseButtons.Right)
             {
                 _currentMode = EShapeType.Select;
 
@@ -165,13 +165,13 @@ namespace Team_Project_Paint
                         {
                             if (_shapeList[i] != null)
                             {
-                                _shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                                _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
                                 RePaint();
                             }
                         }
                     }
                 }
-            }
+            }*/
         }
 
         private void DotButton_Click(object sender, EventArgs e)
@@ -223,7 +223,7 @@ namespace Team_Project_Paint
         {
             Button b = (Button)sender;
             CurrentColorButton.BackColor = b.BackColor;
-            _currentColor = CurrentColorButton.BackColor;
+            _curentcolor = new PaintColor(CurrentColorButton.BackColor);
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -242,7 +242,7 @@ namespace Team_Project_Paint
             numericUpDown1.Value = _currentBrashSize;
         }
 
-        private void NumericUpDown1_ValueChanged(object sender, EventArgs e) 
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             _currentBrashSize = (int)numericUpDown1.Value;
             trackBar1.Value = _currentBrashSize;
@@ -263,7 +263,7 @@ namespace Team_Project_Paint
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 CurrentColorButton.BackColor = colorDialog1.Color;
-                _currentColor = colorDialog1.Color;
+                _curentcolor = new PaintColor(colorDialog1.Color);
             }
         }
 

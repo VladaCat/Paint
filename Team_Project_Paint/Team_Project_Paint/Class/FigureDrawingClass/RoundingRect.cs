@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Enum;
 using System.Drawing.Drawing2D;
+using Team_Project_Paint.Class.OperationWithFigures;
 
 namespace Team_Project_Paint
 {
@@ -18,7 +15,7 @@ namespace Team_Project_Paint
         public RoundingRect() : base(EShapeType.RoundingRect) { }
 
         int radius = 10;
-        public override void Draw(Graphics graphics)
+        public override void Draw(PaintGraphics graphics)
         {
             int x = Location.X;
             int y = Location.Y;
@@ -35,11 +32,12 @@ namespace Team_Project_Paint
                 y = FinishLocation.Y;
             }
 
-            graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            Pen pen = new Pen(Color, Thickness);
-            pen.LineJoin =LineJoin.Round;
+            graphics.MySmoothingMode = SmoothingMode.AntiAlias;
+            PaintPen pen = new PaintPen(Color, Thickness);
+            pen.LineJoin = LineJoin.Round;
             RectangleF rect = new RectangleF(x, y, width, height);
             GraphicsPath path = this.GetRoundRectangle(rect, radius);
+
             graphics.DrawPath(pen, path);
         }
 

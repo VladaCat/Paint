@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.Enum;
 
 
@@ -16,7 +10,7 @@ namespace Team_Project_Paint.Class
         public Rect() : base(EShapeType.Rect) { }
 
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(PaintGraphics graphics)
         {
             int x = Location.X;
             int y = Location.Y;
@@ -34,7 +28,7 @@ namespace Team_Project_Paint.Class
             }
 
             graphics.DrawRectangle(
-               new Pen(Color, Thickness),
+               new PaintPen(Color, Thickness),
                 x,
                 y,
                 width,

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Team_Project_Paint.Class;
+using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.Enum;
 
 namespace Team_Project_Paint
@@ -36,7 +32,7 @@ namespace Team_Project_Paint
             }
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(PaintGraphics graphics)
         {
             int x = Location.X;
             int y = Location.Y;
@@ -69,12 +65,12 @@ namespace Team_Project_Paint
 
             //Image img = new Bitmap(800, 1200);
             Image img = new Bitmap(Size.Width, Size.Height);
-            Graphics tmpGraphics = Graphics.FromImage(img);
+            PaintGraphics tmpGraphics = PaintGraphics.FromImage(img);
                 InscribePolygon(tmpGraphics, rectangle, _cornes);
                 graphics.DrawImage(img, x, y);      
         }
 
-        private void InscribePolygon(Graphics graphics, Rectangle rectangle, int numSides)
+        private void InscribePolygon(PaintGraphics graphics, Rectangle rectangle, int numSides)
         {
             float Radius = (float)((double)Math.Min(rectangle.Width, rectangle.Height) / 2.0);
             PointF Center = new PointF(
@@ -94,8 +90,8 @@ namespace Team_Project_Paint
                 graphics.RotateTransform((i - 1) * ExteriorAngle);
                 graphics.TranslateTransform(0, -Radius);
                 graphics.RotateTransform(180 - InteriorAngle / 2);
-                graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                Pen pen = new Pen(Color, Thickness);
+                graphics.MySmoothingMode = SmoothingMode.AntiAlias;
+                PaintPen pen = new PaintPen(Color, Thickness);
                 pen.StartCap = LineCap.Round;
                 pen.EndCap = LineCap.Round;
                 graphics.DrawLine(
