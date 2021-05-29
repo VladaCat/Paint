@@ -1,6 +1,6 @@
 ﻿using System;
 using Team_Project_Paint.Class.OperationWithFigures;
-using Team_Project_Paint.Enum;
+using Team_Project_Paint.PaintEnum;
 
 
 namespace Team_Project_Paint.Class

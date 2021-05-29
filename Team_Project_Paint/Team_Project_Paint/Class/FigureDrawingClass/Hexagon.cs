@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.OperationWithFigures;
-using Team_Project_Paint.Enum;
+using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint
 {
@@ -90,7 +90,7 @@ namespace Team_Project_Paint
                 graphics.RotateTransform((i - 1) * ExteriorAngle);
                 graphics.TranslateTransform(0, -Radius);
                 graphics.RotateTransform(180 - InteriorAngle / 2);
-                graphics.MySmoothingMode = SmoothingMode.AntiAlias;
+                graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
                 PaintPen pen = new PaintPen(Color, Thickness);
                 pen.StartCap = LineCap.Round;
                 pen.EndCap = LineCap.Round;

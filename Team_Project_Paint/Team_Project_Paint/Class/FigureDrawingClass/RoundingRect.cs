@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Team_Project_Paint.Class;
-using Team_Project_Paint.Enum;
+using Team_Project_Paint.PaintEnum;
 using System.Drawing.Drawing2D;
 using Team_Project_Paint.Class.OperationWithFigures;
 
@@ -32,7 +32,7 @@ namespace Team_Project_Paint
                 y = FinishLocation.Y;
             }
 
-            graphics.MySmoothingMode = SmoothingMode.AntiAlias;
+            graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
             PaintPen pen = new PaintPen(Color, Thickness);
             pen.LineJoin = LineJoin.Round;
             RectangleF rect = new RectangleF(x, y, width, height);

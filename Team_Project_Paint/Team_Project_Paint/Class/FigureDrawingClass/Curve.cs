@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Windows.Forms;
 using Team_Project_Paint.Class.OperationWithFigures;
-using Team_Project_Paint.Enum;
+using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class
 {
@@ -30,7 +28,7 @@ namespace Team_Project_Paint.Class
                 }
                 foreach (ShapePoint point in _points)
                 {
-                    graphics.MySmoothingMode = SmoothingMode.AntiAlias;
+                    graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
                     graphics.FillEllipse(new PaintSolidBrush(Color),
                     point.X - Thickness / 2,
                     point.Y - Thickness / 2,

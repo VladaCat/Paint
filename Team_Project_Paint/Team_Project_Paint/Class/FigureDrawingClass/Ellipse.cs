@@ -1,6 +1,5 @@
-﻿using System.Drawing.Drawing2D;
-using Team_Project_Paint.Class.OperationWithFigures;
-using Team_Project_Paint.Enum;
+﻿using Team_Project_Paint.Class.OperationWithFigures;
+using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class
 {
@@ -9,7 +8,7 @@ namespace Team_Project_Paint.Class
         public Ellipse() : base(EShapeType.Ellipse) { }
         public override void Draw(PaintGraphics graphics)
         {
-            graphics.MySmoothingMode = SmoothingMode.AntiAlias;
+            graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
             graphics.DrawEllipse(
                 new PaintPen(new PaintSolidBrush(Color), Thickness),
                 Location.X,

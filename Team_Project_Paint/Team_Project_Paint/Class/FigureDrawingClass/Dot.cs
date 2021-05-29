@@ -1,7 +1,5 @@
-﻿using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-using Team_Project_Paint.Class.OperationWithFigures;
-using Team_Project_Paint.Enum;
+﻿using Team_Project_Paint.Class.OperationWithFigures;
+using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class
 {
@@ -20,7 +18,7 @@ namespace Team_Project_Paint.Class
         {
             if (_isFinished)
             {
-                graphics.MySmoothingMode = SmoothingMode.AntiAlias;
+                graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
                 graphics.FillEllipse(
                    new PaintSolidBrush(Color),
                    Location.X - Thickness / 2,

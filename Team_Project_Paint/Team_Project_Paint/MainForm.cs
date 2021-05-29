@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.OperationWithFigures;
-using Team_Project_Paint.Enum;
+using Team_Project_Paint.PaintEnum;
 using Team_Project_Paint.Interfaces;
 
 namespace Team_Project_Paint

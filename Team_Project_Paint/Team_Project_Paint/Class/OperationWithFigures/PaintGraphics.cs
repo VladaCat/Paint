@@ -89,18 +89,23 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         public void RotateTransform(float angle)
         {
+
             _graphics.RotateTransform(angle);
         }
 
-        public SmoothingMode MySmoothingMode
+        public EPaintSmoothingMode MySmoothingMode
         {
             get
             {
-                return _graphics.SmoothingMode;
+                string name = Enum.GetName(typeof(SmoothingMode), _graphics.SmoothingMode);
+                return (EPaintSmoothingMode)Enum.Parse(typeof(EPaintSmoothingMode), name);
             }
             set
             {
-                _graphics.SmoothingMode = value;
+                string name = Enum.GetName(typeof(EPaintSmoothingMode), value);
+                _graphics.SmoothingMode =
+                    (SmoothingMode)Enum.Parse(typeof(SmoothingMode), name);
+
             }
         }
 
