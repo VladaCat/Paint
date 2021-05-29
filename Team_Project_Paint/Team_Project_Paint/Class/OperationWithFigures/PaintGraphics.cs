@@ -62,9 +62,9 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         {
             _graphics.DrawLine(pen.ToPen(), pt1.ToPoint(), pt2.ToPoint());
         }
-        public void DrawPath(PaintPen pen, GraphicsPath path)
+        public void DrawPath(PaintPen pen, PaintGraphicsPath path)
         {
-            _graphics.DrawPath(pen.ToPen(), path);
+            _graphics.DrawPath(pen.ToPen(), path.ToGraphicsPath());
         }
 
         public void DrawPolygon(PaintPen pen, ShapePoint[] points)

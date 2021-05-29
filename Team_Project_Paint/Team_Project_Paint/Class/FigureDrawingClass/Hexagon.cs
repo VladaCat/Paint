@@ -14,7 +14,7 @@ namespace Team_Project_Paint
          */
 
         private int _cornes = 3;
-        public Size Size { get; set; }
+        public Size Size { get; set; }//меняю
         public Hexagon() : base(EShapeType.Hexagon) { }
 
         public int Cornes
@@ -59,8 +59,8 @@ namespace Team_Project_Paint
             width += Thickness;
             height += Thickness;
             int Radius = (int)((double)Math.Min(width, height) / (double)2.0 * (double)0.8);
-            Point Center = new Point((int)((double)width / (double)2.0), (int)((double)height / (double)2.0));
-            Rectangle rectangle = new Rectangle(Center, new Size(1, 1));
+            ShapePoint Center = new ShapePoint((int)((double)width / (double)2.0), (int)((double)height / (double)2.0));
+            Rectangle rectangle = new Rectangle(Center.ToPoint(), new Size(1, 1));
             rectangle.Inflate(Radius, Radius);
 
             //Image img = new Bitmap(800, 1200);
@@ -73,10 +73,10 @@ namespace Team_Project_Paint
         private void InscribePolygon(PaintGraphics graphics, Rectangle rectangle, int numSides)
         {
             float Radius = (float)((double)Math.Min(rectangle.Width, rectangle.Height) / 2.0);
-            PointF Center = new PointF(
+            ShapePointF Center = new ShapePointF(
                 (float)(rectangle.Location.X + rectangle.Width / 2.0),
                 (float)(rectangle.Location.Y + rectangle.Height / 2.0));
-            RectangleF rectangleF = new RectangleF(Center, new SizeF(1, 1));
+            RectangleF rectangleF = new RectangleF(Center.ToPointF(), new SizeF(1, 1));
             rectangleF.Inflate(Radius, Radius);
 
             float Sides = (float)numSides;
@@ -96,8 +96,8 @@ namespace Team_Project_Paint
                 pen.EndCap = LineCap.Round;
                 graphics.DrawLine(
                     pen,
-                    new PointF(0, 0),
-                    new PointF(0, -SideLength));
+                    new ShapePointF(0, 0).ToPointF(),
+                    new ShapePointF(0, -SideLength).ToPointF());
             }
         }
     }

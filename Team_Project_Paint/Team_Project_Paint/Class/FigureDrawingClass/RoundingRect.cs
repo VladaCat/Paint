@@ -36,16 +36,16 @@ namespace Team_Project_Paint
             PaintPen pen = new PaintPen(Color, Thickness);
             pen.LineJoin = LineJoin.Round;
             RectangleF rect = new RectangleF(x, y, width, height);
-            GraphicsPath path = this.GetRoundRectangle(rect, radius);
+            PaintGraphicsPath path = this.GetRoundRectangle(rect, radius);
 
             graphics.DrawPath(pen, path);
         }
 
-        private GraphicsPath GetRoundRectangle(RectangleF baseRect, float radius)
+        private PaintGraphicsPath GetRoundRectangle(RectangleF baseRect, float radius)
         {
             if (radius <= 0.0F)
             {
-                GraphicsPath mPath = new GraphicsPath();
+                PaintGraphicsPath mPath = new PaintGraphicsPath(new GraphicsPath());
                 mPath.AddRectangle(baseRect);
                 mPath.CloseFigure();
                 return mPath;
@@ -62,7 +62,7 @@ namespace Team_Project_Paint
             float diameter = radius * 2.0F;
             SizeF sizeF = new SizeF(diameter, diameter);
             RectangleF arc = new RectangleF(baseRect.Location, sizeF);
-            GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            PaintGraphicsPath path = new PaintGraphicsPath(new GraphicsPath());
 
             // top left arc 
             path.AddArc(arc, 180, 90);
@@ -83,11 +83,11 @@ namespace Team_Project_Paint
             return path;
         }
 
-        private GraphicsPath GetCapsule(RectangleF baseRect)
+        private PaintGraphicsPath GetCapsule(RectangleF baseRect)
         {
             float diameter;
             RectangleF arc;
-            GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            PaintGraphicsPath path = new PaintGraphicsPath(new GraphicsPath());
             try
             {
                 if (baseRect.Width > baseRect.Height)

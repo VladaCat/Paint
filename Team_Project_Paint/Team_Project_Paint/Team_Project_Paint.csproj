@@ -59,6 +59,7 @@
     <Compile Include="Class\OperationWithFigures\PaintSolidBrush.cs" />
     <Compile Include="Class\OperationWithFigures\Select.cs" />
     <Compile Include="Class\FigureDrawingClass\Rect.cs" />
+    <Compile Include="Class\OperationWithFigures\ShapePointF.cs" />
     <Compile Include="Class\OperationWithFigures\ShapePoint.cs" />
     <Compile Include="Class\PaintColor.cs" />
     <Compile Include="Class\ShapeFactory.cs" />
