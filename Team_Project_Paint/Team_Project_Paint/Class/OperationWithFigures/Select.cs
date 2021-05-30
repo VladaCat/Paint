@@ -28,56 +28,33 @@ namespace Team_Project_Paint.Class
 
         }
 
-        public bool IsItYou(ShapePoint point, IShape shape)
-        {
-            int xMax;
-            int xMin;
-            int yMax;
-            int yMin;
 
-            if (shape.Location.X > shape.FinishLocation.X)
-            {
-                xMax = shape.Location.X;
-                xMin = shape.FinishLocation.X;
-            }
-            else
-            {
-                xMin = shape.Location.X;
-                xMax = shape.FinishLocation.X;
-            }
-
-            if (shape.Location.Y > shape.FinishLocation.Y)
-            {
-                yMax = shape.Location.Y;
-                yMin = shape.FinishLocation.Y;
-            }
-            else
-            {
-                yMin = shape.Location.Y;
-                yMax = shape.FinishLocation.Y;
-            }
-
-            if (point.X <= xMax && point.X >= xMin
-             && point.Y <= yMax && point.Y >= yMin)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public void SelectShape(List<IShape> shapeList, MouseEventArgs e)
+        public void SelectShape(List<IShape> shapeList, ShapePoint e)
         {
             for (int i = 0; i < shapeList.Count; i++)
             {
                 var tmp = shapeList[i];
-                if (tmp.Name == EShapeType.Dot && !isSelect)
-                {
-                    if ((e.X >= tmp.Location.X - tmp.Thickness / 2 && e.X <= tmp.Location.X + tmp.Thickness))
+
+                    if (tmp.Name == EShapeType.Dot && !isSelect)
                     {
-                        if ((e.Y >= tmp.Location.Y - tmp.Thickness / 2 && e.Y <= tmp.Location.Y + tmp.Thickness))
+                        if ((e.X >= tmp.Location.X - tmp.Thickness / 2 && e.X <= tmp.Location.X + tmp.Thickness))
+                        {
+                            if ((e.Y >= tmp.Location.Y - tmp.Thickness / 2 && e.Y <= tmp.Location.Y + tmp.Thickness))
+                            {
+                                isSelect = true;
+                                Numb = i;
+                            }
+                            else
+                            {
+                                isSelect = false;
+                            }
+                        }
+                    }
+                if (tmp.Location != null && tmp.FinishLocation != null)
+                {
+                    if (((e.X < tmp.FinishLocation.X) && (e.X > tmp.Location.X)) && tmp.Name != EShapeType.Dot && !isSelect || ((e.X > tmp.FinishLocation.X) && (e.X < tmp.Location.X) && tmp.Name != EShapeType.Dot && !isSelect))
+                    {
+                        if (((e.Y < tmp.FinishLocation.Y) && (e.Y > tmp.Location.Y)) || ((e.Y > tmp.FinishLocation.Y) && (e.Y < tmp.Location.Y)))
                         {
                             isSelect = true;
                             Numb = i;
@@ -88,19 +65,7 @@ namespace Team_Project_Paint.Class
                         }
                     }
                 }
-
-                if (((e.X < tmp.FinishLocation.X) && (e.X > tmp.Location.X)) && tmp.Name != EShapeType.Dot && !isSelect || ((e.X > tmp.FinishLocation.X) && (e.X < tmp.Location.X) && tmp.Name != EShapeType.Dot && !isSelect))
-                {
-                    if (((e.Y < tmp.FinishLocation.Y) && (e.Y > tmp.Location.Y)) || ((e.Y > tmp.FinishLocation.Y) && (e.Y < tmp.Location.Y)))
-                    {
-                        isSelect = true;
-                        Numb = i;
-                    }
-                    else
-                    {
-                        isSelect = false;
-                    }
-                }
+                
 
 
             }
@@ -108,4 +73,3 @@ namespace Team_Project_Paint.Class
 
     }
 }    
-}

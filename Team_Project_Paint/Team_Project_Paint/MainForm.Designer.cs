@@ -67,6 +67,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.selectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -480,11 +481,22 @@
             this.label6.TabIndex = 26;
             this.label6.Text = "1px";
             // 
+            // selectBtn
+            // 
+            this.selectBtn.Location = new System.Drawing.Point(859, 13);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(75, 30);
+            this.selectBtn.TabIndex = 27;
+            this.selectBtn.Text = "selectBtn";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
+            // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 445);
+            this.Controls.Add(this.selectBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
@@ -564,6 +576,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button selectBtn;
     }
 }
 

@@ -15,10 +15,13 @@ namespace Team_Project_Paint
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
         private int _currentBrashSize = 1;
         private List<IShape> _shapeList = new List<IShape>();
+        private ShapePoint _lastPonit;
         private EShapeType _currentMode;
         private PaintBitmap _currentBitmap;
         private PaintBitmap _bufferedBitmap;
-        bool _isMove = false;
+        private bool _isMove = false;
+        private bool _isSelect = false;
+        private bool _isClicked = false;
 
         public Paint()
         {
@@ -54,7 +57,7 @@ namespace Team_Project_Paint
                 // Просим текущую фигуру ДОРИСОВАТЬ себя на холсте, на котором уже много чего нарисовано
                 currentShape.Draw(_bufferedGraphics);
                 // Если фигура все-еще рисуется, показать ее на экране (обновить)
-                if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.IN_PROGRESS)
+                if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.IN_PROGRESS || _isClicked)
                 {
                     pictureBoxMain.Image = _bufferedBitmap.ToImage();
                 }
@@ -82,30 +85,29 @@ namespace Team_Project_Paint
                 newShape.MouseDown(new ShapePoint(e.Location));
                 Repaint();
             }
-          /*  else if (_isMove && e.Button == MouseButtons.Right)
+            else if (_isMove && e.Button == MouseButtons.Right)
             {
-                _lastPonit = e.Location;
-                _currentMode = EShapeType.Select;
-                var select = ShapeFactory.CreateShape(_currentMode);
-                select.SelectShape(_shapeList, e);
-                if (select.isClicked)
+                _lastPonit = new ShapePoint(e.Location);
+                var select = new Select();
+                select.SelectShape(_shapeList, _lastPonit);
+                if (select.IsSelected)
                 {
                     _isClicked = true;
-                    _currentShape = _shapeList[select.Numb];
+                    IShape currentShape = _shapeList[select.Numb];
                     _shapeList.RemoveAt(select.Numb);
-                    _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-                    RePaint();
+                    _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                    Repaint();
                     for (int i = 0; i < _shapeList.Count; i++)
                     {
                         if (_shapeList[i] != null)
                         {
-                            _shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
-                            RePaint();
+                            _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                            Repaint();
                         }
                     }
+                    _shapeList.Add(currentShape);
                 }
-
-            }*/
+            }
         }
 
         private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -119,15 +121,16 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
-            /*   else if (_isClicked && e.Button == MouseButtons.Right)
-             {
-                 _move = new Select();
-                 _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
-                 _shapeList.Add(_currentShape);
-                 _currentShape.Draw(Graphics.FromImage(_currentBitmap));
-                 RePaint();
-                 _isClicked = false;
-             }*/
+            //else if (_isClicked && e.Button == MouseButtons.Right)
+            //{
+            //    IShape currentShape = _shapeList.Last();
+            //    Select move = new Select();
+            //    move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
+            //    _shapeList.Add(currentShape);
+            //    currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
+            //    Repaint();
+            //    _isClicked = false;
+            //}
         }
 
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -141,18 +144,19 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
-           /* else if (_isClicked && _currentShape != null && e.Button == MouseButtons.Right)
-            {
-                _move = new Select();
-                _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
-                _lastPonit = e.Location;
-                RePaintTemp();
-            }*/
+            //else if (_isClicked && e.Button == MouseButtons.Right)
+            //{
+            //    IShape currentShape = _shapeList.Last();
+            //    Select move = new Select();
+            //    move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
+            //    _lastPonit = new ShapePoint(e.Location);
+            //    Repaint();
+            //}
         }
 
         private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left && !_isSelect)
             {
                 if (_shapeList.Count > 0)
                 {
@@ -161,31 +165,48 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
-          /*  else if (!_isMove && e.Button == MouseButtons.Right)
+            else if (!_isMove && e.Button == MouseButtons.Right)
             {
-                _currentMode = EShapeType.Select;
 
                 if (_shapeList.Count > 0)
                 {
-                    _currentShape = null;
-                    var select = ShapeFactory.CreateShape(_currentMode);
-                    select.SelectShape(_shapeList, e);
-                    if (select.isClicked)
+                    _lastPonit = new ShapePoint(e.Location);
+                    var select = new Select();
+                    select.SelectShape(_shapeList, _lastPonit);
+                    if (select.IsSelected)
                     {
+                        _isClicked = true;
                         _shapeList.RemoveAt(select.Numb);
-                        _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-                        RePaint();
+                        _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                        Repaint();
                         for (int i = 0; i < _shapeList.Count; i++)
                         {
                             if (_shapeList[i] != null)
                             {
-                                _shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
-                                RePaint();
+                                _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
                             }
                         }
                     }
                 }
-            }*/
+            }
+            else if (e.Button == MouseButtons.Left && _isSelect)
+            {
+                _lastPonit = new ShapePoint(e.Location);
+                var select = new Select();
+                select.SelectShape(_shapeList, _lastPonit);
+                if (select.IsSelected)
+                {
+                    IShape newShape = ShapeFactory.CreateShape(EShapeType.Rect);
+                    newShape.Color = _curentcolor;
+                    newShape.Thickness = _currentBrashSize;
+
+                    newShape.Location = _shapeList[select.Numb].Location;
+                    newShape.FinishLocation = _shapeList[select.Numb].FinishLocation;
+
+                    _shapeList.Add(newShape);
+                    Repaint();
+                }
+            }
         }
 
         private void DotButton_Click(object sender, EventArgs e)
@@ -306,6 +327,20 @@ namespace Team_Project_Paint
             {
                 _isMove = false;
                 moveBtn.Text = "MOVE OFF";
+            }
+        }
+
+        private void selectBtn_Click(object sender, EventArgs e)
+        {
+            if (!_isSelect)
+            {
+                _isSelect = true;
+                selectBtn.Text = "SELECT ON";
+            }
+            else
+            {
+                _isSelect = false;
+                selectBtn.Text = "SELECT OFF";
             }
         }
     }
