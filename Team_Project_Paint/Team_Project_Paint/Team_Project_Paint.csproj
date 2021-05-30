@@ -52,6 +52,10 @@
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
     <Compile Include="Class\FigureDrawingClass\Line.cs" />
+    <Compile Include="Class\OperationWithFigures\EPainLinejoin.cs" />
+    <Compile Include="Class\OperationWithFigures\EPaintLineCap.cs" />
+    <Compile Include="Class\OperationWithFigures\PaintRectangle.cs" />
+    <Compile Include="Class\OperationWithFigures\PaintRectangleF.cs" />
     <Compile Include="Class\OperationWithFigures\PaintSmoothingMode.cs" />
     <Compile Include="Class\OperationWithFigures\PaintGraphicsPath.cs" />
     <Compile Include="Class\OperationWithFigures\PaintGraphics.cs" />
@@ -59,6 +63,8 @@
     <Compile Include="Class\OperationWithFigures\PaintSolidBrush.cs" />
     <Compile Include="Class\OperationWithFigures\Select.cs" />
     <Compile Include="Class\FigureDrawingClass\Rect.cs" />
+    <Compile Include="Class\OperationWithFigures\ShaipSize.cs" />
+    <Compile Include="Class\OperationWithFigures\ShaipSizeF.cs" />
     <Compile Include="Class\OperationWithFigures\ShapePointF.cs" />
     <Compile Include="Class\OperationWithFigures\ShapePoint.cs" />
     <Compile Include="Class\PaintColor.cs" />

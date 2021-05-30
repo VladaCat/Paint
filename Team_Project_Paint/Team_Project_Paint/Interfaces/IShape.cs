@@ -20,6 +20,7 @@ namespace Team_Project_Paint.Interfaces
         ShapePoint FinishLocation { get; set; }
 
         PaintColor Color { get; set; }
+        ShaipSize Sizes { get; set; }
         EShapeType Name { get; }
 
         void MouseClick(ShapePoint point);

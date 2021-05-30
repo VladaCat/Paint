@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.PaintEnum;
@@ -9,12 +8,10 @@ namespace Team_Project_Paint
 {
     public class Hexagon : AbstractRectangleStyle
     {
-        /*
-         https://stackoverflow.com/questions/19210569/transcribing-a-polygon-on-a-circle#19210662
-         */
+  
 
         private int _cornes = 3;
-        public Size Size { get; set; }//меняю
+        public Size Size { get; set; }
         public Hexagon() : base(EShapeType.Hexagon) { }
 
         public int Cornes
@@ -60,7 +57,7 @@ namespace Team_Project_Paint
             height += Thickness;
             int Radius = (int)((double)Math.Min(width, height) / (double)2.0 * (double)0.8);
             ShapePoint Center = new ShapePoint((int)((double)width / (double)2.0), (int)((double)height / (double)2.0));
-            Rectangle rectangle = new Rectangle(Center.ToPoint(), new Size(1, 1));
+            RectangleF rectangle = new RectangleF(Center.ToPoint(), new ShaipSize(1, 1).ToSize());
             rectangle.Inflate(Radius, Radius);
 
             //Image img = new Bitmap(800, 1200);
@@ -70,13 +67,13 @@ namespace Team_Project_Paint
                 graphics.DrawImage(img, x, y);      
         }
 
-        private void InscribePolygon(PaintGraphics graphics, Rectangle rectangle, int numSides)
+        private void InscribePolygon(PaintGraphics graphics, RectangleF rectangle, int numSides)
         {
             float Radius = (float)((double)Math.Min(rectangle.Width, rectangle.Height) / 2.0);
             ShapePointF Center = new ShapePointF(
                 (float)(rectangle.Location.X + rectangle.Width / 2.0),
                 (float)(rectangle.Location.Y + rectangle.Height / 2.0));
-            RectangleF rectangleF = new RectangleF(Center.ToPointF(), new SizeF(1, 1));
+           RectangleF rectangleF = new RectangleF(Center.ToPointF(), new ShaipSizeF(1, 1).ToSizeF());
             rectangleF.Inflate(Radius, Radius);
 
             float Sides = (float)numSides;
@@ -92,8 +89,8 @@ namespace Team_Project_Paint
                 graphics.RotateTransform(180 - InteriorAngle / 2);
                 graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
                 PaintPen pen = new PaintPen(Color, Thickness);
-                pen.StartCap = LineCap.Round;
-                pen.EndCap = LineCap.Round;
+                pen.StartCap = EPaintLineCap.Round;
+                pen.EndCap = EPaintLineCap.Round;
                 graphics.DrawLine(
                     pen,
                     new ShapePointF(0, 0).ToPointF(),
