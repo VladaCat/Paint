@@ -13,9 +13,9 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             _graphics = graphics;
         }
 
-        public static PaintGraphics FromImage(Image image)
+        public static PaintGraphics FromImage(PaintImage image)
         {
-            return new PaintGraphics(Graphics.FromImage(image));
+            return new PaintGraphics(Graphics.FromImage(image.ToImage()));
         }
 
         public void FillEllipse(PaintSolidBrush brush, int x, int y, int width, int height)
@@ -114,9 +114,9 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             _graphics.DrawLine(pen.ToPen(), pt1, pt2);
         }
 
-        public void DrawImage(Image image, int x, int y)
+        public void DrawImage(PaintImage image, int x, int y)
         {
-            _graphics.DrawImage(image, x, y);
+            _graphics.DrawImage(image.ToImage(), x, y);
         }
 
         public void Clear(PaintColor color)

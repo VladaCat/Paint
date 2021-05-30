@@ -2,18 +2,24 @@
 
 namespace Team_Project_Paint.Class.OperationWithFigures
 {
-    public class ShaipSize
+    public class ShapeSize
     {
-        public ShaipSize()
+        public ShapeSize()
         {
 
         }
-        public ShaipSize(int width, int height)
+
+        public ShapeSize(Size size)
+        {
+            this.Width = size.Width;
+            this.Height = size.Height;
+        }
+        public ShapeSize(int width, int height)
         {
             Width = width;
             Height = height;
         }
-        public ShaipSize(Point pt)
+        public ShapeSize(Point pt)
         {
             Width = pt.X;
             Height = pt.Y;

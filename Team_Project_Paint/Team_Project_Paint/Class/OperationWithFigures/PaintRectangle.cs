@@ -14,7 +14,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         {
 
         }
-        public PaintRectangle(ShapePoint location, ShaipSize size)
+        public PaintRectangle(ShapePoint location, ShapeSize size)
         {
             Location = location;
             Size = size;
@@ -28,7 +28,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             Height = height;
         }
 
-        public ShaipSize Size { get; set; }
+        public ShapeSize Size { get; set; }
 
         public ShapePoint Location { get; set; }
         public int Height { get; set; }

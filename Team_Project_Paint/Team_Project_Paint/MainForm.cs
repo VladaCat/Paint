@@ -16,8 +16,8 @@ namespace Team_Project_Paint
         private int _currentBrashSize = 1;
         private List<IShape> _shapeList = new List<IShape>();
         private EShapeType _currentMode;
-        private Bitmap _currentBitmap;
-        private Bitmap _bufferedBitmap;
+        private PaintBitmap _currentBitmap;
+        private PaintBitmap _bufferedBitmap;
         private bool _isMove = false;
 
         public Paint()
@@ -34,9 +34,9 @@ namespace Team_Project_Paint
 
             numericUpDown1.Value = 1;
 
-            _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-            _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
-            pictureBoxMain.Image = _currentBitmap;
+            _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+            _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
+            pictureBoxMain.Image = _currentBitmap.ToImage();
         }
 
         private void Repaint()
@@ -46,7 +46,7 @@ namespace Team_Project_Paint
                 // Достаем последнюю фигуру, ту, которая в данный момент рисуется
                 IShape currentShape = _shapeList.Last();
                 // Создаем буфферный битмап для рисования, через клонирование основного
-                _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
+                _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
                 // Создем холс для рисования, на основе буфферного битмапа,
                 // На котором уже нарисовано все, что было нарисовано ранее, благодары клонированию
                 // из основного битмапа (_bufferedBitmap = _currentBitmap.Clone() as Bitmap;)
@@ -56,12 +56,12 @@ namespace Team_Project_Paint
                 // Если фигура все-еще рисуется, показать ее на экране (обновить)
                 if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.IN_PROGRESS)
                 {
-                    pictureBoxMain.Image = _bufferedBitmap;
+                    pictureBoxMain.Image = _bufferedBitmap.ToImage();
                 }
                 if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.DONE)
                 {
-                    _currentBitmap = _bufferedBitmap.Clone() as Bitmap;
-                    pictureBoxMain.Image = _currentBitmap;
+                    _currentBitmap = _bufferedBitmap.Clone() as PaintBitmap;
+                    pictureBoxMain.Image = _currentBitmap.ToImage();
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace Team_Project_Paint
                 if (newShape is Hexagon)
                 {
                     (newShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
-                    (newShape as Hexagon).Size = pictureBoxMain.Size;
+                    (newShape as Hexagon).Size = new ShapeSize( pictureBoxMain.Size);
                 }
                 _shapeList.Add(newShape);
                 newShape.MouseDown(new ShapePoint(e.Location));
@@ -163,9 +163,9 @@ namespace Team_Project_Paint
         private void ClearButton_Click(object sender, EventArgs e)
         {
             _shapeList.Clear();
-            _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-            _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
-            pictureBoxMain.Image = _currentBitmap;
+            _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+            _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
+            pictureBoxMain.Image = _currentBitmap.ToImage();
             Repaint();
         }
 
@@ -203,8 +203,8 @@ namespace Team_Project_Paint
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != "")
             {
-                _currentBitmap = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
-                pictureBoxMain.Image = _currentBitmap;
+                _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
+                pictureBoxMain.Image = _currentBitmap.ToImage();
             }
             Repaint();
         }

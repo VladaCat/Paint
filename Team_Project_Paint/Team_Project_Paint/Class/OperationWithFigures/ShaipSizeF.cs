@@ -8,6 +8,12 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         {
 
         }
+
+        public ShaipSizeF(SizeF size)
+        {
+            this.Width = size.Width;
+            this.Height= size.Height;
+        }
         public ShaipSizeF(float width, float height)
         {
             Width = width;

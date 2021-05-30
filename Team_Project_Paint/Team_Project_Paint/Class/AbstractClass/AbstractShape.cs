@@ -31,7 +31,7 @@ namespace Team_Project_Paint.Class
         public ShapePoint FinishLocation { get; set; }
         public ShapePoint Location { get; set; }
         public PaintColor Color { get; set; }
-        public ShaipSize Sizes { get; set; }
+        public ShapeSize Sizes { get; set; }
 
         public EShapeStatus EShapeStatus
         {

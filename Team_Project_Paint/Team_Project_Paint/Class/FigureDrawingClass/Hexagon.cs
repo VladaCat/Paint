@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.PaintEnum;
@@ -9,7 +8,7 @@ namespace Team_Project_Paint
     public class Hexagon : AbstractShape
     {
         private int _cornes = 3;
-        public Size Size { get; set; }
+        public ShapeSize Size { get; set; }
         public Hexagon() : base(EShapeType.Hexagon) { }
 
         public int Cornes
@@ -54,24 +53,25 @@ namespace Team_Project_Paint
             width += Thickness;
             height += Thickness;
             int Radius = (int)((double)Math.Min(width, height) / (double)2.0 * (double)0.8);
-            ShapePoint Center = new ShapePoint((int)((double)width / (double)2.0), (int)((double)height / (double)2.0));
-            RectangleF rectangle = new RectangleF(Center.ToPoint(), new ShaipSize(1, 1).ToSize());
+            ShapePointF Center = new ShapePointF((int)((double)width / (double)2.0), (int)((double)height / (double)2.0));
+            PaintRectangleF rectangle = new PaintRectangleF(Center, new ShaipSizeF(1, 1));
             rectangle.Inflate(Radius, Radius);
 
             //Image img = new Bitmap(800, 1200);
-            Image img = new Bitmap(Size.Width, Size.Height);
+            PaintImage img = new PaintBitmap(Size.Width, Size.Height);
+            //Image img = new Bitmap(Size.Width, Size.Height);
             PaintGraphics tmpGraphics = PaintGraphics.FromImage(img);
-                InscribePolygon(tmpGraphics, rectangle, _cornes);
-                graphics.DrawImage(img, x, y);      
+            InscribePolygon(tmpGraphics, rectangle, _cornes);
+            graphics.DrawImage(img, x, y);
         }
 
-        private void InscribePolygon(PaintGraphics graphics, RectangleF rectangle, int numSides)
+        private void InscribePolygon(PaintGraphics graphics, PaintRectangleF rectangle, int numSides)
         {
             float Radius = (float)((double)Math.Min(rectangle.Width, rectangle.Height) / 2.0);
             ShapePointF Center = new ShapePointF(
                 (float)(rectangle.Location.X + rectangle.Width / 2.0),
                 (float)(rectangle.Location.Y + rectangle.Height / 2.0));
-           RectangleF rectangleF = new RectangleF(Center.ToPointF(), new ShaipSizeF(1, 1).ToSizeF());
+            PaintRectangleF rectangleF = new PaintRectangleF(Center, new ShaipSizeF(1, 1));
             rectangleF.Inflate(Radius, Radius);
 
             float Sides = (float)numSides;

@@ -21,7 +21,7 @@ namespace Team_Project_Paint.Interfaces
         ShapePoint FinishLocation { get; set; }
 
         PaintColor Color { get; set; }
-        ShaipSize Sizes { get; set; }
+        ShapeSize Sizes { get; set; }
         EShapeType Name { get; }
         EShapeStatus EShapeStatus { get; }
         //bool IsFinished { get; }

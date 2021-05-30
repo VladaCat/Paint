@@ -36,9 +36,17 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         public float Top { get; }
         public float Left { get; }
         public float Bottom { get; }
-        public ShaipSizeF Size { get; set; }
+        public ShaipSizeF Size
+        {
+            get { return new ShaipSizeF(_rectangleF.Size); }
+            set { _rectangleF.Size = value.ToSizeF(); }
+        }
 
-        public ShapePointF Location { get; set; }
+        public ShapePointF Location
+        {
+            get { return new ShapePointF(_rectangleF.Location); }
+            set { _rectangleF.Location = value.ToPointF(); }
+        }
 
         public void Inflate(float x, float y)
         {
@@ -51,7 +59,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         public RectangleF ToRectangleF()
         {
-            return new RectangleF(X, Y, Width, Height);
+            return _rectangleF;
         }
     }
 }
