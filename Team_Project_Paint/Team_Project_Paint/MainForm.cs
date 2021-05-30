@@ -24,16 +24,18 @@ namespace Team_Project_Paint
         {
             InitializeComponent();
 
-            IShape currentShape = new Curve();
+            _currentMode = EShapeType.Curve;
+
+            IShape currentShape = ShapeFactory.CreateShape(_currentMode);
             currentShape.Thickness = _currentBrashSize;
             currentShape.Color = _curentcolor;
             _shapeList.Add(currentShape);
-            _currentMode = EShapeType.Curve;
+            
 
             numericUpDown1.Value = 1;
 
             _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-            _bufferedBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+            _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
             pictureBoxMain.Image = _currentBitmap;
         }
 
@@ -41,19 +43,25 @@ namespace Team_Project_Paint
         {
             if (_shapeList.Count > 0)
             {
+                // Достаем последнюю фигуру, ту, которая в данный момент рисуется
                 IShape currentShape = _shapeList.Last();
+                // Создаем буфферный битмап для рисования, через клонирование основного
                 _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
+                // Создем холс для рисования, на основе буфферного битмапа,
+                // На котором уже нарисовано все, что было нарисовано ранее, благодары клонированию
+                // из основного битмапа (_bufferedBitmap = _currentBitmap.Clone() as Bitmap;)
+                PaintGraphics _bufferedGraphics = PaintGraphics.FromImage(_bufferedBitmap);
+                // Просим текущую фигуру ДОРИСОВАТЬ себя на холсте, на котором уже много чего нарисовано
+                currentShape.Draw(_bufferedGraphics);
+                // Если фигура все-еще рисуется, показать ее на экране (обновить)
                 if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.IN_PROGRESS)
                 {
-                    _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
-                    PaintGraphics _bufferedGraphics = PaintGraphics.FromImage(_bufferedBitmap);
-
-                    currentShape.Draw(_bufferedGraphics);
                     pictureBoxMain.Image = _bufferedBitmap;
                 }
                 if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.DONE)
                 {
                     _currentBitmap = _bufferedBitmap.Clone() as Bitmap;
+                    pictureBoxMain.Image = _currentBitmap;
                 }
             }
         }
@@ -156,6 +164,8 @@ namespace Team_Project_Paint
         {
             _shapeList.Clear();
             _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+            _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
+            pictureBoxMain.Image = _currentBitmap;
             Repaint();
         }
 
@@ -194,6 +204,7 @@ namespace Team_Project_Paint
             if (openFileDialog1.FileName != "")
             {
                 _currentBitmap = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
+                pictureBoxMain.Image = _currentBitmap;
             }
             Repaint();
         }
