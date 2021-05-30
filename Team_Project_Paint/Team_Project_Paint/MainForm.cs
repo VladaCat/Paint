@@ -15,163 +15,104 @@ namespace Team_Project_Paint
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
         private int _currentBrashSize = 1;
         private List<IShape> _shapeList = new List<IShape>();
-        private Bitmap _currentBitmap;
-        private IShape _currentShape;
         private EShapeType _currentMode;
-        private Bitmap _tempBitmap;
-        private PaintGraphics _graphics;
-        private ShapePoint _lastPonit;
-        private Select _move;
-        private bool _isClicked = false;
+        private Bitmap _currentBitmap;
+        private Bitmap _bufferedBitmap;
         private bool _isMove = false;
 
         public Paint()
         {
             InitializeComponent();
-            _currentMode = EShapeType.Curve;
-            _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+
             IShape currentShape = new Curve();
             currentShape.Thickness = _currentBrashSize;
             currentShape.Color = _curentcolor;
             _shapeList.Add(currentShape);
+            _currentMode = EShapeType.Curve;
+
             numericUpDown1.Value = 1;
-            pictureBoxMain.Image = _currentBitmap;
-            _tempBitmap = new Bitmap(_currentBitmap);
-            _graphics = PaintGraphics.FromImage(_tempBitmap);
-        }
 
-        private void RePaint()
-        {
-            _tempBitmap = new Bitmap(_currentBitmap);
-            _graphics = PaintGraphics.FromImage(_tempBitmap);
+            _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+            _bufferedBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             pictureBoxMain.Image = _currentBitmap;
         }
 
-        private void RePaintTemp()
+        private void Repaint()
         {
-            if (_currentMode == EShapeType.Curve)
+            if (_shapeList.Count > 0)
             {
+                IShape currentShape = _shapeList.Last();
+                _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
+                if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.IN_PROGRESS)
+                {
+                    _bufferedBitmap = _currentBitmap.Clone() as Bitmap;
+                    PaintGraphics _bufferedGraphics = PaintGraphics.FromImage(_bufferedBitmap);
 
+                    currentShape.Draw(_bufferedGraphics);
+                    pictureBoxMain.Image = _bufferedBitmap;
+                }
+                if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.DONE)
+                {
+                    _currentBitmap = _bufferedBitmap.Clone() as Bitmap;
+                }
             }
-            else
-            {
-                _graphics.Clear(new PaintColor(255, 255, 255));
-                _graphics.DrawImage(_currentBitmap, 0, 0);
-            }
-            _currentShape.DrawTemp(_graphics);
-            pictureBoxMain.Image = _tempBitmap;
         }
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                _currentShape = ShapeFactory.CreateShape(_currentMode);
-                _currentShape.Color = _curentcolor;
-                _currentShape.Thickness = _currentBrashSize;
-                if (_currentShape is Hexagon)
+                IShape newShape = ShapeFactory.CreateShape(_currentMode);
+                newShape.Color = _curentcolor;
+                newShape.Thickness = _currentBrashSize;
+                if (newShape is Hexagon)
                 {
-                    (_currentShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
-                    (_currentShape as Hexagon).Size = pictureBoxMain.Size;
+                    (newShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
+                    (newShape as Hexagon).Size = pictureBoxMain.Size;
                 }
-                _shapeList.Add(_currentShape);
-                _currentShape.MouseDown(new ShapePoint(e.Location));
+                _shapeList.Add(newShape);
+                newShape.MouseDown(new ShapePoint(e.Location));
+                Repaint();
             }
-      /*      else if (_isMove && e.Button == MouseButtons.Right)
-            {
-                _lastPonit = new ShapePoint(e.Location);
-                _currentMode = EShapeType.Select;
-                var select = ShapeFactory.CreateShape(_currentMode);
-                select.SelectShape(_shapeList, e);
-                if (select.isClicked)
-                {
-                    _isClicked = true;
-                    _currentShape = _shapeList[select.Numb];
-                    _shapeList.RemoveAt(select.Numb);
-                    _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-                    RePaint();
-                    for (int i = 0; i < _shapeList.Count; i++)
-                    {
-                        if (_shapeList[i] != null)
-                        {
-                            _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                            RePaint();
-                        }
-                    }
-                }
-
-            }*/
-            // перемещение 
         }
 
         private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (_currentShape != null && e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                _currentShape.MouseUp(new ShapePoint(e.Location));
-                _currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
-                RePaint();
+                if (_shapeList.Count > 0)
+                {
+                    IShape currentShape = _shapeList.Last();
+                    currentShape.MouseUp(new ShapePoint(e.Location));
+                    Repaint();
+                }
             }
-          /*  else if (_isClicked && e.Button == MouseButtons.Right)
-            {
-                _move = new Select();
-                _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
-                _shapeList.Add(_currentShape);
-                _currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
-                RePaint();
-                _isClicked = false;
-            }*/
         }
 
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_currentShape != null && e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                _currentShape.MouseMove(new ShapePoint(e.Location));
-                RePaintTemp();
+                if (_shapeList.Count > 0)
+                {
+                    IShape currentShape = _shapeList.Last();
+                    currentShape.MouseMove(new ShapePoint(e.Location));
+                    Repaint();
+                }
             }
-           /* else if (_isClicked && _currentShape != null && e.Button == MouseButtons.Right)
-            {
-                _move = new Select();
-                _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
-                _lastPonit = new ShapePoint(e.Location);
-                RePaintTemp();
-            }*/
         }
 
         private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (_currentShape != null && e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                _currentShape = _shapeList.Last();
-                _currentShape.MouseClick(new ShapePoint(e.Location));
-                RePaint();
-            }
-            /*else if (!_isMove && e.Button == MouseButtons.Right)
-            {
-                _currentMode = EShapeType.Select;
-
                 if (_shapeList.Count > 0)
                 {
-                    _currentShape = null;
-                    var select = ShapeFactory.CreateShape(_currentMode);
-                    select.SelectShape(_shapeList, e);
-                    if (select.isClicked)
-                    {
-                        _shapeList.RemoveAt(select.Numb);
-                        _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-                        RePaint();
-                        for (int i = 0; i < _shapeList.Count; i++)
-                        {
-                            if (_shapeList[i] != null)
-                            {
-                                _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                                RePaint();
-                            }
-                        }
-                    }
+                    IShape currentShape = _shapeList.Last();
+                    currentShape.MouseClick(new ShapePoint(e.Location));
+                    Repaint();
                 }
-            }*/
+            }
         }
 
         private void DotButton_Click(object sender, EventArgs e)
@@ -215,8 +156,7 @@ namespace Team_Project_Paint
         {
             _shapeList.Clear();
             _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-            _currentShape = null;
-            RePaint();
+            Repaint();
         }
 
         private void ColorButton_Click(object sender, EventArgs e)
@@ -255,7 +195,7 @@ namespace Team_Project_Paint
             {
                 _currentBitmap = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
             }
-            RePaint();
+            Repaint();
         }
 
         private void ChengeColorButton_Click(object sender, EventArgs e)
@@ -269,9 +209,13 @@ namespace Team_Project_Paint
 
         private void NumericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            if (_currentShape is Hexagon)
+            if (_shapeList.Count > 0)
             {
-                (_currentShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
+                IShape currentShape = _shapeList.Last();
+                if (currentShape is Hexagon)
+                {
+                    (currentShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
+                }
             }
         }
 

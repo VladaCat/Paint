@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\AbstractClass\AbstractRectangleStyle.cs" />
     <Compile Include="Class\AbstractClass\AbstractShape.cs" />
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\FigureDrawingClass\EShapeStatus.cs" />
     <Compile Include="Class\FigureDrawingClass\Line.cs" />
     <Compile Include="Class\OperationWithFigures\EPainLinejoin.cs" />
     <Compile Include="Class\OperationWithFigures\EPaintLineCap.cs" />

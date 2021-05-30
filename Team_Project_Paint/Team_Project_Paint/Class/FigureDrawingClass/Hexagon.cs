@@ -6,10 +6,8 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint
 {
-    public class Hexagon : AbstractRectangleStyle
+    public class Hexagon : AbstractShape
     {
-  
-
         private int _cornes = 3;
         public Size Size { get; set; }
         public Hexagon() : base(EShapeType.Hexagon) { }
@@ -22,7 +20,7 @@ namespace Team_Project_Paint
             }
             set
             {
-                if (!isFinished)
+                if (EShapeStatus == Class.FigureDrawingClass.EShapeStatus.IN_PROGRESS)
                 {
                     _cornes = value;
                 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Team_Project_Paint.Class;
+using Team_Project_Paint.Class.FigureDrawingClass;
 using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.PaintEnum;
 
@@ -22,14 +23,13 @@ namespace Team_Project_Paint.Interfaces
         PaintColor Color { get; set; }
         ShaipSize Sizes { get; set; }
         EShapeType Name { get; }
-
+        EShapeStatus EShapeStatus { get; }
+        //bool IsFinished { get; }
         void MouseClick(ShapePoint point);
         void MouseDown(ShapePoint point);
         void MouseUp(ShapePoint point);
         void MouseMove(ShapePoint point);
         void Draw(PaintGraphics graphics);
-        void DrawTemp(PaintGraphics graphics);
-        bool IsFinished();
         void SelectShape(List<IShape> shapeList, MouseEventArgs e);
     }
 }

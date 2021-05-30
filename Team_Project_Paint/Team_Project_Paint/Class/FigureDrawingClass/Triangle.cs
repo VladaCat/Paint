@@ -4,7 +4,7 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class
 {
-    class Triangle:AbstractRectangleStyle
+    class Triangle:AbstractShape
     {
         public Triangle() : base(EShapeType.Triangle) { }
         public override void Draw(PaintGraphics graphics)

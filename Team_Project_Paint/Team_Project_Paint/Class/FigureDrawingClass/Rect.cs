@@ -5,7 +5,7 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class
 {
-    public class Rect : AbstractRectangleStyle
+    public class Rect : AbstractShape
     {
         public Rect() : base(EShapeType.Rect) { }
 

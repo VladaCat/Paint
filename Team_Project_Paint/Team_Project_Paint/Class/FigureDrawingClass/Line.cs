@@ -3,7 +3,7 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class
 {
-    public class Line : AbstractRectangleStyle
+    public class Line : AbstractShape
     {
         public Line() : base(EShapeType.Line) { }  
         public override void Draw(PaintGraphics graphics)

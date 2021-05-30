@@ -3,7 +3,7 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class
 {
-    public class Ellipse : AbstractRectangleStyle
+    public class Ellipse : AbstractShape
     {
         public Ellipse() : base(EShapeType.Ellipse) { }
         public override void Draw(PaintGraphics graphics)

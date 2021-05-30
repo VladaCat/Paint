@@ -8,15 +8,15 @@ namespace Team_Project_Paint.Class
     public class Curve : AbstractShape
     {
         private List<ShapePoint> _points = new List<ShapePoint>();
-        private bool _isFinished = false;
-        private bool _isStarted = false;
+        //private bool _isFinished = false;
+        //private bool _isStarted = false;
 
         public Curve() : base(EShapeType.Curve) { }
 
-        public override bool IsFinished()
-        {
-            return _isFinished;
-        }
+        //public override bool IsFinished()
+        //{
+        //    return _isFinished;
+        //}
 
         public override void Draw(PaintGraphics graphics)
         {
@@ -40,17 +40,16 @@ namespace Team_Project_Paint.Class
 
         public override void MouseDown(ShapePoint point)
         {
-            if (!_isFinished && !_isStarted)
+            if (EShapeStatus == FigureDrawingClass.EShapeStatus.NOT_STARTED)
             {
-
                 _points.Add(new ShapePoint(point.ToPoint()));
-                _isStarted = true;
+                EShapeStatus = FigureDrawingClass.EShapeStatus.IN_PROGRESS;
             }
         }
 
         public override void MouseMove(ShapePoint point)
         {
-            if (!_isFinished && _isStarted)
+            if (EShapeStatus == FigureDrawingClass.EShapeStatus.IN_PROGRESS)
             {
                 _points.Add(new ShapePoint(point.ToPoint()));
             }
@@ -58,24 +57,24 @@ namespace Team_Project_Paint.Class
 
         public override void MouseUp(ShapePoint point)
         {
-            if (!_isFinished && _isStarted)
+            if (EShapeStatus == FigureDrawingClass.EShapeStatus.IN_PROGRESS)
             {
-                _isFinished = true;
                 _points.Add(new ShapePoint(point.ToPoint()));
+                EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
             }
         }
 
-        public override void DrawTemp(PaintGraphics graphics)
-        {
-            graphics.FillEllipse(new PaintSolidBrush(Color),
-            _points.Last().X - Thickness / 2,
-            _points.Last().Y - Thickness / 2,
-            Thickness,
-            Thickness);
-            if (_points.Count > 1)
-            {
-                graphics.DrawLine(new PaintPen(new PaintSolidBrush(Color), Thickness), _points[_points.Count - 2], _points.Last());
-            }
-        }
+        //public override void DrawTemp(PaintGraphics graphics)
+        //{
+        //    graphics.FillEllipse(new PaintSolidBrush(Color),
+        //    _points.Last().X - Thickness / 2,
+        //    _points.Last().Y - Thickness / 2,
+        //    Thickness,
+        //    Thickness);
+        //    if (_points.Count > 1)
+        //    {
+        //        graphics.DrawLine(new PaintPen(new PaintSolidBrush(Color), Thickness), _points[_points.Count - 2], _points.Last());
+        //    }
+        //}
     }
 }

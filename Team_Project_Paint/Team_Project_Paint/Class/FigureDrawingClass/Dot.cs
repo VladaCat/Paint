@@ -5,18 +5,11 @@ namespace Team_Project_Paint.Class
 {
     public class Dot : AbstractShape
     {
-
-        private bool _isFinished = false;
-
         public Dot() : base(EShapeType.Dot) { }
-        public override bool IsFinished()
-        {
-            return _isFinished;
-        }
 
         public override void Draw(PaintGraphics graphics)
         {
-            if (_isFinished)
+            if (EShapeStatus == FigureDrawingClass.EShapeStatus.DONE)
             {
                 graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
                 graphics.FillEllipse(
@@ -30,15 +23,43 @@ namespace Team_Project_Paint.Class
 
         public override void MouseClick(ShapePoint point)
         {
-            if (!_isFinished)
-            {
-                Location =new ShapePoint(point.ToPoint());
-                _isFinished = true;
-            }
+            Location = new ShapePoint(point.ToPoint());
+            EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
         }
 
-        public override void DrawTemp(PaintGraphics graphics)
+        public override void MouseDown(ShapePoint point)
         {
+            Location = new ShapePoint(point.ToPoint());
+            EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
         }
+
+        public override void MouseMove(ShapePoint point)
+        {
+            base.MouseMove(point);
+        }
+
+        public override void MouseUp(ShapePoint point)
+        {
+            Location = new ShapePoint(point.ToPoint());
+            EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
+        }
+
+
+
+        //public override void MouseUp(ShapePoint point)
+        //{
+        //    //base.MouseUp(point);
+        //    Location = new ShapePoint(point.ToPoint());
+        //    EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
+        //}
+
+        //public override void MouseClick(ShapePoint point)
+        //{
+        //    if (EShapeStatus == FigureDrawingClass.EShapeStatus.NOT_STARTED)
+        //    {
+        //        Location = new ShapePoint(point.ToPoint());
+        //        EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
+        //    }
+        //}
     }
 }

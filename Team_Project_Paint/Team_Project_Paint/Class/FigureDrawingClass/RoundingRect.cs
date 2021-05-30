@@ -6,9 +6,8 @@ using System.Drawing.Drawing2D;
 using Team_Project_Paint.Class.OperationWithFigures;
 
 namespace Team_Project_Paint
-{
-    
-    public class RoundingRect : AbstractRectangleStyle
+{    
+    public class RoundingRect : AbstractShape
     {
         public RoundingRect() : base(EShapeType.RoundingRect) { }
 
