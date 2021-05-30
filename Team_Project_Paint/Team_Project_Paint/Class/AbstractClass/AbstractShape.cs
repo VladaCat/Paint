@@ -27,11 +27,11 @@ namespace Team_Project_Paint.Class
         }
 
         public int Numb { get; set; }
-        public bool isClicked { get; set; }
+        public bool IsSelected { get; set; }
         public ShapePoint FinishLocation { get; set; }
         public ShapePoint Location { get; set; }
         public PaintColor Color { get; set; }
-        public ShapeSize Sizes { get; set; }
+        public ShapeSize Size { get; set; }
 
         public EShapeStatus EShapeStatus
         {

@@ -18,7 +18,7 @@ namespace Team_Project_Paint
         private EShapeType _currentMode;
         private PaintBitmap _currentBitmap;
         private PaintBitmap _bufferedBitmap;
-        private bool _isMove = false;
+        bool _isMove = false;
 
         public Paint()
         {
@@ -82,6 +82,30 @@ namespace Team_Project_Paint
                 newShape.MouseDown(new ShapePoint(e.Location));
                 Repaint();
             }
+          /*  else if (_isMove && e.Button == MouseButtons.Right)
+            {
+                _lastPonit = e.Location;
+                _currentMode = EShapeType.Select;
+                var select = ShapeFactory.CreateShape(_currentMode);
+                select.SelectShape(_shapeList, e);
+                if (select.isClicked)
+                {
+                    _isClicked = true;
+                    _currentShape = _shapeList[select.Numb];
+                    _shapeList.RemoveAt(select.Numb);
+                    _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                    RePaint();
+                    for (int i = 0; i < _shapeList.Count; i++)
+                    {
+                        if (_shapeList[i] != null)
+                        {
+                            _shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                            RePaint();
+                        }
+                    }
+                }
+
+            }*/
         }
 
         private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -95,6 +119,15 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
+            /*   else if (_isClicked && e.Button == MouseButtons.Right)
+             {
+                 _move = new Select();
+                 _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
+                 _shapeList.Add(_currentShape);
+                 _currentShape.Draw(Graphics.FromImage(_currentBitmap));
+                 RePaint();
+                 _isClicked = false;
+             }*/
         }
 
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -108,6 +141,13 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
+           /* else if (_isClicked && _currentShape != null && e.Button == MouseButtons.Right)
+            {
+                _move = new Select();
+                _move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, _currentShape);
+                _lastPonit = e.Location;
+                RePaintTemp();
+            }*/
         }
 
         private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -121,6 +161,31 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
+          /*  else if (!_isMove && e.Button == MouseButtons.Right)
+            {
+                _currentMode = EShapeType.Select;
+
+                if (_shapeList.Count > 0)
+                {
+                    _currentShape = null;
+                    var select = ShapeFactory.CreateShape(_currentMode);
+                    select.SelectShape(_shapeList, e);
+                    if (select.isClicked)
+                    {
+                        _shapeList.RemoveAt(select.Numb);
+                        _currentBitmap = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                        RePaint();
+                        for (int i = 0; i < _shapeList.Count; i++)
+                        {
+                            if (_shapeList[i] != null)
+                            {
+                                _shapeList[i].Draw(Graphics.FromImage(_currentBitmap));
+                                RePaint();
+                            }
+                        }
+                    }
+                }
+            }*/
         }
 
         private void DotButton_Click(object sender, EventArgs e)

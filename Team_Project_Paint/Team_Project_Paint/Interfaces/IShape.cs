@@ -13,23 +13,19 @@ namespace Team_Project_Paint.Interfaces
     {
         int Thickness { get; set; }
 
-        int Numb { get; set; }
-
-        bool isClicked { get; set; }
+      
 
         ShapePoint Location { get; set; }
         ShapePoint FinishLocation { get; set; }
 
         PaintColor Color { get; set; }
-        ShapeSize Sizes { get; set; }
+        ShapeSize Size { get; set; }
         EShapeType Name { get; }
         EShapeStatus EShapeStatus { get; }
-        //bool IsFinished { get; }
         void MouseClick(ShapePoint point);
         void MouseDown(ShapePoint point);
         void MouseUp(ShapePoint point);
         void MouseMove(ShapePoint point);
         void Draw(PaintGraphics graphics);
-        void SelectShape(List<IShape> shapeList, MouseEventArgs e);
     }
 }

@@ -20,23 +20,23 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         {
             return _graphicsPath;
         }
-        public void AddRectangle(RectangleF rect)
+        public void AddRectangle(PaintRectangleF rect)
         {
-            _graphicsPath.AddRectangle(rect);
+            _graphicsPath.AddRectangle(rect.ToRectangleF());
         }
 
         public void CloseFigure()
         {
             _graphicsPath.CloseFigure();
         }
-        public void AddArc(RectangleF rect, float startAngle, float sweepAngle)
+        public void AddArc(PaintRectangleF rect, float startAngle, float sweepAngle)
         {
-            _graphicsPath.AddArc(rect, startAngle, sweepAngle);
+            _graphicsPath.AddArc(rect.ToRectangleF(), startAngle, sweepAngle);
         }
 
-        public void AddEllipse(RectangleF rect)
+        public void AddEllipse(PaintRectangleF rect)
         {
-            _graphicsPath.AddEllipse(rect);
+            _graphicsPath.AddEllipse(rect.ToRectangleF());
         }
 
     }

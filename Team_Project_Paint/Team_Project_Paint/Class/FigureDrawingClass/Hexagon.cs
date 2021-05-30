@@ -8,7 +8,7 @@ namespace Team_Project_Paint
     public class Hexagon : AbstractShape
     {
         private int _cornes = 3;
-        public ShapeSize Size { get; set; }
+       
         public Hexagon() : base(EShapeType.Hexagon) { }
 
         public int Cornes
@@ -56,10 +56,8 @@ namespace Team_Project_Paint
             ShapePointF Center = new ShapePointF((int)((double)width / (double)2.0), (int)((double)height / (double)2.0));
             PaintRectangleF rectangle = new PaintRectangleF(Center, new ShaipSizeF(1, 1));
             rectangle.Inflate(Radius, Radius);
-
-            //Image img = new Bitmap(800, 1200);
+           
             PaintImage img = new PaintBitmap(Size.Width, Size.Height);
-            //Image img = new Bitmap(Size.Width, Size.Height);
             PaintGraphics tmpGraphics = PaintGraphics.FromImage(img);
             InscribePolygon(tmpGraphics, rectangle, _cornes);
             graphics.DrawImage(img, x, y);

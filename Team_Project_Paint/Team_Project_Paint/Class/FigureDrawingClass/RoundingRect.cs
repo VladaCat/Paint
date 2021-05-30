@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+/*using System.Drawing;*/
 using Team_Project_Paint.Class;
 using Team_Project_Paint.PaintEnum;
 using System.Drawing.Drawing2D;
@@ -32,13 +32,13 @@ namespace Team_Project_Paint
             graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
             PaintPen pen = new PaintPen(Color, Thickness);
             pen.LineJoin = EPainLinejoin.Round;
-            RectangleF rect = new RectangleF(x, y, width, height);
+            PaintRectangleF rect = new PaintRectangleF(x, y, width, height);
             PaintGraphicsPath path = this.GetRoundRectangle(rect, radius);
 
             graphics.DrawPath(pen, path);
         }
 
-        private PaintGraphicsPath GetRoundRectangle(RectangleF baseRect, float radius)
+        private PaintGraphicsPath GetRoundRectangle(PaintRectangleF baseRect, float radius)
         {
             if (radius <= 0.0F)
             {
@@ -55,7 +55,7 @@ namespace Team_Project_Paint
             
             float diameter = radius * 2.0F;
             ShaipSizeF sizeF = new ShaipSizeF(diameter, diameter);
-            RectangleF arc = new RectangleF(baseRect.Location, sizeF.ToSizeF());
+            PaintRectangleF arc = new PaintRectangleF(baseRect.Location, sizeF);
             PaintGraphicsPath path = new PaintGraphicsPath(new GraphicsPath());
 
             
@@ -77,10 +77,10 @@ namespace Team_Project_Paint
             return path;
         }
 
-        private PaintGraphicsPath GetCapsule(RectangleF baseRect)
+        private PaintGraphicsPath GetCapsule(PaintRectangleF baseRect)
         {
             float diameter;
-            RectangleF arc;
+            PaintRectangleF arc;
             PaintGraphicsPath path = new PaintGraphicsPath(new GraphicsPath());
             try
             {
@@ -89,7 +89,7 @@ namespace Team_Project_Paint
                    
                     diameter = baseRect.Height;
                     ShaipSizeF sizeF = new ShaipSizeF(diameter, diameter);
-                    arc = new RectangleF(baseRect.Location, sizeF.ToSizeF());
+                    arc = new PaintRectangleF(baseRect.Location, sizeF);
                     path.AddArc(arc, 90, 180);
                     arc.X = baseRect.Right - diameter;
                     path.AddArc(arc, 270, 180);
@@ -99,7 +99,7 @@ namespace Team_Project_Paint
                 
                     diameter = baseRect.Width;
                     ShaipSizeF sizeF = new ShaipSizeF(diameter, diameter);
-                    arc = new RectangleF(baseRect.Location, sizeF.ToSizeF());
+                    arc = new PaintRectangleF(baseRect.Location, sizeF);
                     path.AddArc(arc, 180, 180);
                     arc.Y = baseRect.Bottom - diameter;
                     path.AddArc(arc, 0, 180);

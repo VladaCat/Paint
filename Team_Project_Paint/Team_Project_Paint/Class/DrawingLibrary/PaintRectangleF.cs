@@ -36,6 +36,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         public float Top { get; }
         public float Left { get; }
         public float Bottom { get; }
+
         public ShaipSizeF Size
         {
             get { return new ShaipSizeF(_rectangleF.Size); }
@@ -59,7 +60,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         public RectangleF ToRectangleF()
         {
-            return _rectangleF;
+            return new RectangleF(Location.ToPointF(), Size.ToSizeF());
         }
     }
 }
