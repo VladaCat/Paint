@@ -309,11 +309,6 @@ namespace Team_Project_Paint
             //Repaint();
 
             openFileDialog1.ShowDialog();
-            //if (openFileDialog1.FileName != "")
-            //{
-            //    _currentBitmap = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
-            //}
-            //RePaint();
 
             if (openFileDialog1.FileName != "")
             {
