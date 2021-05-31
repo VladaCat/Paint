@@ -257,13 +257,15 @@ namespace Team_Project_Paint
         {
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             saveFileDialog1.ShowDialog();
-            if (saveFileDialog1.FileName != "")
+            if (saveFileDialog1.FileName != "" && saveFileDialog1.FilterIndex == 4)
             {
                 var json = new JsonLogic();
                 json.JsonSerialize(_shapeList);
                 File.WriteAllText(saveFileDialog1.FileName, json.File);
-
-                //_currentBitmap.Save(saveFileDialog1.FileName);
+            }
+            else if (saveFileDialog1.FileName != "")
+            {
+                _currentBitmap.Save(saveFileDialog1.FileName);
             }
         }
 
@@ -281,33 +283,34 @@ namespace Team_Project_Paint
 
         private void OpentoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //openFileDialog1.ShowDialog();
-            //if (openFileDialog1.FileName != "")
-            //{
-            //    _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
-            //    pictureBoxMain.Image = _currentBitmap.ToImage();
-            //}
-            //Repaint();
-
+            openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             openFileDialog1.ShowDialog();
 
-            if (openFileDialog1.FileName != "")
+            if (openFileDialog1.FileName != "" && openFileDialog1.FilterIndex == 4)
             {
                 var strings = File.ReadAllText(openFileDialog1.FileName);
                 var json = new JsonLogic();
                 json.JsonDeserialize(strings, _shapeList);
                 _shapeList = json.JsonList;
-            }
 
-            for (int i = 0; i < _shapeList.Count; i++)
-            {
-                if (_shapeList[i] != null)
+                for (int i = 0; i < _shapeList.Count; i++)
                 {
-                    _shapeList[i].EShapeStatus = EShapeStatus.DONE;
-                    _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                    Repaint();
+                    if (_shapeList[i] != null)
+                    {
+                        _shapeList[i].EShapeStatus = EShapeStatus.DONE;
+                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                        Repaint();
+                    }
                 }
             }
+            else if (openFileDialog1.FileName != "")
+            {
+                _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
+                pictureBoxMain.Image = _currentBitmap.ToImage();
+                Repaint();
+            }
+
+
         }
 
         private void ChengeColorButton_Click(object sender, EventArgs e)
