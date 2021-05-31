@@ -25,6 +25,10 @@ namespace Team_Project_Paint.Class
                 ShapePoint finish = new ShapePoint(finX, finY);
                 shape.FinishLocation = finish;
             }
+            else
+            {
+                shape.FinishLocation = null;
+            }
 
             ShapePoint start = new ShapePoint(startX, startY);
             
