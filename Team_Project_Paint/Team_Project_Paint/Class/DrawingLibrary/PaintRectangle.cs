@@ -12,37 +12,59 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         private Rectangle _rectangle;
         public PaintRectangle()
         {
-
+            _rectangle = new Rectangle();
+        }
+        public PaintRectangle(Rectangle rectangle)
+        {
+            _rectangle = rectangle;
         }
         public PaintRectangle(ShapePoint location, ShapeSize size)
         {
-            Location = location;
-            Size = size;
+            _rectangle.Location = location.ToPoint();
+            _rectangle.Size = size.ToSize();
         }
 
         public PaintRectangle(int x, int y, int width, int height)
         {
-            X = x;
-            Y = y;
-            Width = width;
-            Height = height;
+            _rectangle = new Rectangle(x, y, width, height);
         }
 
         public ShapeSize Size { get; set; }
 
         public ShapePoint Location { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public int Height
+        {
+            get { return _rectangle.Height; }
+            set { _rectangle.Height = value; }
+        }
+        public int Width
+        {
+            get { return _rectangle.Width; }
+            set { _rectangle.Width = value; }
+        }
+        public int Y
+        {
+            get { return _rectangle.Y; }
+            set { _rectangle.Y = value; }
+        }
+        public int X
+        {
+            get { return _rectangle.X; }
+            set { _rectangle.X = value; }
+        }
 
-        public int Y { get; set; }
-        public int X { get; set; }
         public void Inflate(int width, int height)
         {
             _rectangle.Inflate(width, height);
         }
+
+        public static PaintRectangle Intersect(PaintRectangle a, PaintRectangle b)
+        {
+            return new PaintRectangle(Rectangle.Intersect(a.ToRectangle(), b.ToRectangle()));
+        }
         public Rectangle ToRectangle()
         {
-            return new Rectangle(Location.ToPoint(), Size.ToSize());
+            return _rectangle;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Team_Project_Paint.Class
         public EShapeStatus EShapeStatus
         {
             get { return _eHsapeStatus; }
-            protected set { _eHsapeStatus = value; }
+            set { _eHsapeStatus = value; }
         }
 
         public abstract void Draw(PaintGraphics graphics);

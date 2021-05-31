@@ -16,26 +16,46 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         }
         public PaintRectangleF(ShapePointF location, ShaipSizeF size)
         {
-            Location = location;
-            Size = size;
+            _rectangleF.Location = location.ToPointF();
+            _rectangleF.Size = size.ToSizeF();
         }
 
         public PaintRectangleF(float x, float y, float width, float height)
         {
-            X = x;
-            Y = y;
-            Width = width;
-            Height = height;
+            _rectangleF.Location = new PointF(x, y);
+            _rectangleF.Size = new SizeF(width, height);
         }
 
-        public float Height { get; set; }
-        public float Width { get; set; }
-        public float Y { get; set; }
-        public float X { get; set; }
-        public float Right { get; }
-        public float Top { get; }
-        public float Left { get; }
-        public float Bottom { get; }
+        public float Height
+        {
+            get { return _rectangleF.Height; }
+            set { _rectangleF.Height = value; }
+        }
+        public float Width
+        {
+            get { return _rectangleF.Width; }
+            set { _rectangleF.Width = value; }
+        }
+        public float Y
+        {
+            get { return _rectangleF.Y; }
+            set { _rectangleF.Y = value; }
+        }
+        public float X
+        {
+            get { return _rectangleF.X; }
+            set { _rectangleF.X = value; }
+        }
+        public float Right
+        {
+            get { return _rectangleF.Right; }
+        }
+        public float Top { get { return _rectangleF.Top; } }
+        public float Left { get { return _rectangleF.Left; } }
+        public float Bottom
+        {
+            get { return _rectangleF.Bottom; }
+        }
 
         public ShaipSizeF Size
         {
