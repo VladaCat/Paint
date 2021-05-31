@@ -8,6 +8,7 @@ using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.PaintEnum;
 using Team_Project_Paint.Interfaces;
 using Team_Project_Paint.Class.FigureDrawingClass;
+using System.IO;
 
 namespace Team_Project_Paint
 {
@@ -273,11 +274,15 @@ namespace Team_Project_Paint
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png";
+            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             saveFileDialog1.ShowDialog();
             if (saveFileDialog1.FileName != "")
             {
-                _currentBitmap.Save(saveFileDialog1.FileName);
+                var json = new JsonLogic();
+                json.JsonSerialize(_shapeList);
+                File.WriteAllText(saveFileDialog1.FileName, json.File);
+
+                //_currentBitmap.Save(saveFileDialog1.FileName);
             }
         }
 
@@ -295,13 +300,38 @@ namespace Team_Project_Paint
 
         private void OpentoolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //openFileDialog1.ShowDialog();
+            //if (openFileDialog1.FileName != "")
+            //{
+            //    _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
+            //    pictureBoxMain.Image = _currentBitmap.ToImage();
+            //}
+            //Repaint();
+
             openFileDialog1.ShowDialog();
+            //if (openFileDialog1.FileName != "")
+            //{
+            //    _currentBitmap = (Bitmap)Bitmap.FromFile(openFileDialog1.FileName);
+            //}
+            //RePaint();
+
             if (openFileDialog1.FileName != "")
             {
-                _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
-                pictureBoxMain.Image = _currentBitmap.ToImage();
+                var strings = File.ReadAllText(openFileDialog1.FileName);
+                var json = new JsonLogic();
+                json.JsonDeserialize(strings, _shapeList);
+                _shapeList = json.JsonList;
             }
-            Repaint();
+
+            for (int i = 0; i < _shapeList.Count; i++)
+            {
+                if (_shapeList[i] != null)
+                {
+                    _shapeList[i].EShapeStatus = EShapeStatus.DONE;
+                    _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                    Repaint();
+                }
+            }
         }
 
         private void ChengeColorButton_Click(object sender, EventArgs e)

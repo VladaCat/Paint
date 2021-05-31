@@ -14,6 +14,9 @@ namespace Team_Project_Paint.Class
         public int G { get; set; }
         public int B { get; set; }
 
+        public PaintColor()
+        {
+        }
         public PaintColor(int red, int green, int blue)
             : this(red, green, blue, 255) { }
         public PaintColor(Color color)
