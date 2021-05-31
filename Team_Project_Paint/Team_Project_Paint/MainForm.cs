@@ -7,6 +7,7 @@ using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.PaintEnum;
 using Team_Project_Paint.Interfaces;
+using Team_Project_Paint.Class.FigureDrawingClass;
 
 namespace Team_Project_Paint
 {
@@ -57,11 +58,11 @@ namespace Team_Project_Paint
                 // Просим текущую фигуру ДОРИСОВАТЬ себя на холсте, на котором уже много чего нарисовано
                 currentShape.Draw(_bufferedGraphics);
                 // Если фигура все-еще рисуется, показать ее на экране (обновить)
-                if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.IN_PROGRESS || _isClicked)
+                if (currentShape.EShapeStatus == EShapeStatus.IN_PROGRESS)
                 {
                     pictureBoxMain.Image = _bufferedBitmap.ToImage();
                 }
-                if (currentShape.EShapeStatus == Class.FigureDrawingClass.EShapeStatus.DONE)
+                if (currentShape.EShapeStatus == EShapeStatus.DONE)
                 {
                     _currentBitmap = _bufferedBitmap.Clone() as PaintBitmap;
                     pictureBoxMain.Image = _currentBitmap.ToImage();
@@ -71,7 +72,7 @@ namespace Team_Project_Paint
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (!_isMove && e.Button == MouseButtons.Left)
             {
                 IShape newShape = ShapeFactory.CreateShape(_currentMode);
                 newShape.Color = _curentcolor;
@@ -85,7 +86,7 @@ namespace Team_Project_Paint
                 newShape.MouseDown(new ShapePoint(e.Location));
                 Repaint();
             }
-            else if (_isMove && e.Button == MouseButtons.Right)
+            else if (_isMove && !_isClicked && e.Button == MouseButtons.Left)
             {
                 _lastPonit = new ShapePoint(e.Location);
                 var select = new Select();
@@ -105,6 +106,7 @@ namespace Team_Project_Paint
                             Repaint();
                         }
                     }
+                    currentShape.EShapeStatus = EShapeStatus.IN_PROGRESS;
                     _shapeList.Add(currentShape);
                 }
             }
@@ -112,7 +114,7 @@ namespace Team_Project_Paint
 
         private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (!_isClicked && !_isMove && e.Button == MouseButtons.Left)
             {
                 if (_shapeList.Count > 0)
                 {
@@ -121,23 +123,30 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
-            //else if (_isClicked && e.Button == MouseButtons.Right)
-            //{
-            //    IShape currentShape = _shapeList.Last();
-            //    Select move = new Select();
-            //    move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
-            //    _shapeList.Add(currentShape);
-            //    currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
-            //    Repaint();
-            //    _isClicked = false;
-            //}
+            else if (_isClicked && e.Button == MouseButtons.Left)
+            {
+                IShape currentShape = _shapeList.Last();
+                Select move = new Select();
+                move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
+                currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
+                Repaint();
+                _isClicked = false;
+            }
         }
 
         private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (_shapeList.Count > 0)
+                if (_isMove && _isClicked)
+                {
+                    IShape currentShape = _shapeList.Last();
+                    Select move = new Select();
+                    move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
+                    _lastPonit = new ShapePoint(e.Location);
+                    Repaint();
+                }
+                else if (!_isMove)
                 {
                     IShape currentShape = _shapeList.Last();
                     currentShape.MouseMove(new ShapePoint(e.Location));
@@ -156,7 +165,7 @@ namespace Team_Project_Paint
 
         private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && !_isSelect)
+            if (e.Button == MouseButtons.Left && !_isSelect && !_isMove)
             {
                 if (_shapeList.Count > 0)
                 {
@@ -189,24 +198,24 @@ namespace Team_Project_Paint
                     }
                 }
             }
-            else if (e.Button == MouseButtons.Left && _isSelect)
-            {
-                _lastPonit = new ShapePoint(e.Location);
-                var select = new Select();
-                select.SelectShape(_shapeList, _lastPonit);
-                if (select.IsSelected)
-                {
-                    IShape newShape = ShapeFactory.CreateShape(EShapeType.Rect);
-                    newShape.Color = _curentcolor;
-                    newShape.Thickness = _currentBrashSize;
+            //else if (e.Button == MouseButtons.Left && _isSelect)
+            //{
+            //    _lastPonit = new ShapePoint(e.Location);
+            //    var select = new Select();
+            //    select.SelectShape(_shapeList, _lastPonit);
+            //    if (select.IsSelected)
+            //    {
+            //        IShape newShape = ShapeFactory.CreateShape(EShapeType.Rect);
+            //        newShape.Color = _curentcolor;
+            //        newShape.Thickness = _currentBrashSize;
 
-                    newShape.Location = _shapeList[select.Numb].Location;
-                    newShape.FinishLocation = _shapeList[select.Numb].FinishLocation;
+            //        newShape.Location = _shapeList[select.Numb].Location;
+            //        newShape.FinishLocation = _shapeList[select.Numb].FinishLocation;
 
-                    _shapeList.Add(newShape);
-                    Repaint();
-                }
-            }
+            //        _shapeList.Add(newShape);
+            //        Repaint();
+            //    }
+            //}
         }
 
         private void DotButton_Click(object sender, EventArgs e)

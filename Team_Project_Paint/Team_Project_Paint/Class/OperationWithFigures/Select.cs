@@ -17,14 +17,20 @@ namespace Team_Project_Paint.Class
             int startX = shape.Location.X + dx;
             int startY = shape.Location.Y + dy;
 
-            int finX = shape.FinishLocation.X + dx;
-            int finY = shape.FinishLocation.Y + dy;
+            if (shape.FinishLocation != null)
+            {
+                int finX = shape.FinishLocation.X + dx;
+                int finY = shape.FinishLocation.Y + dy;
+
+                ShapePoint finish = new ShapePoint(finX, finY);
+                shape.FinishLocation = finish;
+            }
 
             ShapePoint start = new ShapePoint(startX, startY);
-            ShapePoint finish = new ShapePoint(finX, finY);
+            
 
             shape.Location = start;
-            shape.FinishLocation = finish;
+
 
         }
 
