@@ -233,8 +233,8 @@ namespace Team_Project_Paint
 
             if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                var color = new ChangeColor();
-                color.Change(_shapeList, _select, _curentcolor);
+                var color = new ChangeOperation();
+                color.ChangeColor(_shapeList, _select, _curentcolor);
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
 
@@ -272,13 +272,10 @@ namespace Team_Project_Paint
             numericUpDown1.Value = _currentBrashSize;
             if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                IShape currentShape = _shapeList[_select.Numb];
-                _shapeList.RemoveAt(_select.Numb);
+                var thickness = new ChangeOperation();
+                thickness.ChangeThickness(_shapeList, _select, _currentBrashSize);
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-                currentShape.Thickness = trackBar1.Value;
-                _shapeList.Add(currentShape);
-                _select.Numb = _shapeList.Count - 1;
 
                 for (int i = 0; i < _shapeList.Count; i++)
                 {
@@ -297,13 +294,10 @@ namespace Team_Project_Paint
             trackBar1.Value = _currentBrashSize;
             if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                IShape currentShape = _shapeList[_select.Numb];
-                _shapeList.RemoveAt(_select.Numb);
+                var thickness = new ChangeOperation();
+                thickness.ChangeThickness(_shapeList, _select, _currentBrashSize);
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-                currentShape.Thickness = trackBar1.Value;
-                _shapeList.Add(currentShape);
-                _select.Numb = _shapeList.Count - 1;
 
                 for (int i = 0; i < _shapeList.Count; i++)
                 {
