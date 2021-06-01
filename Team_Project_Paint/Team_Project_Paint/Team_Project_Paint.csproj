@@ -53,6 +53,7 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\OperationWithFigures\ChangeColor.cs" />
     <Compile Include="Class\OperationWithFigures\JsonLogic.cs" />
     <Compile Include="Class\OperationWithFigures\ShapeListDTO.cs" />
     <Compile Include="Enum\EShapeStatus.cs" />

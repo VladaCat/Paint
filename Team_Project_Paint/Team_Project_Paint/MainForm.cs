@@ -230,6 +230,24 @@ namespace Team_Project_Paint
             Button b = (Button)sender;
             CurrentColorButton.BackColor = b.BackColor;
             _curentcolor = new PaintColor(CurrentColorButton.BackColor);
+
+            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            {
+                var color = new ChangeColor();
+                color.Change(_shapeList, _select, _curentcolor);
+                _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                pictureBoxMain.Image = _currentBitmap.ToImage();
+
+                for (int i = 0; i < _shapeList.Count; i++)
+                {
+                    if (_shapeList[i] != null)
+                    {
+                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                    }
+                }
+            }
+
+            
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -349,15 +367,12 @@ namespace Team_Project_Paint
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (_shapeList.Count > 0)
+            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                if (_select != null && _select.IsSelected)
-                {
                     _shapeList.RemoveAt(_select.Numb);
                     _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                     pictureBoxMain.Image = _currentBitmap.ToImage();
                     _select.IsSelected = false;
-                }
 
                 for (int i = 0; i < _shapeList.Count; i++)
                 {
