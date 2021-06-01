@@ -320,6 +320,13 @@ namespace Team_Project_Paint
                 CurrentColorButton.BackColor = colorDialog1.Color;
                 _curentcolor = new PaintColor(colorDialog1.Color);
             }
+
+            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            {
+                _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                pictureBoxMain.Image = _currentBitmap.ToImage();
+                var color = new ChangeOperation(_shapeList, _select, _curentcolor, _currentBitmap);
+            }
         }
 
         private void NumericUpDown2_ValueChanged(object sender, EventArgs e)
