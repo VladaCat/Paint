@@ -153,7 +153,7 @@ namespace Team_Project_Paint
                     Repaint();
 
                 }
-                else if (!_isMove)
+                else if (!_isMove && _shapeList.Count > 0)
                 {
                     IShape currentShape = _shapeList.Last();
                     currentShape.MouseMove(new ShapePoint(e.Location));
