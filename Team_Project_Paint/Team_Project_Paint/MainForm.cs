@@ -21,9 +21,10 @@ namespace Team_Project_Paint
         private EShapeType _currentMode;
         private PaintBitmap _currentBitmap;
         private PaintBitmap _bufferedBitmap;
-        private bool _isMove = false;
-        private bool _isSelect = false;
-        private bool _isClicked = false;
+        private Select _select;
+        private bool _isMoveMode = false;
+        private bool _isSelectMode = false;
+        private bool _isStartMove = false;
 
         public Paint()
         {
@@ -73,7 +74,7 @@ namespace Team_Project_Paint
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!_isMove && e.Button == MouseButtons.Left)
+            if (!_isSelectMode && !_isMoveMode && e.Button == MouseButtons.Left)
             {
                 IShape newShape = ShapeFactory.CreateShape(_currentMode);
                 newShape.Color = _curentcolor;
@@ -87,16 +88,16 @@ namespace Team_Project_Paint
                 newShape.MouseDown(new ShapePoint(e.Location));
                 Repaint();
             }
-            else if (_isMove && !_isClicked && e.Button == MouseButtons.Left)
+            else if (_isSelectMode && !_isStartMove && e.Button == MouseButtons.Left)
             {
                 _lastPonit = new ShapePoint(e.Location);
-                var select = new Select();
-                select.SelectShape(_shapeList, _lastPonit);
-                if (select.IsSelected)
+                _select = new Select();
+                _select.SelectShape(_shapeList, _lastPonit);
+                if (_select.IsSelected && _isMoveMode)
                 {
-                    _isClicked = true;
-                    IShape currentShape = _shapeList[select.Numb];
-                    _shapeList.RemoveAt(select.Numb);
+                    _isStartMove = true;
+                    IShape currentShape = _shapeList[_select.Numb];
+                    _shapeList.RemoveAt(_select.Numb);
                     _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                     Repaint();
                     for (int i = 0; i < _shapeList.Count; i++)
@@ -109,13 +110,14 @@ namespace Team_Project_Paint
                     }
                     currentShape.EShapeStatus = EShapeStatus.IN_PROGRESS;
                     _shapeList.Add(currentShape);
+                    Repaint();
                 }
             }
         }
 
         private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!_isClicked && !_isMove && e.Button == MouseButtons.Left)
+            if (!_isStartMove && !_isSelectMode && !_isMoveMode &&  e.Button == MouseButtons.Left)
             {
                 if (_shapeList.Count > 0)
                 {
@@ -124,7 +126,7 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
-            else if (_isClicked && e.Button == MouseButtons.Left)
+            else if (_isStartMove && e.Button == MouseButtons.Left)
             {
                 IShape currentShape = _shapeList.Last();
                 Select move = new Select();
@@ -135,8 +137,9 @@ namespace Team_Project_Paint
                     currentShape.EShapeStatus = EShapeStatus.DONE;
                     Repaint();
                 }
-                
-                _isClicked = false;
+
+                _isStartMove = false;
+                _select.IsSelected = false;
             }
         }
 
@@ -144,7 +147,7 @@ namespace Team_Project_Paint
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (_isMove && _isClicked)
+                if (_isMoveMode && _isStartMove)
                 {
                     IShape currentShape = _shapeList.Last();
                     Select move = new Select();
@@ -153,7 +156,7 @@ namespace Team_Project_Paint
                     Repaint();
 
                 }
-                else if (!_isMove && _shapeList.Count > 0)
+                else if (!_isMoveMode && !_isSelectMode && _shapeList.Count > 0)
                 {
                     IShape currentShape = _shapeList.Last();
                     currentShape.MouseMove(new ShapePoint(e.Location));
@@ -165,37 +168,13 @@ namespace Team_Project_Paint
 
         private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && !_isSelect && !_isMove)
+            if (e.Button == MouseButtons.Left && !_isSelectMode && !_isMoveMode)
             {
                 if (_shapeList.Count > 0)
                 {
                     IShape currentShape = _shapeList.Last();
                     currentShape.MouseClick(new ShapePoint(e.Location));
                     Repaint();
-                }
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                if (_shapeList.Count > 0)
-                {
-                    _lastPonit = new ShapePoint(e.Location);
-                    var select = new Select();
-                    select.SelectShape(_shapeList, _lastPonit);
-                    if (select.IsSelected)
-                    {
-                        _shapeList.RemoveAt(select.Numb);
-                        _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-                        pictureBoxMain.Image = _currentBitmap.ToImage();
-                    }
-
-                    for (int i = 0; i < _shapeList.Count; i++)
-                    {
-                        if (_shapeList[i] != null)
-                        {
-                            _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                        }
-                    }
-
                 }
             }
         }
@@ -336,29 +315,57 @@ namespace Team_Project_Paint
 
         private void MoveBtn_Click(object sender, EventArgs e)
         {
-            if (!_isMove)
+            if (!_isMoveMode)
             {
-                _isMove = true;
+                _isMoveMode = true;
                 moveBtn.Text = "MOVE ON";
+                deleteBtn.Enabled = false;
             }
             else
             {
-                _isMove = false;
+                _isMoveMode = false;
                 moveBtn.Text = "MOVE OFF";
+                deleteBtn.Enabled = true;
             }
         }
 
         private void selectBtn_Click(object sender, EventArgs e)
         {
-            if (!_isSelect)
+            if (!_isSelectMode)
             {
-                _isSelect = true;
+                _isSelectMode = true;
                 selectBtn.Text = "SELECT ON";
+                moveBtn.Enabled = true;
+                deleteBtn.Enabled = true;
             }
             else
             {
-                _isSelect = false;
+                _isSelectMode = false;
                 selectBtn.Text = "SELECT OFF";
+                moveBtn.Enabled = false;
+                deleteBtn.Enabled = false;
+            }
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (_shapeList.Count > 0)
+            {
+                if (_select != null && _select.IsSelected)
+                {
+                    _shapeList.RemoveAt(_select.Numb);
+                    _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                    pictureBoxMain.Image = _currentBitmap.ToImage();
+                    _select.IsSelected = false;
+                }
+
+                for (int i = 0; i < _shapeList.Count; i++)
+                {
+                    if (_shapeList[i] != null)
+                    {
+                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                    }
+                }
             }
         }
     }

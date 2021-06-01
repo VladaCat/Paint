@@ -68,6 +68,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.selectBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -82,7 +83,7 @@
             this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxMain.Name = "pictureBoxMain";
-            this.pictureBoxMain.Size = new System.Drawing.Size(943, 445);
+            this.pictureBoxMain.Size = new System.Drawing.Size(1041, 533);
             this.pictureBoxMain.TabIndex = 0;
             this.pictureBoxMain.TabStop = false;
             this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseClick);
@@ -106,7 +107,7 @@
             this.RoundingRectButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(943, 91);
+            this.toolStrip1.Size = new System.Drawing.Size(1041, 91);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -386,7 +387,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(943, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1041, 24);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -446,7 +447,8 @@
             // 
             // moveBtn
             // 
-            this.moveBtn.Location = new System.Drawing.Point(858, 49);
+            this.moveBtn.Enabled = false;
+            this.moveBtn.Location = new System.Drawing.Point(859, 62);
             this.moveBtn.Name = "moveBtn";
             this.moveBtn.Size = new System.Drawing.Size(75, 45);
             this.moveBtn.TabIndex = 21;
@@ -483,19 +485,31 @@
             // 
             // selectBtn
             // 
-            this.selectBtn.Location = new System.Drawing.Point(859, 13);
+            this.selectBtn.Location = new System.Drawing.Point(858, 13);
             this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(75, 30);
+            this.selectBtn.Size = new System.Drawing.Size(76, 43);
             this.selectBtn.TabIndex = 27;
-            this.selectBtn.Text = "selectBtn";
+            this.selectBtn.Text = "SELECT OFF";
             this.selectBtn.UseVisualStyleBackColor = true;
             this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Enabled = false;
+            this.deleteBtn.Location = new System.Drawing.Point(940, 12);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(75, 95);
+            this.deleteBtn.TabIndex = 28;
+            this.deleteBtn.Text = "DELETE";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 445);
+            this.ClientSize = new System.Drawing.Size(1041, 533);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.selectBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -577,6 +591,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button selectBtn;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }
 
