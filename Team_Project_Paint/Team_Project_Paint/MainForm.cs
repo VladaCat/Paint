@@ -93,6 +93,7 @@ namespace Team_Project_Paint
                 _lastPonit = new ShapePoint(e.Location);
                 _select = new Select();
                 _select.SelectShape(_shapeList, _lastPonit);
+
                 if (_select.IsSelected && _isMoveMode)
                 {
                     _isStartMove = true;
@@ -105,7 +106,6 @@ namespace Team_Project_Paint
                         if (_shapeList[i] != null)
                         {
                             _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                            Repaint();
                         }
                     }
                     currentShape.EShapeStatus = EShapeStatus.IN_PROGRESS;
@@ -362,6 +362,8 @@ namespace Team_Project_Paint
             else
             {
                 _isSelectMode = false;
+                _isMoveMode = false;
+                moveBtn.Text = "MOVE OFF";
                 selectBtn.Text = "SELECT OFF";
                 moveBtn.Enabled = false;
                 deleteBtn.Enabled = false;
@@ -372,18 +374,9 @@ namespace Team_Project_Paint
         {
             if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                    _shapeList.RemoveAt(_select.Numb);
-                    _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-                    pictureBoxMain.Image = _currentBitmap.ToImage();
-                    _select.IsSelected = false;
-
-                for (int i = 0; i < _shapeList.Count; i++)
-                {
-                    if (_shapeList[i] != null)
-                    {
-                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                    }
-                }
+                _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                 pictureBoxMain.Image = _currentBitmap.ToImage();
+                var delete = new ChangeOperation(_shapeList, _select, _currentBitmap);
             }
         }
     }
