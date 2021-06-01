@@ -9,7 +9,37 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 {
     public class ChangeOperation
     {
-        public void ChangeColor(List<IShape> shapelist, Select select, PaintColor color)
+        private PaintBitmap _currentBitmap;
+        private Select _select;
+        private PaintColor _color;
+        private List<IShape> _shapelist;
+        private int _thickness;
+
+
+
+        public ChangeOperation(List<IShape> shapelist, Select select, PaintColor color, PaintBitmap bitmap)
+        {
+            _select = select;
+            _shapelist = shapelist;
+            _color = color;
+            _currentBitmap = bitmap;
+            ChangeColor(_shapelist, _select, _color);
+            UpdatePicture(_shapelist, _currentBitmap);
+        }
+
+        public ChangeOperation(List<IShape> shapelist, Select select, int thickness, PaintBitmap bitmap)
+        {
+            _select = select;
+            _shapelist = shapelist;
+            _thickness = thickness;
+            _currentBitmap = bitmap;
+            ChangeThickness(_shapelist, _select, _thickness);
+            UpdatePicture(_shapelist, _currentBitmap);
+        }
+
+
+
+        private void ChangeColor(List<IShape> shapelist, Select select, PaintColor color)
         {
             IShape currentShape = shapelist[select.Numb];
             shapelist.RemoveAt(select.Numb);
@@ -26,7 +56,18 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             currentShape.Thickness = thickness;
             shapelist.Add(currentShape);
             select.Numb = shapelist.Count - 1;
-
         }
+
+        public void UpdatePicture(List<IShape> shapelist, PaintBitmap paintBitmap)
+        {
+            for (int i = 0; i < shapelist.Count; i++)
+            {
+                if (shapelist[i] != null)
+                {
+                    shapelist[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                }
+            }
+        }
+
     }
 }

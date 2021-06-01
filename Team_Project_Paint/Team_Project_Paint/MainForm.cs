@@ -233,18 +233,9 @@ namespace Team_Project_Paint
 
             if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                var color = new ChangeOperation();
-                color.ChangeColor(_shapeList, _select, _curentcolor);
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-
-                for (int i = 0; i < _shapeList.Count; i++)
-                {
-                    if (_shapeList[i] != null)
-                    {
-                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                    }
-                }
+                var color = new ChangeOperation(_shapeList, _select, _curentcolor, _currentBitmap);
             }
 
             
@@ -272,19 +263,9 @@ namespace Team_Project_Paint
             numericUpDown1.Value = _currentBrashSize;
             if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                var thickness = new ChangeOperation();
-                thickness.ChangeThickness(_shapeList, _select, _currentBrashSize);
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-
-                for (int i = 0; i < _shapeList.Count; i++)
-                {
-                    if (_shapeList[i] != null)
-                    {
-                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                    }
-                }
-
+                var thickness = new ChangeOperation(_shapeList, _select, _currentBrashSize, _currentBitmap);
             }
         }
 
@@ -294,18 +275,9 @@ namespace Team_Project_Paint
             trackBar1.Value = _currentBrashSize;
             if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                var thickness = new ChangeOperation();
-                thickness.ChangeThickness(_shapeList, _select, _currentBrashSize);
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-
-                for (int i = 0; i < _shapeList.Count; i++)
-                {
-                    if (_shapeList[i] != null)
-                    {
-                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
-                    }
-                }
+                var thickness = new ChangeOperation(_shapeList, _select, _currentBrashSize, _currentBitmap);
             }
         }
 
