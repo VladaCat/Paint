@@ -229,6 +229,26 @@ namespace Team_Project_Paint
         {
             Button b = (Button)sender;
             CurrentColorButton.BackColor = b.BackColor;
+
+            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            {
+                IShape currentShape = _shapeList[_select.Numb];
+                _shapeList.RemoveAt(_select.Numb);
+                _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                pictureBoxMain.Image = _currentBitmap.ToImage();
+                currentShape.Color = new PaintColor(CurrentColorButton.BackColor);
+                _shapeList.Add(currentShape);
+                _select.Numb = _shapeList.Count - 1;
+
+                for (int i = 0; i < _shapeList.Count; i++)
+                {
+                    if (_shapeList[i] != null)
+                    {
+                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                    }
+                }
+            }
+
             _curentcolor = new PaintColor(CurrentColorButton.BackColor);
         }
 
@@ -349,15 +369,12 @@ namespace Team_Project_Paint
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (_shapeList.Count > 0)
+            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
             {
-                if (_select != null && _select.IsSelected)
-                {
                     _shapeList.RemoveAt(_select.Numb);
                     _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                     pictureBoxMain.Image = _currentBitmap.ToImage();
                     _select.IsSelected = false;
-                }
 
                 for (int i = 0; i < _shapeList.Count; i++)
                 {
