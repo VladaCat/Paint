@@ -15,7 +15,7 @@ namespace Team_Project_Paint
     public partial class Paint : Form
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
-        private int _currentBrashSize = 1;
+        private int _currentBrashSize;
         private ShapePoint _lastPonit;
         private EShapeType _currentMode;
         private PaintBitmap _currentBitmap;
@@ -36,8 +36,6 @@ namespace Team_Project_Paint
 
             _bl = new BL(new Storage(), new ShapeFactory());
             _bl.Init(_currentMode, _currentBrashSize, _curentcolor);
-
-            numericUpDown1.Value = 1;
 
             _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
