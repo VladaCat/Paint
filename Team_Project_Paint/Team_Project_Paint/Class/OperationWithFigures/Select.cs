@@ -35,7 +35,6 @@ namespace Team_Project_Paint.Class
 
             shape.Location = start;
 
-
         }
 
 

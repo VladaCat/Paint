@@ -8,9 +8,9 @@ using Team_Project_Paint.Interfaces;
 
 namespace Team_Project_Paint.Class
 {
-   public class ShapeFactory
+   public class ShapeFactory : IShapeFactory
     {
-        public static IShape CreateShape(EShapeType currentMode)
+        public IShape CreateShape(EShapeType currentMode)
         {
             switch (currentMode)
             {

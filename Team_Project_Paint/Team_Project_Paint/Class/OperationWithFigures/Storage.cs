@@ -12,7 +12,6 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         private List<IShape> _shapeList = new List<IShape>();
 
 
-
         public void Add(IShape shape)
         {
             _shapeList.Add(shape);

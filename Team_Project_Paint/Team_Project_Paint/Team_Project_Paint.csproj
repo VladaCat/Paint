@@ -53,6 +53,7 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\OperationWithFigures\BL.cs" />
     <Compile Include="Class\OperationWithFigures\ChangeOperation.cs" />
     <Compile Include="Class\OperationWithFigures\JsonLogic.cs" />
     <Compile Include="Class\OperationWithFigures\ShapeListDTO.cs" />
@@ -81,7 +82,9 @@
     <Compile Include="Class\FigureDrawingClass\Triangle.cs" />
     <Compile Include="Enum\EShapeType.cs" />
     <Compile Include="Class\FigureDrawingClass\Hexagon.cs" />
+    <Compile Include="Interfaces\IBL.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
+    <Compile Include="Interfaces\IShapeFactory.cs" />
     <Compile Include="Interfaces\IStorage.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

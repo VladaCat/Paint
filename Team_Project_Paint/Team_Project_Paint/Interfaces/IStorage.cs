@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Interfaces
 {
-    interface IStorage
+    public interface IStorage
     {
         void Add(IShape shape);
 

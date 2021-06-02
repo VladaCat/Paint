@@ -10,45 +10,19 @@ namespace Team_Project_Paint.Class.OperationWithFigures
     public class ChangeOperation
     {
         private PaintBitmap _currentBitmap;
-        private Select _select;
-        private PaintColor _color;
         private List<IShape> _shapelist;
-        private int _thickness;
 
 
-        public ChangeOperation(List<IShape> shapelist, Select select, PaintBitmap bitmap)
+        public ChangeOperation(List<IShape> shapelist, PaintBitmap bitmap)
         {
-            _select = select;
             _shapelist = shapelist;
-            _currentBitmap = bitmap;
-            Delete(_shapelist, _select);
-            UpdatePicture(_shapelist, _currentBitmap);
-        }
-
-        public ChangeOperation(List<IShape> shapelist, Select select, PaintColor color, PaintBitmap bitmap)
-        {
-            _select = select;
-            _shapelist = shapelist;
-            _color = color;
-            _currentBitmap = bitmap;
-            ChangeColor(_shapelist, _select, _color);
-            UpdatePicture(_shapelist, _currentBitmap);
-        }
-
-        public ChangeOperation(List<IShape> shapelist, Select select, int thickness, PaintBitmap bitmap)
-        {
-            _select = select;
-            _shapelist = shapelist;
-            _thickness = thickness;
-            _currentBitmap = bitmap;
-            ChangeThickness(_shapelist, _select, _thickness);
-            UpdatePicture(_shapelist, _currentBitmap);
+            _currentBitmap = bitmap;;
         }
 
         private void Delete(List<IShape> shapelist, Select select)
         {
-            shapelist.RemoveAt(_select.Numb);
-            select.IsSelected = false;
+            //shapelist.RemoveAt(_select.Numb);
+            //select.IsSelected = false;
         }
 
         private void ChangeColor(List<IShape> shapelist, Select select, PaintColor color)
@@ -70,13 +44,13 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             select.Numb = shapelist.Count - 1;
         }
 
-        private void UpdatePicture(List<IShape> shapelist, PaintBitmap paintBitmap)
+        public void UpdatePicture()
         {
-            for (int i = 0; i < shapelist.Count; i++)
+            for (int i = 0; i < _shapelist.Count; i++)
             {
-                if (shapelist[i] != null)
+                if (_shapelist[i] != null)
                 {
-                    shapelist[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                    _shapelist[i].Draw(PaintGraphics.FromImage(_currentBitmap));
                 }
             }
         }
