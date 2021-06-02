@@ -16,7 +16,7 @@ namespace Team_Project_Paint
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
         private int _currentBrashSize = 1;
-        private List<IShape> _shapeList = new List<IShape>();
+        //private List<IShape> _shapeList = new List<IShape>();
         private ShapePoint _lastPonit;
         private EShapeType _currentMode;
         private PaintBitmap _currentBitmap;
@@ -25,6 +25,7 @@ namespace Team_Project_Paint
         private bool _isMoveMode = false;
         private bool _isSelectMode = false;
         private bool _isStartMove = false;
+        private Storage _storage = new Storage();
 
         public Paint()
         {
@@ -35,7 +36,7 @@ namespace Team_Project_Paint
             IShape currentShape = ShapeFactory.CreateShape(_currentMode);
             currentShape.Thickness = _currentBrashSize;
             currentShape.Color = _curentcolor;
-            _shapeList.Add(currentShape);
+            _storage.Add(currentShape);
             
 
             numericUpDown1.Value = 1;
@@ -47,10 +48,10 @@ namespace Team_Project_Paint
 
         private void Repaint()
         {
-            if (_shapeList.Count > 0)
+            if (_storage.GetCount() > 0)
             {
                 // Достаем последнюю фигуру, ту, которая в данный момент рисуется
-                IShape currentShape = _shapeList.Last();
+                IShape currentShape = _storage.GetLast();
                 // Создаем буфферный битмап для рисования, через клонирование основного
                 _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
                 // Создем холс для рисования, на основе буфферного битмапа,
@@ -84,7 +85,7 @@ namespace Team_Project_Paint
                     (newShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
                     (newShape as Hexagon).Size = new ShapeSize( pictureBoxMain.Size);
                 }
-                _shapeList.Add(newShape);
+                _storage.Add(newShape);
                 newShape.MouseDown(new ShapePoint(e.Location));
                 Repaint();
             }
@@ -92,24 +93,24 @@ namespace Team_Project_Paint
             {
                 _lastPonit = new ShapePoint(e.Location);
                 _select = new Select();
-                _select.SelectShape(_shapeList, _lastPonit);
+                _select.SelectShape(_storage.GetAll(), _lastPonit);
 
                 if (_select.IsSelected && _isMoveMode)
                 {
                     _isStartMove = true;
-                    IShape currentShape = _shapeList[_select.Numb];
-                    _shapeList.RemoveAt(_select.Numb);
+                    IShape currentShape = _storage.GetShapeForIndex(_select.Numb);
+                    _storage.RemoveAt(_select.Numb);
                     _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                     Repaint();
-                    for (int i = 0; i < _shapeList.Count; i++)
+                    for (int i = 0; i < _storage.GetCount(); i++)
                     {
-                        if (_shapeList[i] != null)
+                        if (_storage.GetShapeForIndex(i) != null)
                         {
-                            _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                            _storage.GetShapeForIndex(i).Draw(PaintGraphics.FromImage(_currentBitmap));
                         }
                     }
                     currentShape.EShapeStatus = EShapeStatus.IN_PROGRESS;
-                    _shapeList.Add(currentShape);
+                    _storage.Add(currentShape);
                     Repaint();
                 }
             }
@@ -119,16 +120,16 @@ namespace Team_Project_Paint
         {
             if (!_isStartMove && !_isSelectMode && !_isMoveMode &&  e.Button == MouseButtons.Left)
             {
-                if (_shapeList.Count > 0)
+                if (_storage.GetCount() > 0)
                 {
-                    IShape currentShape = _shapeList.Last();
+                    IShape currentShape = _storage.GetLast();
                     currentShape.MouseUp(new ShapePoint(e.Location));
                     Repaint();
                 }
             }
             else if (_isStartMove && e.Button == MouseButtons.Left)
             {
-                IShape currentShape = _shapeList.Last();
+                IShape currentShape = _storage.GetLast();
                 Select move = new Select();
                 move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
                 currentShape.Draw(PaintGraphics.FromImage(_currentBitmap));
@@ -149,16 +150,16 @@ namespace Team_Project_Paint
             {
                 if (_isMoveMode && _isStartMove)
                 {
-                    IShape currentShape = _shapeList.Last();
+                    IShape currentShape = _storage.GetLast();
                     Select move = new Select();
                     move.Move(e.X - _lastPonit.X, e.Y - _lastPonit.Y, currentShape);
                     _lastPonit = new ShapePoint(e.Location);
                     Repaint();
 
                 }
-                else if (!_isMoveMode && !_isSelectMode && _shapeList.Count > 0)
+                else if (!_isMoveMode && !_isSelectMode && _storage.GetCount() > 0)
                 {
-                    IShape currentShape = _shapeList.Last();
+                    IShape currentShape = _storage.GetLast();
                     currentShape.MouseMove(new ShapePoint(e.Location));
                     Repaint();
 
@@ -170,9 +171,9 @@ namespace Team_Project_Paint
         {
             if (e.Button == MouseButtons.Left && !_isSelectMode && !_isMoveMode)
             {
-                if (_shapeList.Count > 0)
+                if (_storage.GetCount() > 0)
                 {
-                    IShape currentShape = _shapeList.Last();
+                    IShape currentShape = _storage.GetLast();
                     currentShape.MouseClick(new ShapePoint(e.Location));
                     Repaint();
                 }
@@ -218,7 +219,7 @@ namespace Team_Project_Paint
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            _shapeList.Clear();
+            _storage.Clear();
             _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
             pictureBoxMain.Image = _currentBitmap.ToImage();
@@ -231,11 +232,11 @@ namespace Team_Project_Paint
             CurrentColorButton.BackColor = b.BackColor;
             _curentcolor = new PaintColor(CurrentColorButton.BackColor);
 
-            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            if (_storage.GetCount() > 0 && _select != null && _select.IsSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-                var color = new ChangeOperation(_shapeList, _select, _curentcolor, _currentBitmap);
+                var color = new ChangeOperation(_storage.GetAll(), _select, _curentcolor, _currentBitmap);
             }
 
             
@@ -248,7 +249,7 @@ namespace Team_Project_Paint
             if (saveFileDialog1.FileName != "" && saveFileDialog1.FilterIndex == 4)
             {
                 var json = new JsonLogic();
-                json.JsonSerialize(_shapeList);
+                json.JsonSerialize(_storage.GetAll());
                 File.WriteAllText(saveFileDialog1.FileName, json.File);
             }
             else if (saveFileDialog1.FileName != "")
@@ -261,11 +262,11 @@ namespace Team_Project_Paint
         {
             _currentBrashSize = trackBar1.Value;
             numericUpDown1.Value = _currentBrashSize;
-            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            if (_storage.GetCount() > 0 && _select != null && _select.IsSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-                var thickness = new ChangeOperation(_shapeList, _select, _currentBrashSize, _currentBitmap);
+                var thickness = new ChangeOperation(_storage.GetAll(), _select, _currentBrashSize, _currentBitmap);
             }
         }
 
@@ -273,11 +274,11 @@ namespace Team_Project_Paint
         {
             _currentBrashSize = (int)numericUpDown1.Value;
             trackBar1.Value = _currentBrashSize;
-            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            if (_storage.GetCount() > 0 && _select != null && _select.IsSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-                var thickness = new ChangeOperation(_shapeList, _select, _currentBrashSize, _currentBitmap);
+                var thickness = new ChangeOperation(_storage.GetAll(), _select, _currentBrashSize, _currentBitmap);
             }
         }
 
@@ -290,15 +291,15 @@ namespace Team_Project_Paint
             {
                 var strings = File.ReadAllText(openFileDialog1.FileName);
                 var json = new JsonLogic();
-                json.JsonDeserialize(strings, _shapeList);
-                _shapeList = json.JsonList;
+                json.JsonDeserialize(strings, _storage.GetAll());
+                _storage.OpenJson(json.JsonList);
 
-                for (int i = 0; i < _shapeList.Count; i++)
+                for (int i = 0; i < _storage.GetCount(); i++)
                 {
-                    if (_shapeList[i] != null)
+                    if (_storage.GetShapeForIndex(i) != null)
                     {
-                        _shapeList[i].EShapeStatus = EShapeStatus.DONE;
-                        _shapeList[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                        _storage.GetShapeForIndex(i).EShapeStatus = EShapeStatus.DONE;
+                        _storage.GetShapeForIndex(i).Draw(PaintGraphics.FromImage(_currentBitmap));
                         Repaint();
                     }
                 }
@@ -321,19 +322,19 @@ namespace Team_Project_Paint
                 _curentcolor = new PaintColor(colorDialog1.Color);
             }
 
-            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            if (_storage.GetCount() > 0 && _select != null && _select.IsSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
-                var color = new ChangeOperation(_shapeList, _select, _curentcolor, _currentBitmap);
+                var color = new ChangeOperation(_storage.GetAll(), _select, _curentcolor, _currentBitmap);
             }
         }
 
         private void NumericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            if (_shapeList.Count > 0)
+            if (_storage.GetCount() > 0)
             {
-                IShape currentShape = _shapeList.Last();
+                IShape currentShape = _storage.GetLast();
                 if (currentShape is Hexagon)
                 {
                     (currentShape as Hexagon).Cornes = decimal.ToInt32(numericUpDown2.Value);
@@ -379,11 +380,11 @@ namespace Team_Project_Paint
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (_shapeList.Count > 0 && _select != null && _select.IsSelected)
+            if (_storage.GetCount() > 0 && _select != null && _select.IsSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                  pictureBoxMain.Image = _currentBitmap.ToImage();
-                var delete = new ChangeOperation(_shapeList, _select, _currentBitmap);
+                var delete = new ChangeOperation(_storage.GetAll(), _select, _currentBitmap);
             }
         }
     }

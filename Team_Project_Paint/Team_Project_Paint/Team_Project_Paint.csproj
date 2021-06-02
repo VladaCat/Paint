@@ -56,6 +56,7 @@
     <Compile Include="Class\OperationWithFigures\ChangeOperation.cs" />
     <Compile Include="Class\OperationWithFigures\JsonLogic.cs" />
     <Compile Include="Class\OperationWithFigures\ShapeListDTO.cs" />
+    <Compile Include="Class\OperationWithFigures\Storage.cs" />
     <Compile Include="Enum\EShapeStatus.cs" />
     <Compile Include="Class\FigureDrawingClass\Line.cs" />
     <Compile Include="Enum\EPainLinejoin.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Enum\EShapeType.cs" />
     <Compile Include="Class\FigureDrawingClass\Hexagon.cs" />
     <Compile Include="Interfaces\IMovable.cs" />
+    <Compile Include="Interfaces\IStorage.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

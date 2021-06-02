@@ -6,7 +6,7 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class.OperationWithFigures
 {
-    class JsonLogic
+    public class JsonLogic
     {
         public string File;
         public List<IShape> JsonList;
