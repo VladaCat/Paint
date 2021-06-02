@@ -9,8 +9,17 @@ namespace Team_Project_Paint.Class
     {
         public Rect() : base(EShapeType.Rect) { }
 
-
         public override void Draw(PaintGraphics graphics)
+        {
+            (int x, int y, int width, int height) = CalculateRect();
+            graphics.DrawRectangle(
+               new PaintPen(Color, Thickness),
+                x,
+                y,
+                width,
+                height);
+        }
+        private (int, int, int, int) CalculateRect()
         {
             int x = Location.X;
             int y = Location.Y;
@@ -26,13 +35,7 @@ namespace Team_Project_Paint.Class
                 height = Math.Abs(FinishLocation.Y - Location.Y);
                 y = FinishLocation.Y;
             }
-
-            graphics.DrawRectangle(
-               new PaintPen(Color, Thickness),
-                x,
-                y,
-                width,
-                height);
+            return (x, y, width, height);
         }
     }
 }

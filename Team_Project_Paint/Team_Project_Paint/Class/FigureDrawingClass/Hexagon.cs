@@ -28,20 +28,8 @@ namespace Team_Project_Paint
 
         public override void Draw(PaintGraphics graphics)
         {
-            int x = Location.X;
-            int y = Location.Y;
-            int width = FinishLocation.X - Location.X;
-            int height = FinishLocation.Y - Location.Y;
-            if (x > FinishLocation.X)
-            {
-                width = Math.Abs(FinishLocation.X - Location.X);
-                x = FinishLocation.X;
-            }
-            if (y > FinishLocation.Y)
-            {
-                height = Math.Abs(FinishLocation.Y - Location.Y);
-                y = FinishLocation.Y;
-            }
+            (int x, int y, int width, int height) = CalculateHexagon();
+
             if (width == 0 || height == 0)
             {
                 return;
@@ -61,6 +49,25 @@ namespace Team_Project_Paint
             PaintGraphics tmpGraphics = PaintGraphics.FromImage(img);
             InscribePolygon(tmpGraphics, rectangle, _cornes);
             graphics.DrawImage(img, x, y);
+        }
+
+        private (int, int, int, int) CalculateHexagon()
+        {
+            int x = Location.X;
+            int y = Location.Y;
+            int width = FinishLocation.X - Location.X;
+            int height = FinishLocation.Y - Location.Y;
+            if (x > FinishLocation.X)
+            {
+                width = Math.Abs(FinishLocation.X - Location.X);
+                x = FinishLocation.X;
+            }
+            if (y > FinishLocation.Y)
+            {
+                height = Math.Abs(FinishLocation.Y - Location.Y);
+                y = FinishLocation.Y;
+            }
+            return (x, y, width, height);
         }
 
         private void InscribePolygon(PaintGraphics graphics, PaintRectangleF rectangle, int numSides)

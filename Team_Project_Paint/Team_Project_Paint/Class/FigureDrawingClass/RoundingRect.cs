@@ -14,6 +14,18 @@ namespace Team_Project_Paint
         int radius = 10;
         public override void Draw(PaintGraphics graphics)
         {
+            (int x, int y, int width, int height) = CalculateRoundRect();
+
+            graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
+            PaintPen pen = new PaintPen(Color, Thickness);
+            pen.LineJoin = EPainLinejoin.Round;
+            PaintRectangleF rect = new PaintRectangleF(x, y, width, height);
+            PaintGraphicsPath path = this.GetRoundRectangle(rect, radius);
+
+            graphics.DrawPath(pen, path);
+        }
+        private (int, int, int, int) CalculateRoundRect()
+        {
             int x = Location.X;
             int y = Location.Y;
             int width = FinishLocation.X - Location.X;
@@ -28,14 +40,7 @@ namespace Team_Project_Paint
                 height = Math.Abs(FinishLocation.Y - Location.Y);
                 y = FinishLocation.Y;
             }
-
-            graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
-            PaintPen pen = new PaintPen(Color, Thickness);
-            pen.LineJoin = EPainLinejoin.Round;
-            PaintRectangleF rect = new PaintRectangleF(x, y, width, height);
-            PaintGraphicsPath path = this.GetRoundRectangle(rect, radius);
-
-            graphics.DrawPath(pen, path);
+            return (x, y, width, height);
         }
 
         private PaintGraphicsPath GetRoundRectangle(PaintRectangleF baseRect, float radius)
