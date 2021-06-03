@@ -83,8 +83,8 @@
             this.RectangleButton,
             this.EllipseButton,
             this.TriangleButton,
-            this.HexagonButtom,
-            this.RoundingRectButton});
+            this.RoundingRectButton,
+            this.HexagonButtom});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1041, 91);
@@ -167,8 +167,8 @@
             this.HexagonButtom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.HexagonButtom.Name = "HexagonButtom";
             this.HexagonButtom.Size = new System.Drawing.Size(50, 50);
-            this.HexagonButtom.Text = "toolStripButton1";
-            this.HexagonButtom.Click += new System.EventHandler(this.ToolStripButton1_Click);
+            this.HexagonButtom.Text = "Hexagon";
+            this.HexagonButtom.Click += new System.EventHandler(this.HexagonButton_Click);
             // 
             // RoundingRectButton
             // 
@@ -179,7 +179,7 @@
             this.RoundingRectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RoundingRectButton.Name = "RoundingRectButton";
             this.RoundingRectButton.Size = new System.Drawing.Size(50, 50);
-            this.RoundingRectButton.Text = "toolStripButton2";
+            this.RoundingRectButton.Text = "Rounding Rectangle";
             this.RoundingRectButton.Click += new System.EventHandler(this.RoundingRectButton_Click);
             // 
             // button1
@@ -294,7 +294,7 @@
             this.trackBar1.Size = new System.Drawing.Size(144, 45);
             this.trackBar1.TabIndex = 17;
             this.trackBar1.Value = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.TrackBar1_Scroll);
+            this.trackBar1.Scroll += new System.EventHandler(this.BrushSizeTrackBar_Scroll);
             // 
             // menuStrip1
             // 
@@ -319,16 +319,16 @@
             // opentoolStripMenuItem
             // 
             this.opentoolStripMenuItem.Name = "opentoolStripMenuItem";
-            this.opentoolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.opentoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.opentoolStripMenuItem.Text = "Open";
-            this.opentoolStripMenuItem.Click += new System.EventHandler(this.OpentoolStripMenuItem_Click);
+            this.opentoolStripMenuItem.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
             // ClearBtn
             // 
@@ -359,6 +359,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.ReadOnly = true;
             this.numericUpDown2.Size = new System.Drawing.Size(34, 20);
             this.numericUpDown2.TabIndex = 20;
             this.numericUpDown2.Value = new decimal(new int[] {
@@ -366,7 +367,7 @@
             0,
             0,
             0});
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.NumericUpDown2_ValueChanged);
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.CornesNumeric_ValueChanged);
             // 
             // moveBtn
             // 
@@ -435,7 +436,7 @@
             this.ChengeColorButton.Size = new System.Drawing.Size(35, 35);
             this.ChengeColorButton.TabIndex = 8;
             this.ChengeColorButton.UseVisualStyleBackColor = true;
-            this.ChengeColorButton.Click += new System.EventHandler(this.ChengeColorButton_Click);
+            this.ChengeColorButton.Click += new System.EventHandler(this.ChangeColorButton_Click);
             // 
             // pictureBoxMain
             // 
@@ -448,10 +449,10 @@
             this.pictureBoxMain.Size = new System.Drawing.Size(1041, 533);
             this.pictureBoxMain.TabIndex = 0;
             this.pictureBoxMain.TabStop = false;
-            this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseClick);
-            this.pictureBoxMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
-            this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
-            this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseUp);
+            this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainPictureBox_MouseClick);
+            this.pictureBoxMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPictureBox_MouseDown);
+            this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPictureBox_MouseMove);
+            this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPictureBox_MouseUp);
             // 
             // Paint
             // 

@@ -15,7 +15,7 @@ namespace Team_Project_Paint
     public partial class Paint : Form
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
-        private int _currentBrashSize = 1;
+        private BusinessLogic _bl;
         private ShapePoint _lastPonit;
         private EShapeType _currentMode;
         private PaintBitmap _currentBitmap;
@@ -24,8 +24,8 @@ namespace Team_Project_Paint
         private bool _isSelectMode = false;
         private bool _isStartMove = false;
         private bool _isSelected = false;
-        private BusinessLogic _bl;
         private int _cornesValue = 3;
+        private int _currentBrashSize = 1;
         private const string TEXT_FOR_SELECT_ON = "SELECT ON";
         private const string TEXT_FOR_SELECT_OFF = "SELECT OFF";
         private const string TEXT_FOR_MOVE_ON = "MOVE ON";
@@ -49,17 +49,10 @@ namespace Team_Project_Paint
         {
             if (_bl.isBoolCount())
             {
-                // Достаем последнюю фигуру, ту, которая в данный момент рисуется
                 IShape currentShape = _bl.Last();
-                // Создаем буфферный битмап для рисования, через клонирование основного
                 _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
-                // Создем холс для рисования, на основе буфферного битмапа,
-                // На котором уже нарисовано все, что было нарисовано ранее, благодары клонированию
-                // из основного битмапа (_bufferedBitmap = _currentBitmap.Clone() as Bitmap;)
                 PaintGraphics _bufferedGraphics = PaintGraphics.FromImage(_bufferedBitmap);
-                // Просим текущую фигуру ДОРИСОВАТЬ себя на холсте, на котором уже много чего нарисовано
                 currentShape.Draw(_bufferedGraphics);
-                // Если фигура все-еще рисуется, показать ее на экране (обновить)
                 if (currentShape.EShapeStatus == EShapeStatus.IN_PROGRESS)
                 {
                     pictureBoxMain.Image = _bufferedBitmap?.ToImage();
@@ -72,7 +65,7 @@ namespace Team_Project_Paint
             }
         }
 
-        private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void MainPictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             if (!_isSelectMode && !_isMoveMode && e.Button == MouseButtons.Left)
             {
@@ -101,9 +94,10 @@ namespace Team_Project_Paint
             }
         }
 
-        private void PictureBox1_MouseUp(object sender, MouseEventArgs e)
+
+        private void MainPictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!_isStartMove && !_isSelectMode && !_isMoveMode &&  e.Button == MouseButtons.Left)
+            if (!_isStartMove && !_isSelectMode && !_isMoveMode && e.Button == MouseButtons.Left)
             {
                 if (_bl.isBoolCount())
                 {
@@ -128,7 +122,7 @@ namespace Team_Project_Paint
             }
         }
 
-        private void PictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void MainPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -150,7 +144,7 @@ namespace Team_Project_Paint
             }
         }
 
-        private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
+        private void MainPictureBox_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && !_isSelectMode && !_isMoveMode)
             {
@@ -191,7 +185,7 @@ namespace Team_Project_Paint
         {
             _currentMode = EShapeType.Triangle;
         }
-        private void ToolStripButton1_Click(object sender, EventArgs e)
+        private void HexagonButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Hexagon;
         }
@@ -225,7 +219,7 @@ namespace Team_Project_Paint
 
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveFileButton_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             saveFileDialog1.ShowDialog();
@@ -239,7 +233,7 @@ namespace Team_Project_Paint
             }
         }
 
-        private void TrackBar1_Scroll(object sender, EventArgs e)
+        private void BrushSizeTrackBar_Scroll(object sender, EventArgs e)
         {
             _currentBrashSize = trackBar1.Value;
             if (_bl.isBoolCount() && _isSelected)
@@ -250,8 +244,7 @@ namespace Team_Project_Paint
             }
         }
 
-
-        private void OpentoolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenFileButton_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             openFileDialog1.ShowDialog();
@@ -280,11 +273,9 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
-
-
         }
 
-        private void ChengeColorButton_Click(object sender, EventArgs e)
+        private void ChangeColorButton_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -300,7 +291,7 @@ namespace Team_Project_Paint
             }
         }
 
-        private void NumericUpDown2_ValueChanged(object sender, EventArgs e)
+        private void CornesNumeric_ValueChanged(object sender, EventArgs e)
         {
             _cornesValue = decimal.ToInt32(numericUpDown2.Value);
             if (_bl.isBoolCount())
