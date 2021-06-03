@@ -242,7 +242,6 @@ namespace Team_Project_Paint
         private void TrackBar1_Scroll(object sender, EventArgs e)
         {
             _currentBrashSize = trackBar1.Value;
-            numericUpDown1.Value = _currentBrashSize;
             if (_bl.isBoolCount() && _isSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
@@ -251,38 +250,35 @@ namespace Team_Project_Paint
             }
         }
 
-        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            _currentBrashSize = (int)numericUpDown1.Value;
-            trackBar1.Value = _currentBrashSize;
-            if (_bl.isBoolCount() && _isSelected)
-            {
-                _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-                pictureBoxMain.Image = _currentBitmap.ToImage();
-                _bl.ChanhgeFirgureThickness(_currentBitmap, _currentBrashSize);
-            }
-        }
 
         private void OpentoolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             openFileDialog1.ShowDialog();
 
-            if (openFileDialog1.FileName != "" && openFileDialog1.FilterIndex == 4 && openFileDialog1.FileName != "openFileDialog1")
+            if (openFileDialog1.FileName != "" && openFileDialog1.FileName != "openFileDialog1")
             {
-
-                var strings = File.ReadAllText(openFileDialog1.FileName);
-
-                if (_bl.JsonOpen(strings, _currentBitmap))
-                {
-                    Repaint();
-                }
-            }
-            else if (openFileDialog1.FileName != "" && openFileDialog1.FileName != "openFileDialog1")
-            {
-                _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
+                _bl.Clear();
+                _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
+                _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
                 pictureBoxMain.Image = _currentBitmap.ToImage();
                 Repaint();
+
+                if (openFileDialog1.FilterIndex == 4)
+                {
+                    var strings = File.ReadAllText(openFileDialog1.FileName);
+
+                    if (_bl.JsonOpen(strings, _currentBitmap))
+                    {
+                        Repaint();
+                    }
+                }
+                else
+                {
+                    _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
+                    pictureBoxMain.Image = _currentBitmap.ToImage();
+                    Repaint();
+                }
             }
 
 
@@ -345,6 +341,7 @@ namespace Team_Project_Paint
             else
             {
                 _isSelectMode = false;
+                _isSelected = false;
                 _isMoveMode = false;
                 moveBtn.Text = TEXT_FOR_MOVE_OFF;
                 selectBtn.Text = TEXT_FOR_SELECT_OFF;

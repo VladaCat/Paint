@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Paint));
-            this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.DotButton = new System.Windows.Forms.ToolStripButton();
             this.LineButton = new System.Windows.Forms.ToolStripButton();
@@ -37,29 +35,25 @@
             this.RectangleButton = new System.Windows.Forms.ToolStripButton();
             this.EllipseButton = new System.Windows.Forms.ToolStripButton();
             this.TriangleButton = new System.Windows.Forms.ToolStripButton();
-            this.ClearButton = new System.Windows.Forms.ToolStripButton();
             this.HexagonButtom = new System.Windows.Forms.ToolStripButton();
             this.RoundingRectButton = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.CurrentColorButton = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.ChengeColorButton = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opentoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -69,27 +63,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.selectBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
+            this.ChengeColorButton = new System.Windows.Forms.Button();
+            this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxMain
-            // 
-            this.pictureBoxMain.BackColor = System.Drawing.Color.White;
-            this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxMain.Name = "pictureBoxMain";
-            this.pictureBoxMain.Size = new System.Drawing.Size(1041, 533);
-            this.pictureBoxMain.TabIndex = 0;
-            this.pictureBoxMain.TabStop = false;
-            this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseClick);
-            this.pictureBoxMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
-            this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
-            this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseUp);
             // 
             // toolStrip1
             // 
@@ -102,7 +83,6 @@
             this.RectangleButton,
             this.EllipseButton,
             this.TriangleButton,
-            this.ClearButton,
             this.HexagonButtom,
             this.RoundingRectButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -115,7 +95,8 @@
             // 
             this.DotButton.AutoSize = false;
             this.DotButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DotButton.Image = ((System.Drawing.Image)(resources.GetObject("DotButton.Image")));
+            this.DotButton.Image = global::Team_Project_Paint.Properties.Resources.dot;
+            this.DotButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.DotButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DotButton.Name = "DotButton";
             this.DotButton.Size = new System.Drawing.Size(50, 50);
@@ -126,7 +107,7 @@
             // 
             this.LineButton.AutoSize = false;
             this.LineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LineButton.Image = ((System.Drawing.Image)(resources.GetObject("LineButton.Image")));
+            this.LineButton.Image = global::Team_Project_Paint.Properties.Resources.line;
             this.LineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LineButton.Name = "LineButton";
             this.LineButton.Size = new System.Drawing.Size(50, 50);
@@ -137,7 +118,7 @@
             // 
             this.CurveButton.AutoSize = false;
             this.CurveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CurveButton.Image = ((System.Drawing.Image)(resources.GetObject("CurveButton.Image")));
+            this.CurveButton.Image = global::Team_Project_Paint.Properties.Resources.curve;
             this.CurveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CurveButton.Name = "CurveButton";
             this.CurveButton.Size = new System.Drawing.Size(50, 50);
@@ -148,7 +129,7 @@
             // 
             this.RectangleButton.AutoSize = false;
             this.RectangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RectangleButton.Image = ((System.Drawing.Image)(resources.GetObject("RectangleButton.Image")));
+            this.RectangleButton.Image = global::Team_Project_Paint.Properties.Resources.rect;
             this.RectangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RectangleButton.Name = "RectangleButton";
             this.RectangleButton.Size = new System.Drawing.Size(50, 50);
@@ -159,7 +140,7 @@
             // 
             this.EllipseButton.AutoSize = false;
             this.EllipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EllipseButton.Image = ((System.Drawing.Image)(resources.GetObject("EllipseButton.Image")));
+            this.EllipseButton.Image = global::Team_Project_Paint.Properties.Resources.ellipse;
             this.EllipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EllipseButton.Name = "EllipseButton";
             this.EllipseButton.Size = new System.Drawing.Size(50, 50);
@@ -170,30 +151,19 @@
             // 
             this.TriangleButton.AutoSize = false;
             this.TriangleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.TriangleButton.Image = ((System.Drawing.Image)(resources.GetObject("TriangleButton.Image")));
+            this.TriangleButton.Image = global::Team_Project_Paint.Properties.Resources.triangle;
             this.TriangleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TriangleButton.Name = "TriangleButton";
             this.TriangleButton.Size = new System.Drawing.Size(50, 50);
             this.TriangleButton.Text = "Triangle";
             this.TriangleButton.Click += new System.EventHandler(this.TriangleButton_Click);
             // 
-            // ClearButton
-            // 
-            this.ClearButton.AutoSize = false;
-            this.ClearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ClearButton.Image = ((System.Drawing.Image)(resources.GetObject("ClearButton.Image")));
-            this.ClearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(50, 50);
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
             // HexagonButtom
             // 
             this.HexagonButtom.AutoSize = false;
-            this.HexagonButtom.BackColor = System.Drawing.Color.White;
+            this.HexagonButtom.BackColor = System.Drawing.Color.Transparent;
             this.HexagonButtom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.HexagonButtom.Image = ((System.Drawing.Image)(resources.GetObject("HexagonButtom.Image")));
+            this.HexagonButtom.Image = global::Team_Project_Paint.Properties.Resources.hexagon1;
             this.HexagonButtom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.HexagonButtom.Name = "HexagonButtom";
             this.HexagonButtom.Size = new System.Drawing.Size(50, 50);
@@ -203,9 +173,9 @@
             // RoundingRectButton
             // 
             this.RoundingRectButton.AutoSize = false;
-            this.RoundingRectButton.BackColor = System.Drawing.Color.White;
+            this.RoundingRectButton.BackColor = System.Drawing.Color.Transparent;
             this.RoundingRectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RoundingRectButton.Image = ((System.Drawing.Image)(resources.GetObject("RoundingRectButton.Image")));
+            this.RoundingRectButton.Image = global::Team_Project_Paint.Properties.Resources.roundrect;
             this.RoundingRectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RoundingRectButton.Name = "RoundingRectButton";
             this.RoundingRectButton.Size = new System.Drawing.Size(50, 50);
@@ -216,7 +186,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(503, 49);
+            this.button1.Location = new System.Drawing.Point(476, 50);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 25);
             this.button1.TabIndex = 2;
@@ -227,29 +197,18 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Orange;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(534, 49);
+            this.button2.Location = new System.Drawing.Point(507, 50);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 25);
             this.button2.TabIndex = 3;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.ColorButton_Click);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.SkyBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Location = new System.Drawing.Point(627, 49);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(25, 25);
-            this.button3.TabIndex = 4;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.ColorButton_Click);
-            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Blue;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Location = new System.Drawing.Point(658, 49);
+            this.button4.Location = new System.Drawing.Point(476, 79);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(25, 25);
             this.button4.TabIndex = 5;
@@ -259,7 +218,7 @@
             // CurrentColorButton
             // 
             this.CurrentColorButton.BackColor = System.Drawing.Color.Black;
-            this.CurrentColorButton.Location = new System.Drawing.Point(465, 43);
+            this.CurrentColorButton.Location = new System.Drawing.Point(435, 50);
             this.CurrentColorButton.Name = "CurrentColorButton";
             this.CurrentColorButton.Size = new System.Drawing.Size(35, 35);
             this.CurrentColorButton.TabIndex = 6;
@@ -269,28 +228,18 @@
             // 
             this.button6.BackColor = System.Drawing.Color.Yellow;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Location = new System.Drawing.Point(565, 49);
+            this.button6.Location = new System.Drawing.Point(538, 50);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(25, 25);
             this.button6.TabIndex = 7;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.ColorButton_Click);
             // 
-            // ChengeColorButton
-            // 
-            this.ChengeColorButton.Image = global::Team_Project_Paint.Properties.Resources._2;
-            this.ChengeColorButton.Location = new System.Drawing.Point(720, 43);
-            this.ChengeColorButton.Name = "ChengeColorButton";
-            this.ChengeColorButton.Size = new System.Drawing.Size(35, 35);
-            this.ChengeColorButton.TabIndex = 8;
-            this.ChengeColorButton.UseVisualStyleBackColor = true;
-            this.ChengeColorButton.Click += new System.EventHandler(this.ChengeColorButton_Click);
-            // 
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Green;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Location = new System.Drawing.Point(596, 49);
+            this.button8.Location = new System.Drawing.Point(538, 79);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(25, 25);
             this.button8.TabIndex = 9;
@@ -301,7 +250,7 @@
             // 
             this.button9.BackColor = System.Drawing.Color.Purple;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.Location = new System.Drawing.Point(689, 49);
+            this.button9.Location = new System.Drawing.Point(507, 79);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(25, 25);
             this.button9.TabIndex = 10;
@@ -311,80 +260,47 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(462, 82);
+            this.label1.Location = new System.Drawing.Point(432, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Цвет 1";
+            this.label1.Text = "Current";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(614, 82);
+            this.label3.Location = new System.Drawing.Point(504, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Цвета";
+            this.label3.Text = "Colors";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(703, 82);
+            this.label2.Location = new System.Drawing.Point(566, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 14;
-            this.label2.Text = "Изменение ";
+            this.label2.Text = "Change";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(713, 95);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "цветов";
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(777, 12);
+            this.trackBar1.Location = new System.Drawing.Point(644, 40);
             this.trackBar1.Maximum = 20;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(45, 69);
+            this.trackBar1.Size = new System.Drawing.Size(144, 45);
             this.trackBar1.TabIndex = 17;
             this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.TrackBar1_Scroll);
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(777, 82);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.ReadOnly = true;
-            this.numericUpDown1.Size = new System.Drawing.Size(30, 20);
-            this.numericUpDown1.TabIndex = 18;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.ClearBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1041, 24);
@@ -413,6 +329,13 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            // 
+            // ClearBtn
+            // 
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(46, 20);
+            this.ClearBtn.Text = "Clear";
+            this.ClearBtn.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // saveFileDialog1
             // 
@@ -448,7 +371,7 @@
             // moveBtn
             // 
             this.moveBtn.Enabled = false;
-            this.moveBtn.Location = new System.Drawing.Point(859, 62);
+            this.moveBtn.Location = new System.Drawing.Point(821, 62);
             this.moveBtn.Name = "moveBtn";
             this.moveBtn.Size = new System.Drawing.Size(75, 45);
             this.moveBtn.TabIndex = 21;
@@ -459,7 +382,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(822, 12);
+            this.label4.Location = new System.Drawing.Point(755, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 23;
@@ -468,7 +391,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(822, 43);
+            this.label7.Location = new System.Drawing.Point(700, 71);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 25;
@@ -477,7 +400,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(828, 68);
+            this.label6.Location = new System.Drawing.Point(647, 71);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 13);
             this.label6.TabIndex = 26;
@@ -485,7 +408,7 @@
             // 
             // selectBtn
             // 
-            this.selectBtn.Location = new System.Drawing.Point(858, 13);
+            this.selectBtn.Location = new System.Drawing.Point(821, 12);
             this.selectBtn.Name = "selectBtn";
             this.selectBtn.Size = new System.Drawing.Size(76, 43);
             this.selectBtn.TabIndex = 27;
@@ -496,7 +419,7 @@
             // deleteBtn
             // 
             this.deleteBtn.Enabled = false;
-            this.deleteBtn.Location = new System.Drawing.Point(940, 12);
+            this.deleteBtn.Location = new System.Drawing.Point(917, 12);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 95);
             this.deleteBtn.TabIndex = 28;
@@ -504,10 +427,37 @@
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
+            // ChengeColorButton
+            // 
+            this.ChengeColorButton.Image = global::Team_Project_Paint.Properties.Resources._2;
+            this.ChengeColorButton.Location = new System.Drawing.Point(569, 50);
+            this.ChengeColorButton.Name = "ChengeColorButton";
+            this.ChengeColorButton.Size = new System.Drawing.Size(35, 35);
+            this.ChengeColorButton.TabIndex = 8;
+            this.ChengeColorButton.UseVisualStyleBackColor = true;
+            this.ChengeColorButton.Click += new System.EventHandler(this.ChengeColorButton_Click);
+            // 
+            // pictureBoxMain
+            // 
+            this.pictureBoxMain.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxMain.Image = global::Team_Project_Paint.Properties.Resources.line1;
+            this.pictureBoxMain.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxMain.Name = "pictureBoxMain";
+            this.pictureBoxMain.Size = new System.Drawing.Size(1041, 533);
+            this.pictureBoxMain.TabIndex = 0;
+            this.pictureBoxMain.TabStop = false;
+            this.pictureBoxMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseClick);
+            this.pictureBoxMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseDown);
+            this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseMove);
+            this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox1_MouseUp);
+            // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1041, 533);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.selectBtn);
@@ -516,9 +466,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.moveBtn);
             this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -528,7 +476,6 @@
             this.Controls.Add(this.button6);
             this.Controls.Add(this.CurrentColorButton);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.toolStrip1);
@@ -537,14 +484,13 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Paint";
             this.Text = "Paint";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -559,10 +505,8 @@
         private System.Windows.Forms.ToolStripButton CurveButton;
         private System.Windows.Forms.ToolStripButton RectangleButton;
         private System.Windows.Forms.ToolStripButton EllipseButton;
-        private System.Windows.Forms.ToolStripButton ClearButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button CurrentColorButton;
         private System.Windows.Forms.Button button6;
@@ -572,10 +516,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -592,6 +534,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.ToolStripMenuItem ClearBtn;
     }
 }
 
