@@ -5,8 +5,6 @@ using Team_Project_Paint.Class;
 namespace PaintTests
 {
 
-
-
     public class PaintColorTests
     {
 
