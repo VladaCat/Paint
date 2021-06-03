@@ -140,7 +140,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         public void UpdatePicture(PaintBitmap paintBitmap)
         {
-            var update = new ChangeOperation(_storage.GetAll(), paintBitmap);
+            var update = new Update(_storage.GetAll(), paintBitmap);
             update.UpdatePicture();
         }
 

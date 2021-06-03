@@ -54,7 +54,7 @@
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
     <Compile Include="Class\OperationWithFigures\BL.cs" />
-    <Compile Include="Class\OperationWithFigures\ChangeOperation.cs" />
+    <Compile Include="Class\OperationWithFigures\Update.cs" />
     <Compile Include="Class\OperationWithFigures\JsonLogic.cs" />
     <Compile Include="Class\OperationWithFigures\ShapeListDTO.cs" />
     <Compile Include="Class\OperationWithFigures\Storage.cs" />
@@ -71,7 +71,6 @@
     <Compile Include="Class\DrawingLibrary\PaintGraphics.cs" />
     <Compile Include="Class\DrawingLibrary\PaintPen.cs" />
     <Compile Include="Class\DrawingLibrary\PaintSolidBrush.cs" />
-    <Compile Include="Class\OperationWithFigures\Select.cs" />
     <Compile Include="Class\FigureDrawingClass\Rect.cs" />
     <Compile Include="Class\DrawingLibrary\ShapeSize.cs" />
     <Compile Include="Class\DrawingLibrary\ShaipSizeF.cs" />
@@ -83,7 +82,6 @@
     <Compile Include="Enum\EShapeType.cs" />
     <Compile Include="Class\FigureDrawingClass\Hexagon.cs" />
     <Compile Include="Interfaces\IBL.cs" />
-    <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="Interfaces\IShapeFactory.cs" />
     <Compile Include="Interfaces\IStorage.cs" />
     <Compile Include="MainForm.cs">
