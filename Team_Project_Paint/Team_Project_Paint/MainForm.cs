@@ -15,7 +15,7 @@ namespace Team_Project_Paint
     public partial class Paint : Form
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
-        private int _currentBrashSize;
+        private int _currentBrashSize = 1;
         private ShapePoint _lastPonit;
         private EShapeType _currentMode;
         private PaintBitmap _currentBitmap;
@@ -24,7 +24,6 @@ namespace Team_Project_Paint
         private bool _isSelectMode = false;
         private bool _isStartMove = false;
         private bool _isSelected = false;
-        //private Storage _storage = new Storage();
         private BL _bl;
         private int _cornesValue;
 
