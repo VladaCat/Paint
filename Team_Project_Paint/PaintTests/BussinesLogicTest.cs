@@ -120,20 +120,19 @@ namespace PaintTests
             storage.Verify(a => a.GetLast(), Times.Once);
         }
 
-        //[Test]
-        //public void isBoolCountTest()
-        //{
-        //    Mock<IStorage> storage = new Mock<IStorage>(MockBehavior.Strict);
-        //    storage.Setup(a => a.GetCount() > 0).Returns(It.IsAny<bool>());
+        [Test]
+        public void isBoolCountTest()
+        {
+            Mock<IStorage> storage = new Mock<IStorage>(MockBehavior.Strict);
+            storage.Setup(a => a.GetCount()).Returns(It.IsAny<int>());
 
-        //    IBusinessLogic bl = new BusinessLogic(storage.Object, null, null);
-        //    bool act = bl.isBoolCount();
+            IBusinessLogic bl = new BusinessLogic(storage.Object, null, null);
+            bool act = bl.isBoolCount();
 
-        //    Assert.AreSame(It.IsAny<bool>(), act);
+            Assert.AreEqual(false, act);
 
-        //    storage.Verify(a => a.GetCount(), Times.Once);
-
-        //}
+            storage.Verify(a => a.GetCount(), Times.Once);
+        }
 
     }
 }

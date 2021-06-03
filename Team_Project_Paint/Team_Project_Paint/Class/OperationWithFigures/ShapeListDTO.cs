@@ -24,6 +24,12 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         public PaintColor Color { get; set; }
 
         [JsonProperty]
+        public ShapeSize Size { get; set; }
+
+        [JsonProperty]
+        public int Cornes { get; set; }
+
+        [JsonProperty]
         public EShapeType Name { get; set; }
     }
 }

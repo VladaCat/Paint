@@ -13,8 +13,6 @@ namespace Team_Project_Paint.Interfaces
     {
         int Thickness { get; set; }
 
-      
-
         ShapePoint Location { get; set; }
         ShapePoint FinishLocation { get; set; }
 

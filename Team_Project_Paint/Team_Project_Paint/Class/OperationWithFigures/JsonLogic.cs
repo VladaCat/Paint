@@ -68,6 +68,9 @@ namespace Team_Project_Paint.Class.OperationWithFigures
                             Thickness = item.Thickness,
                             FinishLocation = item.FinishLocation,
                             Location = item.Location,
+                            Size = item.Size,
+                            Cornes = item.Cornes,
+
                         });
                         break;
                     case EShapeType.Line:

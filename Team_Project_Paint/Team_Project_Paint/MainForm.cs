@@ -25,11 +25,11 @@ namespace Team_Project_Paint
         private bool _isStartMove = false;
         private bool _isSelected = false;
         private BusinessLogic _bl;
-        private int _cornesValue;
+        private int _cornesValue = 3;
         private const string TEXT_FOR_SELECT_ON = "SELECT ON";
         private const string TEXT_FOR_SELECT_OFF = "SELECT OFF";
         private const string TEXT_FOR_MOVE_ON = "MOVE ON";
-        private const string TEXT_FOR_MOVE_OFF = "SELECT OFF";
+        private const string TEXT_FOR_MOVE_OFF = "MOVE OFF";
 
 
         public Paint()
