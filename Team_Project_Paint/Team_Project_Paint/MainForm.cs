@@ -26,6 +26,10 @@ namespace Team_Project_Paint
         private bool _isSelected = false;
         private BusinessLogic _bl;
         private int _cornesValue;
+        private const string TEXT_FOR_SELECT_ON = "SELECT ON";
+        private const string TEXT_FOR_SELECT_OFF = "SELECT OFF";
+        private const string TEXT_FOR_MOVE_ON = "MOVE ON";
+        private const string TEXT_FOR_MOVE_OFF = "SELECT OFF";
 
 
         public Paint()
@@ -58,12 +62,12 @@ namespace Team_Project_Paint
                 // Если фигура все-еще рисуется, показать ее на экране (обновить)
                 if (currentShape.EShapeStatus == EShapeStatus.IN_PROGRESS)
                 {
-                    pictureBoxMain.Image = _bufferedBitmap.ToImage();
+                    pictureBoxMain.Image = _bufferedBitmap?.ToImage();
                 }
                 if (currentShape.EShapeStatus == EShapeStatus.DONE)
                 {
-                    _currentBitmap = _bufferedBitmap.Clone() as PaintBitmap;
-                    pictureBoxMain.Image = _currentBitmap.ToImage();
+                    _currentBitmap = _bufferedBitmap?.Clone() as PaintBitmap;
+                    pictureBoxMain.Image = _currentBitmap?.ToImage();
                 }
             }
         }
@@ -318,23 +322,23 @@ namespace Team_Project_Paint
             if (!_isMoveMode)
             {
                 _isMoveMode = true;
-                moveBtn.Text = "MOVE ON";
+                moveBtn.Text = TEXT_FOR_MOVE_ON;
                 deleteBtn.Enabled = false;
             }
             else
             {
                 _isMoveMode = false;
-                moveBtn.Text = "MOVE OFF";
+                moveBtn.Text = TEXT_FOR_MOVE_OFF;
                 deleteBtn.Enabled = true;
             }
         }
 
-        private void selectBtn_Click(object sender, EventArgs e)
+        private void SelectBtn_Click(object sender, EventArgs e)
         {
             if (!_isSelectMode)
             {
                 _isSelectMode = true;
-                selectBtn.Text = "SELECT ON";
+                selectBtn.Text = TEXT_FOR_SELECT_ON;
                 moveBtn.Enabled = true;
                 deleteBtn.Enabled = true;
             }
@@ -342,14 +346,14 @@ namespace Team_Project_Paint
             {
                 _isSelectMode = false;
                 _isMoveMode = false;
-                moveBtn.Text = "MOVE OFF";
-                selectBtn.Text = "SELECT OFF";
+                moveBtn.Text = TEXT_FOR_MOVE_OFF;
+                selectBtn.Text = TEXT_FOR_SELECT_OFF;
                 moveBtn.Enabled = false;
                 deleteBtn.Enabled = false;
             }
         }
 
-        private void deleteBtn_Click(object sender, EventArgs e)
+        private void DeleteBtn_Click(object sender, EventArgs e)
         {
             if (_bl.GetBoolCount() && _isSelected)
             {

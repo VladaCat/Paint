@@ -491,7 +491,7 @@
             this.selectBtn.TabIndex = 27;
             this.selectBtn.Text = "SELECT OFF";
             this.selectBtn.UseVisualStyleBackColor = true;
-            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
+            this.selectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
             // deleteBtn
             // 
@@ -502,7 +502,7 @@
             this.deleteBtn.TabIndex = 28;
             this.deleteBtn.Text = "DELETE";
             this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // Paint
             // 

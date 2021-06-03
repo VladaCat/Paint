@@ -6,7 +6,7 @@ using Team_Project_Paint.Class.OperationWithFigures;
 namespace PaintTests
 {
 
-    public class ShaipPontTests
+    public class ShapePointFTests
     {
 
 
@@ -19,11 +19,11 @@ namespace PaintTests
         public void GetSetTests()
         {
 
-            ShapePoint shapePoint = new ShapePoint(10, 20);
-            Assert.AreEqual(10, shapePoint.X);
-            Assert.AreEqual(20, shapePoint.Y);
+            ShapePointF shapePointF = new ShapePointF(10,20);
+            Assert.AreEqual(10, shapePointF.X);
+            Assert.AreEqual(20, shapePointF.Y);
 
-            Point point = shapePoint.ToPoint();
+            PointF point = shapePointF.ToPointF();
             Assert.AreEqual(10, point.X);
             Assert.AreEqual(20, point.Y);
 
@@ -32,11 +32,11 @@ namespace PaintTests
         [Test]
         public void ConstructorPointTest()
         {
-            ShapePoint shapePoint = new ShapePoint(new Point(20, 30));
-            Assert.AreEqual(20, shapePoint.X);
-            Assert.AreEqual(30, shapePoint.Y);
+            ShapePointF shapePointF = new ShapePointF(new PointF(20, 30));
+            Assert.AreEqual(20, shapePointF.X);
+            Assert.AreEqual(30, shapePointF.Y);
 
-            Point point = shapePoint.ToPoint();
+            PointF point = shapePointF.ToPointF();
             Assert.AreEqual(20, point.X);
             Assert.AreEqual(30, point.Y);
         }
