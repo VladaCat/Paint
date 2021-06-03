@@ -24,7 +24,7 @@ namespace Team_Project_Paint
         private bool _isSelectMode = false;
         private bool _isStartMove = false;
         private bool _isSelected = false;
-        private BL _bl;
+        private BusinessLogic _bl;
         private int _cornesValue;
 
 
@@ -33,7 +33,7 @@ namespace Team_Project_Paint
             InitializeComponent();
             _currentMode = EShapeType.Curve;
 
-            _bl = new BL(new Storage(), new ShapeFactory());
+            _bl = new BusinessLogic(new Storage(), new ShapeFactory(), new JsonLogic());
             _bl.Init(_currentMode, _currentBrashSize, _curentcolor);
 
             _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
@@ -223,18 +223,16 @@ namespace Team_Project_Paint
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
-            //saveFileDialog1.ShowDialog();
-            //if (saveFileDialog1.FileName != "" && saveFileDialog1.FilterIndex == 4)
-            //{
-            //    var json = new JsonLogic();
-            //    json.JsonSerialize(_storage.GetAll());
-            //    File.WriteAllText(saveFileDialog1.FileName, json.File);
-            //}
-            //else if (saveFileDialog1.FileName != "")
-            //{
-            //    _currentBitmap.Save(saveFileDialog1.FileName);
-            //}
+            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
+            saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.FileName != "" && saveFileDialog1.FilterIndex == 4)
+            {
+                _bl.JsonSave(saveFileDialog1.FileName);
+            }
+            else if (saveFileDialog1.FileName != "")
+            {
+                _currentBitmap.Save(saveFileDialog1.FileName);
+            }
         }
 
         private void TrackBar1_Scroll(object sender, EventArgs e)
@@ -263,32 +261,25 @@ namespace Team_Project_Paint
 
         private void OpentoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
-            //openFileDialog1.ShowDialog();
+            openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
+            openFileDialog1.ShowDialog();
 
-            //if (openFileDialog1.FileName != "" && openFileDialog1.FilterIndex == 4)
-            //{
-            //    var strings = File.ReadAllText(openFileDialog1.FileName);
-            //    var json = new JsonLogic();
-            //    json.JsonDeserialize(strings, _storage.GetAll());
-            //    _storage.OpenJson(json.JsonList);
+            if (openFileDialog1.FileName != "" && openFileDialog1.FilterIndex == 4)
+            {
 
-            //    for (int i = 0; i < _storage.GetCount(); i++)
-            //    {
-            //        if (_storage.GetShapeForIndex(i) != null)
-            //        {
-            //            _storage.GetShapeForIndex(i).EShapeStatus = EShapeStatus.DONE;
-            //            _storage.GetShapeForIndex(i).Draw(PaintGraphics.FromImage(_currentBitmap));
-            //            Repaint();
-            //        }
-            //    }
-            //}
-            //else if (openFileDialog1.FileName != "")
-            //{
-            //    _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
-            //    pictureBoxMain.Image = _currentBitmap.ToImage();
-            //    Repaint();
-            //}
+                var strings = File.ReadAllText(openFileDialog1.FileName);
+
+                if (_bl.JsonOpen(strings, _currentBitmap))
+                {
+                    Repaint();
+                }
+            }
+            else if (openFileDialog1.FileName != "")
+            {
+                _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
+                pictureBoxMain.Image = _currentBitmap.ToImage();
+                Repaint();
+            }
 
 
         }

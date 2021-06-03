@@ -1,20 +1,23 @@
-﻿using Team_Project_Paint.Interfaces;
+﻿using System.IO;
+using Team_Project_Paint.Interfaces;
 using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class.OperationWithFigures
 {
-    public class BL : IBL
+    public class BusinessLogic : IBusinessLogic
     {
         private IStorage _storage;
         private IShapeFactory _shape;
         private IShape _newshape;
+        private IJsonLogic _jsonlogic;
 
         public int Numb { get; set; }
 
-        public BL(IStorage storage, IShapeFactory shape)
+        public BusinessLogic(IStorage storage, IShapeFactory shape, IJsonLogic jsonLogic)
         {
             _storage = storage;
             _shape = shape;
+            _jsonlogic = jsonLogic;
         }
 
         public void Init(EShapeType type, int thickness, PaintColor color)
@@ -144,6 +147,12 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             update.UpdatePicture();
         }
 
+        public void UpdatePictureJson(PaintBitmap paintBitmap)
+        {
+            var update = new Update(_storage.GetAll(), paintBitmap);
+            update.UpdatePictureJson();
+        }
+
         public void Move(int dx, int dy, IShape shape)
         {
             int startX = shape.Location.X + dx;
@@ -166,6 +175,20 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
 
             shape.Location = start;
+        }
+
+        public bool JsonOpen(string jsonFile, PaintBitmap paintBitmap)
+        {
+            _jsonlogic.JsonDeserialize(jsonFile, _storage.GetAll());
+            _storage.OpenJson(_jsonlogic.JsonList);
+            UpdatePictureJson(paintBitmap);
+            return true;
+        }
+
+        public void JsonSave(string fileName)
+        {
+            _jsonlogic.JsonSerialize(_storage.GetAll());
+            File.WriteAllText(fileName, _jsonlogic.File);
         }
     }
 }

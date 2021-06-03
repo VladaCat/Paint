@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Team_Project_Paint.Class.FigureDrawingClass;
 using Team_Project_Paint.Interfaces;
 
 namespace Team_Project_Paint.Class.OperationWithFigures
@@ -25,6 +22,18 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             {
                 if (_shapelist[i] != null)
                 {
+                    _shapelist[i].Draw(PaintGraphics.FromImage(_currentBitmap));
+                }
+            }
+        }
+
+        public void UpdatePictureJson()
+        {
+            for (int i = 0; i < _shapelist.Count; i++)
+            {
+                if (_shapelist[i] != null)
+                {
+                    _shapelist[i].EShapeStatus = EShapeStatus.DONE;
                     _shapelist[i].Draw(PaintGraphics.FromImage(_currentBitmap));
                 }
             }

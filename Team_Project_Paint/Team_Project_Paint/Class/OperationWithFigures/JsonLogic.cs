@@ -6,10 +6,12 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Class.OperationWithFigures
 {
-    public class JsonLogic
+    public class JsonLogic : IJsonLogic
     {
-        public string File;
-        public List<IShape> JsonList;
+        public string File { get; set; }
+
+        public List<IShape> JsonList { get; set; }
+
         public void JsonSerialize(List<IShape> shapeList)
         {
             var obj = JsonConvert.SerializeObject(shapeList);

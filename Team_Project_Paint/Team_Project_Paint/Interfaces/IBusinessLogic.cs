@@ -9,7 +9,7 @@ using Team_Project_Paint.PaintEnum;
 
 namespace Team_Project_Paint.Interfaces
 {
-    public interface IBL
+    public interface IBusinessLogic
     {
         int Numb { get; set; }
 
