@@ -134,5 +134,37 @@ namespace PaintTests
             storage.Verify(a => a.GetCount(), Times.Once);
         }
 
+        [TestCase(EShapeType.Ellipse, 20, 40, 20, 64, 89, 100)]
+        [TestCase(EShapeType.Ellipse, -90,-20, 20, 64, 89, 100)]
+        [TestCase(EShapeType.Rect, -9, -9, 20, 64, 89, 100)]
+        [TestCase(EShapeType.Rect, 40, 40, -50, -80, -20, -30)]
+        [TestCase(EShapeType.Hexagon, 15, 97, 20, 64, 89, 100)]
+        [TestCase(EShapeType.Hexagon, 60, 10, 0, 0, 96, 120)]
+        [TestCase(EShapeType.Triangle, 17, 63, 20, 64, 89, 100)]
+        [TestCase(EShapeType.Triangle, 17, 63, 20, 64, 89, 100)]
+        [TestCase(EShapeType.Line, -80, -120, 20, 64, 89, 100)]
+        [TestCase(EShapeType.Line, 80, 120, -20, -64, -89, -100)]
+        [TestCase(EShapeType.RoundingRect, -36, 40, 20, 64, 89, 100)]
+        [TestCase(EShapeType.RoundingRect, 36, -40, 30, 75, 91, 200)]
+        public void MoveMegaTest(EShapeType type, int dx, int dy, int startX, int startY, int finX, int finY)
+        {
+            IShape expShape = _shape.CreateShape(type);
+
+            expShape.Location = new ShapePoint(dx + startX, dy + startY);
+            expShape.FinishLocation = new ShapePoint(dx + finX, dy + finY);
+
+            IShape actShape = _shape.CreateShape(type);
+
+            actShape.Location = new ShapePoint(startX, startY);
+            actShape.FinishLocation = new ShapePoint(finX, finY);
+
+            _bl.Move(dx, dy, actShape);
+
+
+            Assert.AreEqual(expShape.Location.X, actShape.Location.X);
+            Assert.AreEqual(expShape.Location.Y, actShape.Location.Y);
+            Assert.AreEqual(expShape.FinishLocation.X, actShape.FinishLocation.X);
+            Assert.AreEqual(expShape.FinishLocation.Y, actShape.FinishLocation.Y);
+        }
     }
 }

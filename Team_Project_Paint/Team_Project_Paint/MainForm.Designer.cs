@@ -35,8 +35,8 @@
             this.RectangleButton = new System.Windows.Forms.ToolStripButton();
             this.EllipseButton = new System.Windows.Forms.ToolStripButton();
             this.TriangleButton = new System.Windows.Forms.ToolStripButton();
-            this.HexagonButtom = new System.Windows.Forms.ToolStripButton();
             this.RoundingRectButton = new System.Windows.Forms.ToolStripButton();
+            this.HexagonButtom = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -158,18 +158,6 @@
             this.TriangleButton.Text = "Triangle";
             this.TriangleButton.Click += new System.EventHandler(this.TriangleButton_Click);
             // 
-            // HexagonButtom
-            // 
-            this.HexagonButtom.AutoSize = false;
-            this.HexagonButtom.BackColor = System.Drawing.Color.Transparent;
-            this.HexagonButtom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.HexagonButtom.Image = global::Team_Project_Paint.Properties.Resources.hexagon1;
-            this.HexagonButtom.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.HexagonButtom.Name = "HexagonButtom";
-            this.HexagonButtom.Size = new System.Drawing.Size(50, 50);
-            this.HexagonButtom.Text = "Hexagon";
-            this.HexagonButtom.Click += new System.EventHandler(this.HexagonButton_Click);
-            // 
             // RoundingRectButton
             // 
             this.RoundingRectButton.AutoSize = false;
@@ -181,6 +169,18 @@
             this.RoundingRectButton.Size = new System.Drawing.Size(50, 50);
             this.RoundingRectButton.Text = "Rounding Rectangle";
             this.RoundingRectButton.Click += new System.EventHandler(this.RoundingRectButton_Click);
+            // 
+            // HexagonButtom
+            // 
+            this.HexagonButtom.AutoSize = false;
+            this.HexagonButtom.BackColor = System.Drawing.Color.Transparent;
+            this.HexagonButtom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.HexagonButtom.Image = global::Team_Project_Paint.Properties.Resources.hexagon1;
+            this.HexagonButtom.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.HexagonButtom.Name = "HexagonButtom";
+            this.HexagonButtom.Size = new System.Drawing.Size(50, 50);
+            this.HexagonButtom.Text = "Hexagon";
+            this.HexagonButtom.Click += new System.EventHandler(this.HexagonButton_Click);
             // 
             // button1
             // 
@@ -319,14 +319,14 @@
             // opentoolStripMenuItem
             // 
             this.opentoolStripMenuItem.Name = "opentoolStripMenuItem";
-            this.opentoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.opentoolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.opentoolStripMenuItem.Text = "Open";
             this.opentoolStripMenuItem.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
@@ -440,7 +440,7 @@
             // 
             // pictureBoxMain
             // 
-            this.pictureBoxMain.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxMain.BackColor = System.Drawing.Color.White;
             this.pictureBoxMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxMain.Image = global::Team_Project_Paint.Properties.Resources.line1;
