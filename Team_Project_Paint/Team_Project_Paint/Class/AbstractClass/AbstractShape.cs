@@ -16,11 +16,7 @@ namespace Team_Project_Paint.Class
         {
             this.name = name;
         }
-        public int Thickness
-        {
-            get;
-            set;
-        }
+        public int Thickness { get; set;}
         public EShapeType Name
         {
             get => name;

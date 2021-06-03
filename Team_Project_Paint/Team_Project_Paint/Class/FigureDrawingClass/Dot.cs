@@ -43,23 +43,5 @@ namespace Team_Project_Paint.Class
             Location = new ShapePoint(point.ToPoint());
             EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
         }
-
-
-
-        //public override void MouseUp(ShapePoint point)
-        //{
-        //    //base.MouseUp(point);
-        //    Location = new ShapePoint(point.ToPoint());
-        //    EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
-        //}
-
-        //public override void MouseClick(ShapePoint point)
-        //{
-        //    if (EShapeStatus == FigureDrawingClass.EShapeStatus.NOT_STARTED)
-        //    {
-        //        Location = new ShapePoint(point.ToPoint());
-        //        EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
-        //    }
-        //}
     }
 }

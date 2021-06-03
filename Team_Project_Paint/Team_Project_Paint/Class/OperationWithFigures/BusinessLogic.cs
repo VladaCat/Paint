@@ -45,7 +45,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             _storage.Add(_newshape);
         }
 
-        public IShape IsSelectShape()
+        public IShape GetSelectedShape()
         {
             IShape shape = _storage.GetShapeForIndex(Numb);
             _storage.RemoveAt(Numb);
@@ -90,15 +90,16 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         public IShape Last()
         {
-            return _storage.GetLast();
+            IShape shape = _storage.GetLast();
+            return shape;
         }
 
-        public bool GetBoolCount()
+        public bool isBoolCount()
         {
             return _storage.GetCount() > 0;
         }
 
-        public bool SelectShape(ShapePoint e)
+        public bool IsSelectShape(ShapePoint e)
         {
             bool isSelect = false;
 

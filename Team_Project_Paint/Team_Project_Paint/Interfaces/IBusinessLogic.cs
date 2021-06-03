@@ -19,7 +19,7 @@ namespace Team_Project_Paint.Interfaces
 
         void NewShape(EShapeType type, int thickness, PaintColor color, int cornes, ShapeSize size);
 
-        IShape IsSelectShape();
+        IShape GetSelectedShape();
 
         void Delete(PaintBitmap paintBitmap);
 
@@ -33,9 +33,9 @@ namespace Team_Project_Paint.Interfaces
 
         IShape Last();
 
-        bool GetBoolCount();
+        bool isBoolCount();
 
-        bool SelectShape(ShapePoint e);
+        bool IsSelectShape(ShapePoint e);
 
         void UpdatePicture(PaintBitmap paintBitmap);
 

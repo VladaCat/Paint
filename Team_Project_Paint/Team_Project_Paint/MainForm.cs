@@ -47,7 +47,7 @@ namespace Team_Project_Paint
 
         private void Repaint()
         {
-            if (_bl.GetBoolCount())
+            if (_bl.isBoolCount())
             {
                 // Достаем последнюю фигуру, ту, которая в данный момент рисуется
                 IShape currentShape = _bl.Last();
@@ -85,12 +85,12 @@ namespace Team_Project_Paint
             else if (_isSelectMode && !_isStartMove && e.Button == MouseButtons.Left)
             {
                 _lastPonit = new ShapePoint(e.Location);
-                _isSelected = _bl.SelectShape(_lastPonit);
+                _isSelected = _bl.IsSelectShape(_lastPonit);
 
                 if (_isSelected && _isMoveMode)
                 {
                     _isStartMove = true;
-                    IShape currentShape = _bl.IsSelectShape();
+                    IShape currentShape = _bl.GetSelectedShape();
                     _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                     Repaint();
                     _bl.UpdatePicture(_currentBitmap);
@@ -105,7 +105,7 @@ namespace Team_Project_Paint
         {
             if (!_isStartMove && !_isSelectMode && !_isMoveMode &&  e.Button == MouseButtons.Left)
             {
-                if (_bl.GetBoolCount())
+                if (_bl.isBoolCount())
                 {
                     IShape currentShape = _bl.Last();
                     currentShape.MouseUp(new ShapePoint(e.Location));
@@ -140,7 +140,7 @@ namespace Team_Project_Paint
                     Repaint();
 
                 }
-                else if (!_isMoveMode && !_isSelectMode && _bl.GetBoolCount())
+                else if (!_isMoveMode && !_isSelectMode && _bl.isBoolCount())
                 {
                     IShape currentShape = _bl.Last();
                     currentShape.MouseMove(new ShapePoint(e.Location));
@@ -154,7 +154,7 @@ namespace Team_Project_Paint
         {
             if (e.Button == MouseButtons.Left && !_isSelectMode && !_isMoveMode)
             {
-                if (_bl.GetBoolCount())
+                if (_bl.isBoolCount())
                 {
                     IShape currentShape = _bl.Last();
                     currentShape.MouseClick(new ShapePoint(e.Location));
@@ -215,7 +215,7 @@ namespace Team_Project_Paint
             CurrentColorButton.BackColor = b.BackColor;
             _curentcolor = new PaintColor(CurrentColorButton.BackColor);
 
-            if (_bl.GetBoolCount() && _isSelected)
+            if (_bl.isBoolCount() && _isSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
@@ -229,11 +229,11 @@ namespace Team_Project_Paint
         {
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             saveFileDialog1.ShowDialog();
-            if (saveFileDialog1.FileName != "" && saveFileDialog1.FilterIndex == 4)
+            if (saveFileDialog1.FileName != "" && saveFileDialog1.FilterIndex == 4 && saveFileDialog1.FileName != "saveFileDialog1")
             {
                 _bl.JsonSave(saveFileDialog1.FileName);
             }
-            else if (saveFileDialog1.FileName != "")
+            else if (saveFileDialog1.FileName != "" && saveFileDialog1.FileName != "saveFileDialog1")
             {
                 _currentBitmap.Save(saveFileDialog1.FileName);
             }
@@ -243,7 +243,7 @@ namespace Team_Project_Paint
         {
             _currentBrashSize = trackBar1.Value;
             numericUpDown1.Value = _currentBrashSize;
-            if (_bl.GetBoolCount() && _isSelected)
+            if (_bl.isBoolCount() && _isSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
@@ -255,7 +255,7 @@ namespace Team_Project_Paint
         {
             _currentBrashSize = (int)numericUpDown1.Value;
             trackBar1.Value = _currentBrashSize;
-            if (_bl.GetBoolCount() && _isSelected)
+            if (_bl.isBoolCount() && _isSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
@@ -268,7 +268,7 @@ namespace Team_Project_Paint
             openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|PNG Image|*.png|JSON File|*.json";
             openFileDialog1.ShowDialog();
 
-            if (openFileDialog1.FileName != "" && openFileDialog1.FilterIndex == 4)
+            if (openFileDialog1.FileName != "" && openFileDialog1.FilterIndex == 4 && openFileDialog1.FileName != "openFileDialog1")
             {
 
                 var strings = File.ReadAllText(openFileDialog1.FileName);
@@ -278,7 +278,7 @@ namespace Team_Project_Paint
                     Repaint();
                 }
             }
-            else if (openFileDialog1.FileName != "")
+            else if (openFileDialog1.FileName != "" && openFileDialog1.FileName != "openFileDialog1")
             {
                 _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
@@ -296,7 +296,7 @@ namespace Team_Project_Paint
                 _curentcolor = new PaintColor(colorDialog1.Color);
             }
 
-            if (_bl.GetBoolCount() && _isSelected)
+            if (_bl.isBoolCount() && _isSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
@@ -307,7 +307,7 @@ namespace Team_Project_Paint
         private void NumericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             _cornesValue = decimal.ToInt32(numericUpDown2.Value);
-            if (_bl.GetBoolCount())
+            if (_bl.isBoolCount())
             {
                 IShape currentShape = _bl.Last();
                 if (currentShape is Hexagon)
@@ -355,7 +355,7 @@ namespace Team_Project_Paint
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            if (_bl.GetBoolCount() && _isSelected)
+            if (_bl.isBoolCount() && _isSelected)
             {
                 _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
                 pictureBoxMain.Image = _currentBitmap.ToImage();
