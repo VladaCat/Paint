@@ -46,7 +46,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
                     case EShapeType.Dot:
                         list.Add(new Dot()
                         {
-                            Color = new PaintColor(System.Drawing.Color.Black),
+                            Color = item.Color,
                             Thickness = item.Thickness,
                             FinishLocation = item.FinishLocation,
                             Location = item.Location,
