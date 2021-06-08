@@ -1,4 +1,4 @@
-﻿namespace Team_Project_Paint
+namespace Team_Project_Paint
 {
     partial class Paint
     {
@@ -65,6 +65,8 @@
             this.deleteBtn = new System.Windows.Forms.Button();
             this.ChengeColorButton = new System.Windows.Forms.Button();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
+            this.statsBtn = new System.Windows.Forms.Button();
+            this.logOutBtn = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -454,12 +456,34 @@
             this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPictureBox_MouseMove);
             this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPictureBox_MouseUp);
             // 
+            // statsBtn
+            // 
+            this.statsBtn.Location = new System.Drawing.Point(627, 1);
+            this.statsBtn.Name = "statsBtn";
+            this.statsBtn.Size = new System.Drawing.Size(75, 23);
+            this.statsBtn.TabIndex = 29;
+            this.statsBtn.Text = "Statistics";
+            this.statsBtn.UseVisualStyleBackColor = true;
+            this.statsBtn.Click += new System.EventHandler(this.statsBtn_Click);
+            // 
+            // logOutBtn
+            // 
+            this.logOutBtn.Location = new System.Drawing.Point(710, 1);
+            this.logOutBtn.Name = "logOutBtn";
+            this.logOutBtn.Size = new System.Drawing.Size(75, 23);
+            this.logOutBtn.TabIndex = 30;
+            this.logOutBtn.Text = "Log Out";
+            this.logOutBtn.UseVisualStyleBackColor = true;
+            this.logOutBtn.Click += new System.EventHandler(this.logOutBtn_Click);
+            // 
             // Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1041, 533);
+            this.Controls.Add(this.logOutBtn);
+            this.Controls.Add(this.statsBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.selectBtn);
             this.Controls.Add(this.label6);
@@ -536,6 +560,8 @@
         private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.ToolStripMenuItem ClearBtn;
+        private System.Windows.Forms.Button statsBtn;
+        private System.Windows.Forms.Button logOutBtn;
     }
 }
 

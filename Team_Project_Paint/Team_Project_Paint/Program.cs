@@ -16,7 +16,7 @@ namespace Team_Project_Paint
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Paint());
+            Application.Run(new AutorizationForm());
         }
     }
 }

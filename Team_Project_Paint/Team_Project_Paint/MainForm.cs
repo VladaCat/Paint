@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -350,6 +350,20 @@ namespace Team_Project_Paint
                 _bl.Delete(_currentBitmap);
                 _isSelected = false;
             }
+        }
+
+        private void statsBtn_Click(object sender, EventArgs e)
+        {
+            Form stats = new StatsForm();
+            stats.Show();
+            this.Hide();
+        }
+
+        private void logOutBtn_Click(object sender, EventArgs e)
+        {
+            Form login = new AutorizationForm();
+            login.Show();
+            this.Hide();
         }
     }
 }
