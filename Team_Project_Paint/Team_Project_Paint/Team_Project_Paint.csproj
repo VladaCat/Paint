@@ -182,5 +182,8 @@
   <ItemGroup>
     <None Include="Resources\line.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SQL_Request\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
