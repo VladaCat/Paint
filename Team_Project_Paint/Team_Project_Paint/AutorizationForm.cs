@@ -58,6 +58,7 @@ namespace Team_Project_Paint
 
         private void PassTextBox_TextChanged(object sender, EventArgs e)
         {
+            //https://docs.microsoft.com/ru-ru/dotnet/api/system.windows.forms.control.validated?view=net-5.0
             //Условия: строка должна содержать от 8 до 16 символов.
             //строка должна содержать хотя бы одно число. строка должна
             //содержать хотя бы одну заглавную букву. строка должна
