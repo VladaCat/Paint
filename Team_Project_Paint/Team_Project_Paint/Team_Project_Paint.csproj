@@ -53,6 +53,7 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\Helpers\Validation.cs" />
     <Compile Include="Class\OperationWithFigures\BusinessLogic.cs" />
     <Compile Include="Class\OperationWithFigures\Update.cs" />
     <Compile Include="Class\OperationWithFigures\JsonLogic.cs" />
