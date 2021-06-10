@@ -52,15 +52,16 @@ namespace Team_Project_Paint
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // StatisticForm
+            // StatsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.dataGridStatistics);
-            this.Name = "StatisticForm";
+            this.Name = "StatsForm";
             this.Text = "Paint";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StatsForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistics)).EndInit();
             this.ResumeLayout(false);
 
