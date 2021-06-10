@@ -26,10 +26,14 @@ namespace Team_Project_Paint
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            //Form login = new AutorizationForm();
-            //login.Show();
+            
             FormsManager.autorizationForm.Show();
             Hide();
+        }
+
+        private void RegistartionForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormsManager.dummyForm.Close();
         }
     }
 }
