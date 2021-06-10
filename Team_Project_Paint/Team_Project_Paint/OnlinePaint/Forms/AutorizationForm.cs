@@ -22,9 +22,14 @@ namespace Team_Project_Paint
 
         private void signInBtn_Click(object sender, EventArgs e)
         {
-            Form paint = new MainForm();
-            paint.Show();
-            this.Hide();
+            
+            if (true) //TODO: add condition
+            {
+                
+                FormsManager.mainForm.Show();
+                Hide();
+            }
+            
         }
 
         private void signUpLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
