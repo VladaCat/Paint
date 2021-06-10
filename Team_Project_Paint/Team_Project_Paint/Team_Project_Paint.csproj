@@ -72,6 +72,8 @@
     <Compile Include="OnlinePaint\Forms\RemoteSaveForm.Designer.cs">
       <DependentUpon>RemoteSaveForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OnlinePaint\Helpers\RemoteFileInfo.cs" />
+    <Compile Include="OnlinePaint\Helpers\RemoteFileInfoSource.cs" />
     <Compile Include="OnlinePaint\Helpers\TextMessages.cs" />
     <Compile Include="OnlinePaint\Helpers\Validation.cs" />
     <Compile Include="Class\OperationWithFigures\BusinessLogic.cs" />
@@ -142,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OnlinePaint\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnlinePaint\Forms\RemoteLoadForm.resx">
+      <DependentUpon>RemoteLoadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
