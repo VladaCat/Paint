@@ -16,7 +16,15 @@ namespace Team_Project_Paint
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AutorizationForm());
+
+            FormsManager.autorizationForm = new AutorizationForm();
+            FormsManager.mainForm = new MainForm();
+            FormsManager.registrationForm = new RegistartionForm();
+            FormsManager.statsForm = new StatsForm();
+
+
+            
+            Application.Run(FormsManager.autorizationForm);
         }
     }
 }
