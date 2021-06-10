@@ -53,7 +53,27 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
-    <Compile Include="Class\Helpers\Validation.cs" />
+    <Compile Include="OnlinePaint\FormsManager.cs" />
+    <Compile Include="OnlinePaint\Forms\DummyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\DummyForm.Designer.cs">
+      <DependentUpon>DummyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteLoadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteLoadForm.Designer.cs">
+      <DependentUpon>RemoteLoadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteSaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteSaveForm.Designer.cs">
+      <DependentUpon>RemoteSaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaint\Helpers\TextMessages.cs" />
+    <Compile Include="OnlinePaint\Helpers\Validation.cs" />
     <Compile Include="Class\OperationWithFigures\BusinessLogic.cs" />
     <Compile Include="Class\OperationWithFigures\Update.cs" />
     <Compile Include="Class\OperationWithFigures\JsonLogic.cs" />
@@ -82,42 +102,45 @@
     <Compile Include="Class\FigureDrawingClass\Triangle.cs" />
     <Compile Include="Enum\EShapeType.cs" />
     <Compile Include="Class\FigureDrawingClass\Hexagon.cs" />
-    <Compile Include="AutorizationForm.cs">
+    <Compile Include="OnlinePaint\Forms\AutorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AutorizationForm.Designer.cs">
+    <Compile Include="OnlinePaint\Forms\AutorizationForm.Designer.cs">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\IJsonLogic.cs" />
     <Compile Include="Interfaces\IShapeFactory.cs" />
     <Compile Include="Interfaces\IStorage.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="OnlinePaint\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="OnlinePaint\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IShape.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Class\FigureDrawingClass\RoundingRect.cs" />
-    <Compile Include="RegistartionForm.cs">
+    <Compile Include="OnlinePaint\Forms\RegistartionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistartionForm.Designer.cs">
+    <Compile Include="OnlinePaint\Forms\RegistartionForm.Designer.cs">
       <DependentUpon>RegistartionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StatsForm.cs">
+    <Compile Include="OnlinePaint\Forms\StatsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StatsForm.Designer.cs">
+    <Compile Include="OnlinePaint\Forms\StatsForm.Designer.cs">
       <DependentUpon>StatsForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AutorizationForm.resx">
+    <EmbeddedResource Include="OnlinePaint\Forms\AutorizationForm.resx">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="OnlinePaint\Forms\DummyForm.resx">
+      <DependentUpon>DummyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnlinePaint\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -130,10 +153,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegistartionForm.resx">
+    <EmbeddedResource Include="OnlinePaint\Forms\RegistartionForm.resx">
       <DependentUpon>RegistartionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StatsForm.resx">
+    <EmbeddedResource Include="OnlinePaint\Forms\StatsForm.resx">
       <DependentUpon>StatsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

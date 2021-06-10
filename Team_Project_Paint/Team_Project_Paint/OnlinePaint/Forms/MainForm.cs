@@ -12,7 +12,7 @@ using System.IO;
 
 namespace Team_Project_Paint
 {
-    public partial class Paint : Form
+    public partial class MainForm : Form
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
         private BusinessLogic _bl;
@@ -32,7 +32,7 @@ namespace Team_Project_Paint
         private const string TEXT_FOR_MOVE_OFF = "MOVE OFF";
 
 
-        public Paint()
+        public MainForm()
         {
             InitializeComponent();
             _currentMode = EShapeType.Curve;
@@ -354,16 +354,37 @@ namespace Team_Project_Paint
 
         private void statsBtn_Click(object sender, EventArgs e)
         {
-            Form stats = new StatsForm();
-            stats.Show();
-            this.Hide();
+            FormsManager.statsForm.Show();
+            Hide();
         }
 
         private void logOutBtn_Click(object sender, EventArgs e)
         {
-            Form login = new AutorizationForm();
-            login.Show();
-            this.Hide();
+            //Form login = new AutorizationForm();
+            //login.Show();
+            if (true)
+            {
+                FormsManager.autorizationForm.Show();
+                Hide();
+            }
+            
+        }
+
+        private void openRemoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormsManager.remoteLoadForm.ShowDialog();
+            
+        }
+
+        private void saveRemoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormsManager.remoteSaveForm.ShowDialog();
+            
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormsManager.dummyForm.Close();
         }
     }
 }

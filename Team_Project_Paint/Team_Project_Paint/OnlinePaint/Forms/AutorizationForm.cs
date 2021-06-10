@@ -22,16 +22,21 @@ namespace Team_Project_Paint
 
         private void signInBtn_Click(object sender, EventArgs e)
         {
-            Form paint = new Paint();
-            paint.Show();
-            this.Hide();
+            
+            if (true) //TODO: add condition
+            {
+                
+                FormsManager.mainForm.Show();
+                Hide();
+            }
+            
         }
 
         private void signUpLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form reg = new RegistartionForm();
-            reg.Show();
-            this.Hide();
+            
+            FormsManager.registrationForm.Show();
+            Hide();
         }
 
         private void loginTextBox_TextChanged(object sender, EventArgs e)
@@ -82,6 +87,15 @@ namespace Team_Project_Paint
             //    signInBtn.Enabled = false;
             //}
 
+        }
+
+        private void AutorizationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (true)
+            {
+                FormsManager.dummyForm.Close();
+            }
+            
         }
     }
 }

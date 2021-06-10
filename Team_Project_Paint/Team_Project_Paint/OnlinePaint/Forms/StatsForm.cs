@@ -19,9 +19,15 @@ namespace Team_Project_Paint
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            Form paint = new Paint();
-            paint.Show();
-            this.Hide();
+
+            FormsManager.mainForm.Show();
+            Hide();
+        }
+
+        private void StatsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormsManager.mainForm.Show();
+            Hide();
         }
     }
 }

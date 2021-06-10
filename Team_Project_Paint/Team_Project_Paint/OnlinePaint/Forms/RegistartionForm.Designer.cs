@@ -164,6 +164,7 @@ namespace Team_Project_Paint
             this.Controls.Add(this.textBox1);
             this.Name = "RegistartionForm";
             this.Text = "Paint";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistartionForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

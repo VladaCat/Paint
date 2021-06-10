@@ -19,16 +19,25 @@ namespace Team_Project_Paint
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
-            Form paint = new Paint();
-            paint.Show();
-            this.Hide();
+            
+            if (true) //TODO add condition
+            {
+                FormsManager.mainForm.Show();
+                Hide();
+            }
+            
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            Form login = new AutorizationForm();
-            login.Show();
-            this.Hide();
+            
+            FormsManager.autorizationForm.Show();
+            Hide();
+        }
+
+        private void RegistartionForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormsManager.dummyForm.Close();
         }
     }
 }
