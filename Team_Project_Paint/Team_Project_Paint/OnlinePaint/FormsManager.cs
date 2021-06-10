@@ -8,6 +8,7 @@ namespace Team_Project_Paint
         public static AutorizationForm autorizationForm;
         public static StatsForm statsForm;
         public static RegistartionForm registrationForm;
+        public static DummyForm dummyForm;
 
     }
 }
