@@ -17,14 +17,9 @@ namespace Team_Project_Paint
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FormsManager.autorizationForm = new AutorizationForm();
-            FormsManager.mainForm = new MainForm();
-            FormsManager.registrationForm = new RegistartionForm();
-            FormsManager.statsForm = new StatsForm();
-
-
+            FormsManager.dummyForm = new DummyForm();
             
-            Application.Run(FormsManager.autorizationForm);
+            Application.Run(FormsManager.dummyForm);
         }
     }
 }
