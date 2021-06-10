@@ -354,16 +354,20 @@ namespace Team_Project_Paint
 
         private void statsBtn_Click(object sender, EventArgs e)
         {
-            Form stats = new StatsForm();
-            stats.Show();
-            this.Hide();
+            FormsManager.statsForm.Show();
+            Hide();
         }
 
         private void logOutBtn_Click(object sender, EventArgs e)
         {
-            Form login = new AutorizationForm();
-            login.Show();
-            this.Hide();
+            //Form login = new AutorizationForm();
+            //login.Show();
+            if (true)
+            {
+                FormsManager.autorizationForm.Show();
+                Hide();
+            }
+            
         }
     }
 }
