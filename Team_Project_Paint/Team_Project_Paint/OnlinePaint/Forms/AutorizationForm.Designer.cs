@@ -107,6 +107,7 @@ namespace Team_Project_Paint
             this.Controls.Add(this.signInBtn);
             this.Name = "AutorizationForm";
             this.Text = "Paint";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AutorizationForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

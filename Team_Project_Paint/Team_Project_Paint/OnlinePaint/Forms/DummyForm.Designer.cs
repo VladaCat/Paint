@@ -42,6 +42,8 @@ namespace Team_Project_Paint
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DummyForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.Load += new System.EventHandler(this.DummyForm_Load);
+            this.Shown += new System.EventHandler(this.DummyForm_Shown);
             this.ResumeLayout(false);
 
         }
