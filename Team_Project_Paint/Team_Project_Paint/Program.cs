@@ -20,6 +20,8 @@ namespace Team_Project_Paint
             FormsManager.dummyForm = new DummyForm();
             
             Application.Run(FormsManager.dummyForm);
+
+            
         }
     }
 }
