@@ -18,7 +18,7 @@ namespace Team_Project_Paint.Interfaces
 
         int GetCount();
 
-        List<IShape> GetAll(); //возможно временный метод (позже уйдет)
+        List<IShape> GetAll();
 
     }
 }
