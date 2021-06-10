@@ -9,6 +9,9 @@ namespace Team_Project_Paint
         public static StatsForm statsForm;
         public static RegistartionForm registrationForm;
         public static DummyForm dummyForm;
+        public static RemoteLoadForm remoteLoadForm;
+        public static RemoteSaveForm remoteSaveForm;
+
 
     }
 }
