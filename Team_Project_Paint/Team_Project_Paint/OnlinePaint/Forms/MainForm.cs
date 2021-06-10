@@ -369,5 +369,22 @@ namespace Team_Project_Paint
             }
             
         }
+
+        private void openRemoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormsManager.remoteLoadForm.ShowDialog();
+            
+        }
+
+        private void saveRemoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormsManager.remoteSaveForm.ShowDialog();
+            
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormsManager.dummyForm.Close();
+        }
     }
 }
