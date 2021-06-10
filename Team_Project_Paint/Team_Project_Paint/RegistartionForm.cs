@@ -19,7 +19,7 @@ namespace Team_Project_Paint
 
         private void signUpBtn_Click(object sender, EventArgs e)
         {
-            Form paint = new Paint();
+            Form paint = new MainForm();
             paint.Show();
             this.Hide();
         }

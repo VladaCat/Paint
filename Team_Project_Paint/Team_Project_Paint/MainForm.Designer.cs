@@ -1,6 +1,6 @@
 namespace Team_Project_Paint
 {
-    partial class Paint
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.

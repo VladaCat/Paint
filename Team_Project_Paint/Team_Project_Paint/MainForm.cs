@@ -12,7 +12,7 @@ using System.IO;
 
 namespace Team_Project_Paint
 {
-    public partial class Paint : Form
+    public partial class MainForm : Form
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
         private BusinessLogic _bl;
@@ -32,7 +32,7 @@ namespace Team_Project_Paint
         private const string TEXT_FOR_MOVE_OFF = "MOVE OFF";
 
 
-        public Paint()
+        public MainForm()
         {
             InitializeComponent();
             _currentMode = EShapeType.Curve;
