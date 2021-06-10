@@ -103,7 +103,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         {
             bool isSelect = false;
 
-            for (int i = 0; i < _storage.GetCount(); i++)
+            for (int i = _storage.GetCount() - 1; i >= 0; i--)
             {
                 var tmp = _storage.GetShapeForIndex(i);
 

@@ -41,27 +41,27 @@ namespace PaintTests
             Assert.AreEqual(exp, act);
         }
 
-        [TestCase("Qq123456", true)]
-        [TestCase("0_.594>Aa", true)]
-        [TestCase("12345678Aa", true)]
-        [TestCase("QWERty12", true)]
-        [TestCase("P@$$w0rdQ", true)]
-        [TestCase("AQWSedfjgut47386", true)]
-        [TestCase("YTR fkd21", true)]
-        [TestCase("12345678", false)]
-        [TestCase("Aq1234", false)]
-        [TestCase("aqwe1234", false)]
-        [TestCase("QWERREWQ", false)]
-        [TestCase("QWERTTY3", false)]
-        [TestCase("QWERTDASWqawe1235", false)]
+        //[TestCase("Qq123456", true)]
+        //[TestCase("0_.594>Aa", true)]
+        //[TestCase("12345678Aa", true)]
+        //[TestCase("QWERty12", true)]
+        //[TestCase("P@$$w0rdQ", true)]
+        //[TestCase("AQWSedfjgut47386", true)]
+        //[TestCase("YTR fkd21", true)]
+        //[TestCase("12345678", false)]
+        //[TestCase("Aq1234", false)]
+        //[TestCase("aqwe1234", false)]
+        //[TestCase("QWERREWQ", false)]
+        //[TestCase("QWERTTY3", false)]
+        //[TestCase("QWERTDASWqawe1235", false)]
 
 
-        public void ValidationPassword(string password, bool exp)
-        {
-            var act = _validation.PasswordValidate(password);
+        //public void ValidationPassword(string password, bool exp)
+        //{
+        //    var act = _validation.PasswordValidate(password);
 
-            Assert.AreEqual(exp, act);
-        }
+        //    Assert.AreEqual(exp, act);
+        //}
 
 
 
@@ -80,6 +80,32 @@ namespace PaintTests
             var act = _validation.FirstLastNameValidation(password);
 
             Assert.AreEqual(exp, act);
+        }
+
+
+        [TestCase("Qq123456", true, "Ok")]
+        [TestCase("0_.594>Aa", true, "Ok")]
+        [TestCase("12345678Aa", true, "Ok")]
+        [TestCase("QWERty12", true, "Ok")]
+        [TestCase("P@$$w0rdQ", true, "Ok")]
+        [TestCase("AQWSedfjgut47386", true, "Ok")]
+        [TestCase("YTR fkd21", true, "Ok")]
+        [TestCase("98854", false, "Пароль должен иметь длину от 8 до 16 символов.")]
+        [TestCase("aB2dsa", false, "Пароль должен иметь длину от 8 до 16 символов.")]
+        [TestCase("89fjsD3jslascjd$2", false, "Пароль должен иметь длину от 8 до 16 символов.")]
+        [TestCase("98745845", false, "Пароль должен содержать как минимум одну строчую букву.")]
+        [TestCase("12345678r", false, "Пароль должен содержать как минимум 1 заглавную букву.")]
+        [TestCase("djedjskwD", false, "Пароль должен содержать как минимум одну цифру.")]
+
+
+        public void ValidationPassword2(string password, bool exp, string exp1)
+        {
+
+            (bool actbool, string stringAct) = _validation.PasswordValidate(password);
+
+            Assert.AreEqual(exp, actbool);
+            Assert.AreEqual(exp1, stringAct);
+
         }
 
     }

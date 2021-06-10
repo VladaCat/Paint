@@ -18,14 +18,26 @@ namespace Team_Project_Paint
         public static string txtIncorrectName
         { get => "Имя и фамилия должны быть длиной не менее 2 символов и не более 30 символов"; }
 
-        public static string txtIncorrectPassword
-        { get => "Пароль неприемлем. Пароль должен иметь длину от 8 до 16 символов, должен содержать как минимум 1 заглавную букву, одну строчую букву и 1 цифру"; }
+        public static string txtIncorrectPasswordMessage1
+        { get => "Пароль должен иметь длину от 8 до 16 символов."; }
+
+        public static string txtIncorrectPasswordMessage2
+        { get => "Пароль должен содержать как минимум одну строчую букву."; }
+
+        public static string txtIncorrectPasswordMessage3
+        { get => "Пароль должен содержать как минимум 1 заглавную букву."; }
+
+        public static string txtIncorrectPasswordMessage4
+        { get => "Пароль должен содержать как минимум одну цифру."; }
+
+        public static string txtIncorrectPasswordMessage5
+        { get => "Ok"; }
 
         public static string txtDiferentPasswords
         { get => "Введенные пароли не совпадают"; }
 
         public static string txtConfirmSaveOnExit
-        { get => "Вы уверены, что хотите выйти, не сохранив предварительно рисунок?"; }
+        { get => "Все несохраненные изменения будут потеряны.Вы уверены, что хотите выйти?"; }
 
 
 

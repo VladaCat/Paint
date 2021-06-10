@@ -386,5 +386,19 @@ namespace Team_Project_Paint
         {
             FormsManager.dummyForm.Close();
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show(TextMessages.txtConfirmSaveOnExit, "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+            
+        }
     }
 }
