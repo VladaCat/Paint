@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.OperationWithFigures;
@@ -9,6 +6,7 @@ using Team_Project_Paint.PaintEnum;
 using Team_Project_Paint.Interfaces;
 using Team_Project_Paint.Class.FigureDrawingClass;
 using System.IO;
+using Team_Project_Paint.Net;
 
 namespace Team_Project_Paint
 {
@@ -43,6 +41,7 @@ namespace Team_Project_Paint
             _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
             pictureBoxMain.Image = _currentBitmap.ToImage();
+            
         }
 
         private void Repaint()
@@ -399,6 +398,11 @@ namespace Team_Project_Paint
                 e.Cancel = true;
             }
             
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            lblUserInfo.Text = $"Login: {StaticNet.NetLogic.Login} - {StaticNet.NetLogic.FirstName} {StaticNet.NetLogic.LastName} - ID: {StaticNet.NetLogic.UserID}";
         }
     }
 }

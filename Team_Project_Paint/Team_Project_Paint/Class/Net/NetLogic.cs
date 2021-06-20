@@ -21,7 +21,7 @@ namespace Team_Project_Paint.Net
 
             if (request.Execute())
             {
-                UserID = request.LastAutorizationResultData.UserID;
+                UserID = request.LastAutorizationResultData.UserId;
                 Login = request.LastAutorizationResultData.Login;
                 FirstName = request.LastAutorizationResultData.FirstName;
                 LastName = request.LastAutorizationResultData.LastName;

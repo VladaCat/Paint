@@ -69,6 +69,7 @@ namespace Team_Project_Paint
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.statsBtn = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
+            this.lblUserInfo = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -325,28 +326,28 @@ namespace Team_Project_Paint
             // opentoolStripMenuItem
             // 
             this.opentoolStripMenuItem.Name = "opentoolStripMenuItem";
-            this.opentoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.opentoolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.opentoolStripMenuItem.Text = "Open...";
             this.opentoolStripMenuItem.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // openRemoteToolStripMenuItem
             // 
             this.openRemoteToolStripMenuItem.Name = "openRemoteToolStripMenuItem";
-            this.openRemoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openRemoteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.openRemoteToolStripMenuItem.Text = "Open Remote...";
             this.openRemoteToolStripMenuItem.Click += new System.EventHandler(this.openRemoteToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.saveToolStripMenuItem.Text = "Save As...";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
             // saveRemoteToolStripMenuItem
             // 
             this.saveRemoteToolStripMenuItem.Name = "saveRemoteToolStripMenuItem";
-            this.saveRemoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveRemoteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.saveRemoteToolStripMenuItem.Text = "Save Remote...";
             this.saveRemoteToolStripMenuItem.Click += new System.EventHandler(this.saveRemoteToolStripMenuItem_Click);
             // 
@@ -494,12 +495,22 @@ namespace Team_Project_Paint
             this.logOutBtn.UseVisualStyleBackColor = true;
             this.logOutBtn.Click += new System.EventHandler(this.logOutBtn_Click);
             // 
+            // lblUserInfo
+            // 
+            this.lblUserInfo.Location = new System.Drawing.Point(345, 1);
+            this.lblUserInfo.Name = "lblUserInfo";
+            this.lblUserInfo.Size = new System.Drawing.Size(276, 23);
+            this.lblUserInfo.TabIndex = 31;
+            this.lblUserInfo.Text = "label5";
+            this.lblUserInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1041, 533);
+            this.Controls.Add(this.lblUserInfo);
             this.Controls.Add(this.logOutBtn);
             this.Controls.Add(this.statsBtn);
             this.Controls.Add(this.deleteBtn);
@@ -529,6 +540,7 @@ namespace Team_Project_Paint
             this.Text = "Paint";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -584,6 +596,7 @@ namespace Team_Project_Paint
         private System.Windows.Forms.Button logOutBtn;
         private System.Windows.Forms.ToolStripMenuItem openRemoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveRemoteToolStripMenuItem;
+        private System.Windows.Forms.Label lblUserInfo;
     }
 }
 

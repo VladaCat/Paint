@@ -101,7 +101,7 @@ namespace Team_Project_Paint
             this.txtServerUrl.Name = "txtServerUrl";
             this.txtServerUrl.Size = new System.Drawing.Size(312, 20);
             this.txtServerUrl.TabIndex = 6;
-            this.txtServerUrl.Text = "https://localhost:44346";
+            this.txtServerUrl.Text = "https://localhost:44368";
             this.txtServerUrl.Visible = false;
             this.txtServerUrl.TextChanged += new System.EventHandler(this.txtServerUrl_TextChanged);
             // 
