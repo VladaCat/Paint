@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
+using System;
 using System.Windows.Forms;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.OperationWithFigures;
@@ -9,10 +6,11 @@ using Team_Project_Paint.PaintEnum;
 using Team_Project_Paint.Interfaces;
 using Team_Project_Paint.Class.FigureDrawingClass;
 using System.IO;
+using Team_Project_Paint.Net;
 
 namespace Team_Project_Paint
 {
-    public partial class Paint : Form
+    public partial class MainForm : Form
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
         private BusinessLogic _bl;
@@ -32,7 +30,7 @@ namespace Team_Project_Paint
         private const string TEXT_FOR_MOVE_OFF = "MOVE OFF";
 
 
-        public Paint()
+        public MainForm()
         {
             InitializeComponent();
             _currentMode = EShapeType.Curve;
@@ -43,6 +41,7 @@ namespace Team_Project_Paint
             _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
             pictureBoxMain.Image = _currentBitmap.ToImage();
+            
         }
 
         private void Repaint()
@@ -350,6 +349,60 @@ namespace Team_Project_Paint
                 _bl.Delete(_currentBitmap);
                 _isSelected = false;
             }
+        }
+
+        private void statsBtn_Click(object sender, EventArgs e)
+        {
+            FormsManager.statsForm.Show();
+            Hide();
+        }
+
+        private void logOutBtn_Click(object sender, EventArgs e)
+        {
+            //Form login = new AutorizationForm();
+            //login.Show();
+            if (true)
+            {
+                FormsManager.autorizationForm.Show();
+                Hide();
+            }
+            
+        }
+
+        private void openRemoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormsManager.remoteLoadForm.ShowDialog();
+            
+        }
+
+        private void saveRemoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormsManager.remoteSaveForm.ShowDialog();
+            
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormsManager.dummyForm.Close();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show(TextMessages.txtConfirmSaveOnExit, "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+            
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            lblUserInfo.Text = $"Login: {StaticNet.NetLogic.Login} - {StaticNet.NetLogic.FirstName} {StaticNet.NetLogic.LastName} - ID: {StaticNet.NetLogic.UserID}";
         }
     }
 }

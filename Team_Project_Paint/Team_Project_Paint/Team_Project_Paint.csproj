@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,8 +51,12 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +72,34 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\Net\INetLogic.cs" />
+    <Compile Include="Class\Net\IUserAutorizationRequest.cs" />
+    <Compile Include="Class\Net\NetLogic.cs" />
+    <Compile Include="Class\Net\StaticNet.cs" />
+    <Compile Include="Class\Net\UserAutorizationRequest.cs" />
+    <Compile Include="OnlinePaint\FormsManager.cs" />
+    <Compile Include="OnlinePaint\Forms\DummyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\DummyForm.Designer.cs">
+      <DependentUpon>DummyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteLoadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteLoadForm.Designer.cs">
+      <DependentUpon>RemoteLoadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteSaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RemoteSaveForm.Designer.cs">
+      <DependentUpon>RemoteSaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaint\Helpers\RemoteFileInfo.cs" />
+    <Compile Include="OnlinePaint\Helpers\RemoteFileInfoSource.cs" />
+    <Compile Include="OnlinePaint\Helpers\TextMessages.cs" />
+    <Compile Include="OnlinePaint\Helpers\Validation.cs" />
     <Compile Include="Class\OperationWithFigures\BusinessLogic.cs" />
     <Compile Include="Class\OperationWithFigures\Update.cs" />
     <Compile Include="Class\OperationWithFigures\JsonLogic.cs" />
@@ -81,22 +128,54 @@
     <Compile Include="Class\FigureDrawingClass\Triangle.cs" />
     <Compile Include="Enum\EShapeType.cs" />
     <Compile Include="Class\FigureDrawingClass\Hexagon.cs" />
+    <Compile Include="OnlinePaint\Forms\AutorizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\AutorizationForm.Designer.cs">
+      <DependentUpon>AutorizationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IBusinessLogic.cs" />
     <Compile Include="Interfaces\IJsonLogic.cs" />
     <Compile Include="Interfaces\IShapeFactory.cs" />
     <Compile Include="Interfaces\IStorage.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="OnlinePaint\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="OnlinePaint\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IShape.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\AutorizationResultData.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\NewUserData.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\SavedImage.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\SavedImageInfo.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\UserAutorizationData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Class\FigureDrawingClass\RoundingRect.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <Compile Include="OnlinePaint\Forms\RegistartionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\RegistartionForm.Designer.cs">
+      <DependentUpon>RegistartionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\StatsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlinePaint\Forms\StatsForm.Designer.cs">
+      <DependentUpon>StatsForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="OnlinePaint\Forms\AutorizationForm.resx">
+      <DependentUpon>AutorizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnlinePaint\Forms\DummyForm.resx">
+      <DependentUpon>DummyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnlinePaint\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnlinePaint\Forms\RemoteLoadForm.resx">
+      <DependentUpon>RemoteLoadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,6 +187,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="OnlinePaint\Forms\RegistartionForm.resx">
+      <DependentUpon>RegistartionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnlinePaint\Forms\StatsForm.resx">
+      <DependentUpon>StatsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -154,6 +239,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SQL_Request\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
