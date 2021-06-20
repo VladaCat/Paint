@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Net;
 
 namespace Team_Project_Paint
 {
@@ -18,12 +19,22 @@ namespace Team_Project_Paint
         public AutorizationForm()
         {
             InitializeComponent();
+            txtServerUrl_TextChanged(null, null);
         }
 
         private void signInBtn_Click(object sender, EventArgs e)
         {
-            
-            if (true) //TODO: add condition
+
+            bool authResult = false;
+            //TODO add validation. If successful - create request
+            var userAutorizationData = new UserAutorizationData()
+            {
+                Login = txtLogin.Text,
+                Password=txtPassword.Text
+            };
+            authResult= StaticNet.NetLogic.AutorizeUser(userAutorizationData);
+
+            if (authResult) //TODO: add condition
             {
                 
                 FormsManager.mainForm.Show();
@@ -96,6 +107,17 @@ namespace Team_Project_Paint
                 FormsManager.dummyForm.Close();
             }
             
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            txtServerUrl.Visible = !txtServerUrl.Visible;
+
+        }
+
+        private void txtServerUrl_TextChanged(object sender, EventArgs e)
+        {
+            StaticNet.NetLogic.PaintServerUrl = txtServerUrl.Text;
         }
     }
 }

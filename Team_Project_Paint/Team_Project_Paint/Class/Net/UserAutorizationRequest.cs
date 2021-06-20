@@ -26,7 +26,7 @@ namespace Team_Project_Paint.Net
         {
 
 
-            var request = new RestRequest { Resource = $"{_paintServerUrl}/auth/register", Method = Method.POST };
+            var request = new RestRequest { Resource = $"{_paintServerUrl}/auth/login", Method = Method.POST };
 
 
             request.AddJsonBody(_userAutorizationData);
