@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Team_Project_Paint.Net;
 
 namespace Team_Project_Paint
 {
@@ -18,6 +19,7 @@ namespace Team_Project_Paint
             Application.SetCompatibleTextRenderingDefault(false);
 
             FormsManager.dummyForm = new DummyForm();
+            StaticNet.NetLogic = new NetLogic();
             
             Application.Run(FormsManager.dummyForm);
 

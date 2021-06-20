@@ -75,6 +75,7 @@
     <Compile Include="Class\Net\INetLogic.cs" />
     <Compile Include="Class\Net\IUserAutorizationRequest.cs" />
     <Compile Include="Class\Net\NetLogic.cs" />
+    <Compile Include="Class\Net\StaticNet.cs" />
     <Compile Include="Class\Net\UserAutorizationRequest.cs" />
     <Compile Include="OnlinePaint\FormsManager.cs" />
     <Compile Include="OnlinePaint\Forms\DummyForm.cs">
