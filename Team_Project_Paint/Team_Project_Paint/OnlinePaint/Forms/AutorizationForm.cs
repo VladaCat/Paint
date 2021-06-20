@@ -40,6 +40,10 @@ namespace Team_Project_Paint
                 FormsManager.mainForm.Show();
                 Hide();
             }
+            else
+            {
+                MessageBox.Show("Something gone wrong");
+            }
             
         }
 

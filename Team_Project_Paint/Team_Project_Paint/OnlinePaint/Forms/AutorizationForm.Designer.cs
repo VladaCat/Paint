@@ -41,7 +41,6 @@ namespace Team_Project_Paint
             // 
             // signInBtn
             // 
-            this.signInBtn.Enabled = false;
             this.signInBtn.Location = new System.Drawing.Point(141, 209);
             this.signInBtn.Name = "signInBtn";
             this.signInBtn.Size = new System.Drawing.Size(75, 23);
