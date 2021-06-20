@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Net
 {
-    public class UserAutorizationData
+    public interface INetLogic
     {
-        public string Login { get; set; }
-        public string Password { get; set; }
     }
 }
