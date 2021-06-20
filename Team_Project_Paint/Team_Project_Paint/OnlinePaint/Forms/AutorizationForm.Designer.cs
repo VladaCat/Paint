@@ -30,16 +30,17 @@ namespace Team_Project_Paint
         private void InitializeComponent()
         {
             this.signInBtn = new System.Windows.Forms.Button();
-            this.PassTextBox = new System.Windows.Forms.TextBox();
-            this.loginTextBox = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtLogin = new System.Windows.Forms.TextBox();
             this.signUpLabel = new System.Windows.Forms.LinkLabel();
             this.loginLbl = new System.Windows.Forms.Label();
             this.passLbl = new System.Windows.Forms.Label();
+            this.txtServerUrl = new System.Windows.Forms.TextBox();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // signInBtn
             // 
-            this.signInBtn.Enabled = false;
             this.signInBtn.Location = new System.Drawing.Point(141, 209);
             this.signInBtn.Name = "signInBtn";
             this.signInBtn.Size = new System.Drawing.Size(75, 23);
@@ -48,22 +49,22 @@ namespace Team_Project_Paint
             this.signInBtn.UseVisualStyleBackColor = true;
             this.signInBtn.Click += new System.EventHandler(this.signInBtn_Click);
             // 
-            // PassTextBox
+            // txtPassword
             // 
-            this.PassTextBox.Location = new System.Drawing.Point(129, 183);
-            this.PassTextBox.Name = "PassTextBox";
-            this.PassTextBox.PasswordChar = '*';
-            this.PassTextBox.Size = new System.Drawing.Size(100, 20);
-            this.PassTextBox.TabIndex = 1;
-            this.PassTextBox.TextChanged += new System.EventHandler(this.PassTextBox_TextChanged);
+            this.txtPassword.Location = new System.Drawing.Point(129, 183);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TextChanged += new System.EventHandler(this.PassTextBox_TextChanged);
             // 
-            // loginTextBox
+            // txtLogin
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(129, 157);
-            this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(100, 20);
-            this.loginTextBox.TabIndex = 2;
-            this.loginTextBox.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
+            this.txtLogin.Location = new System.Drawing.Point(129, 157);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(100, 20);
+            this.txtLogin.TabIndex = 2;
+            this.txtLogin.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
             // 
             // signUpLabel
             // 
@@ -94,16 +95,38 @@ namespace Team_Project_Paint
             this.passLbl.TabIndex = 5;
             this.passLbl.Text = "Password";
             // 
+            // txtServerUrl
+            // 
+            this.txtServerUrl.Location = new System.Drawing.Point(12, 403);
+            this.txtServerUrl.Name = "txtServerUrl";
+            this.txtServerUrl.Size = new System.Drawing.Size(312, 20);
+            this.txtServerUrl.TabIndex = 6;
+            this.txtServerUrl.Text = "https://localhost:44368";
+            this.txtServerUrl.Visible = false;
+            this.txtServerUrl.TextChanged += new System.EventHandler(this.txtServerUrl_TextChanged);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(141, 374);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(75, 23);
+            this.btnSettings.TabIndex = 7;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // AutorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 450);
+            this.Controls.Add(this.btnSettings);
+            this.Controls.Add(this.txtServerUrl);
             this.Controls.Add(this.passLbl);
             this.Controls.Add(this.loginLbl);
             this.Controls.Add(this.signUpLabel);
-            this.Controls.Add(this.loginTextBox);
-            this.Controls.Add(this.PassTextBox);
+            this.Controls.Add(this.txtLogin);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.signInBtn);
             this.Name = "AutorizationForm";
             this.Text = "Paint";
@@ -116,10 +139,12 @@ namespace Team_Project_Paint
         #endregion
 
         private System.Windows.Forms.Button signInBtn;
-        private System.Windows.Forms.TextBox PassTextBox;
-        private System.Windows.Forms.TextBox loginTextBox;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.LinkLabel signUpLabel;
         private System.Windows.Forms.Label loginLbl;
         private System.Windows.Forms.Label passLbl;
+        private System.Windows.Forms.TextBox txtServerUrl;
+        private System.Windows.Forms.Button btnSettings;
     }
 }

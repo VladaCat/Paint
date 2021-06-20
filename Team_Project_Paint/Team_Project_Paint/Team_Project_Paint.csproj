@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,8 +51,12 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +72,11 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\Net\INetLogic.cs" />
+    <Compile Include="Class\Net\IUserAutorizationRequest.cs" />
+    <Compile Include="Class\Net\NetLogic.cs" />
+    <Compile Include="Class\Net\StaticNet.cs" />
+    <Compile Include="Class\Net\UserAutorizationRequest.cs" />
     <Compile Include="OnlinePaint\FormsManager.cs" />
     <Compile Include="OnlinePaint\Forms\DummyForm.cs">
       <SubType>Form</SubType>
@@ -121,6 +145,11 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IShape.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\AutorizationResultData.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\NewUserData.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\SavedImage.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\SavedImageInfo.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\UserAutorizationData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Class\FigureDrawingClass\RoundingRect.cs" />
@@ -213,6 +242,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SQL_Request\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
