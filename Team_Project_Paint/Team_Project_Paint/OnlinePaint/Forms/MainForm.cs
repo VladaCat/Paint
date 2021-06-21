@@ -402,7 +402,7 @@ namespace Team_Project_Paint
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            lblUserInfo.Text = $"Login: {StaticNet.NetLogic.Login} - {StaticNet.NetLogic.FirstName} {StaticNet.NetLogic.LastName} - ID: {StaticNet.NetLogic.UserID}";
+            lblUserInfo.Text = $"{StaticNet.NetLogic.FirstName} {StaticNet.NetLogic.LastName}";
         }
     }
 }

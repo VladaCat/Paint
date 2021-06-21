@@ -43,7 +43,15 @@ namespace Team_Project_Paint.Net
 
                     LastAutorizationResultData = autorizationResultData;
 
-                    return true;
+                    if (autorizationResultData.AutorizationResultCode == 200)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    
                 }
                 catch
                 {

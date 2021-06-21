@@ -51,18 +51,18 @@ namespace Team_Project_Paint
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(129, 183);
+            this.txtPassword.Location = new System.Drawing.Point(95, 183);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.Size = new System.Drawing.Size(175, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.TextChanged += new System.EventHandler(this.PassTextBox_TextChanged);
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(129, 157);
+            this.txtLogin.Location = new System.Drawing.Point(95, 157);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(100, 20);
+            this.txtLogin.Size = new System.Drawing.Size(175, 20);
             this.txtLogin.TabIndex = 2;
             this.txtLogin.TextChanged += new System.EventHandler(this.loginTextBox_TextChanged);
             // 
@@ -80,7 +80,7 @@ namespace Team_Project_Paint
             // loginLbl
             // 
             this.loginLbl.AutoSize = true;
-            this.loginLbl.Location = new System.Drawing.Point(70, 160);
+            this.loginLbl.Location = new System.Drawing.Point(36, 160);
             this.loginLbl.Name = "loginLbl";
             this.loginLbl.Size = new System.Drawing.Size(33, 13);
             this.loginLbl.TabIndex = 4;
@@ -89,7 +89,7 @@ namespace Team_Project_Paint
             // passLbl
             // 
             this.passLbl.AutoSize = true;
-            this.passLbl.Location = new System.Drawing.Point(70, 186);
+            this.passLbl.Location = new System.Drawing.Point(36, 186);
             this.passLbl.Name = "passLbl";
             this.passLbl.Size = new System.Drawing.Size(53, 13);
             this.passLbl.TabIndex = 5;
