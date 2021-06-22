@@ -39,6 +39,7 @@ namespace Team_Project_Paint
                 
                 FormsManager.mainForm.Show();
                 Hide();
+                txtPassword.Text = "";
             }
             else
             {

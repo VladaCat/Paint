@@ -195,6 +195,11 @@ namespace Team_Project_Paint
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            ClearAll();
+        }
+
+        public void ClearAll()
+        {
             _bl.Clear();
             _currentBitmap = new PaintBitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
@@ -365,6 +370,8 @@ namespace Team_Project_Paint
             {
                 FormsManager.autorizationForm.Show();
                 Hide();
+                ClearAll();
+                lblUserInfo.Text = "";
             }
             
         }
@@ -402,7 +409,16 @@ namespace Team_Project_Paint
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            lblUserInfo.Text = $"{StaticNet.NetLogic.FirstName} {StaticNet.NetLogic.LastName}";
+           
+        }
+
+        private void MainForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                lblUserInfo.Text = $"{StaticNet.NetLogic.FirstName} {StaticNet.NetLogic.LastName}";
+            }
+            
         }
     }
 }

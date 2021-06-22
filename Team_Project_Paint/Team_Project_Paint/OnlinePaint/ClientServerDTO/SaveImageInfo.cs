@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Net
 {
-    public class SavedImageInfo
+    public class SaveImageInfo
     {
         public string Name { get; set; }
         public string ImageType { get; set; }
-        public DateTime CreationDate { get; set; }
+      /*  public DateTime CreationDate { get; set; }*/
         public int FileSize { get; set; }
+        public int UserId { get; set; }
     }
 }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Net
 {
-    public class SavedImage : SaveImageInfo
+    public class SaveImageResultData
     {
-        public string ImageData { get; set; }
+        public bool SaveImageResult { get; set; }
+        public string SaveImageResultMessage { get; set; }
     }
 }
