@@ -74,9 +74,13 @@
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
     <Compile Include="Class\Net\INetLogic.cs" />
     <Compile Include="Class\Net\IUserAutorizationRequest.cs" />
+    <Compile Include="Class\Net\IUserRegistrationRequest.cs" />
     <Compile Include="Class\Net\NetLogic.cs" />
     <Compile Include="Class\Net\StaticNet.cs" />
     <Compile Include="Class\Net\UserAutorizationRequest.cs" />
+    <Compile Include="Class\Net\UserRegistrationRequest.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\RegistrationResultData.cs" />
+    <Compile Include="OnlinePaint\ClientServerDTO\UserRegistrationData.cs" />
     <Compile Include="OnlinePaint\FormsManager.cs" />
     <Compile Include="OnlinePaint\Forms\DummyForm.cs">
       <SubType>Form</SubType>
