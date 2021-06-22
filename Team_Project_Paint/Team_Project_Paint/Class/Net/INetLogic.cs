@@ -18,5 +18,6 @@ namespace Team_Project_Paint.Net
         bool AutorizeUser(UserAutorizationData userAutorizationData);
 
         bool RegisterUser(UserRegistrationData userRegistrationData);
+        bool SaveImage(SaveImageInfo saveImageInfo);
     }
 }

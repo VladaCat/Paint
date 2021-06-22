@@ -50,5 +50,19 @@ namespace Team_Project_Paint.Net
                 return false;
             }
         }
+
+        public bool SaveImage(SaveImageInfo savedImageInfo)
+        {
+            var request = new SaveImageRequest(savedImageInfo, PaintServerUrl);
+            if (request.Execute())
+            {
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
     }
 }
