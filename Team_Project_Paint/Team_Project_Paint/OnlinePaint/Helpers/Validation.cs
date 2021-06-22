@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Team_Project_Paint.Class.Helpers
+namespace Team_Project_Paint.Helpers
 {
     public class Validation
     {

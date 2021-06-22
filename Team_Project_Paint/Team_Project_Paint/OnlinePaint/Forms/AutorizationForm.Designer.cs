@@ -139,12 +139,12 @@ namespace Team_Project_Paint
         #endregion
 
         private System.Windows.Forms.Button signInBtn;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.LinkLabel signUpLabel;
         private System.Windows.Forms.Label loginLbl;
         private System.Windows.Forms.Label passLbl;
         private System.Windows.Forms.TextBox txtServerUrl;
         private System.Windows.Forms.Button btnSettings;
+        public System.Windows.Forms.TextBox txtPassword;
+        public System.Windows.Forms.TextBox txtLogin;
     }
 }

@@ -36,5 +36,19 @@ namespace Team_Project_Paint.Net
                 return false;
             }
         }
+
+        public bool RegisterUser(UserRegistrationData userRegistrationData)
+        {
+            var request = new UserRegistrationRequest(userRegistrationData, PaintServerUrl);
+            if (request.Execute())
+            {
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
     }
 }

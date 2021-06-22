@@ -1,34 +1,37 @@
 ﻿using RestSharp;
 using RestSharp.Serialization.Json;
-using System.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Team_Project_Paint.Net;
 
 namespace Team_Project_Paint.Net
 {
-    class UserAutorizationRequest : IUserAutorizationRequest
+    public class UserRegistrationRequest : IUserRegistrationRequest
     {
-        private UserAutorizationData _userAutorizationData;
+
+        private UserRegistrationData _userRegistrationData;
+
         private string _paintServerUrl;
         private IRestClient _restClient;
-        public AutorizationResultData LastAutorizationResultData { get; private set; }
+        public RegistrationResultData LastReistrationResultData { get; private set; }
         public HttpStatusCode LastHttpStatusCode { get; private set; }
-        public UserAutorizationRequest(UserAutorizationData userAutorizationData, string paintServerUrl)
+        public UserRegistrationRequest(UserRegistrationData userRegistrationData, string paintServerUrl)
         {
-            _userAutorizationData = userAutorizationData;
+            _userRegistrationData = userRegistrationData;
             _paintServerUrl = paintServerUrl;
         }
+
+
         public bool Execute()
         {
+            var request = new RestRequest { Resource = $"{_paintServerUrl}/auth/register", Method = Method.POST };
 
 
-            var request = new RestRequest { Resource = $"{_paintServerUrl}/auth/login", Method = Method.POST };
-
-
-            request.AddJsonBody(_userAutorizationData);
+            request.AddJsonBody(_userRegistrationData);
 
             _restClient = new RestClient();
             var response = _restClient.Execute(request);
@@ -38,11 +41,11 @@ namespace Team_Project_Paint.Net
             {
                 try
                 {
-                    var autorizationResultData = new JsonSerializer().Deserialize<AutorizationResultData>(response);
+                    var registrationResultData = new JsonSerializer().Deserialize<RegistrationResultData>(response);
 
-                    LastAutorizationResultData = autorizationResultData;
+                    LastReistrationResultData = registrationResultData;
 
-                    if (autorizationResultData.AutorizationResultCode == 200)
+                    if (registrationResultData.RegistrationResult == true)
                     {
                         return true;
                     }
@@ -50,23 +53,19 @@ namespace Team_Project_Paint.Net
                     {
                         return false;
                     }
-                    
+
                 }
                 catch
                 {
-                    LastAutorizationResultData = null;
+                    LastReistrationResultData = null;
                     return false;
                 }
-                
             }
             else
             {
-                LastAutorizationResultData = null;
+                LastReistrationResultData = null;
                 return false;
             }
-
-
-
         }
     }
 }
