@@ -14,13 +14,16 @@ namespace Team_Project_Paint
 
         private void btnSave_Click(object sender, System.EventArgs e)
         {
+            var bl = FormsManager.mainForm;
             bool saveResult = false;
+            var image = bl._bl.RemoteSave(bl._currentBitmap, cmbImageFormat.Text);
             SaveImageInfo saveImageInfo = new SaveImageInfo()
             {
                 Name = txtFileName.Text,
                 ImageType = "imagetype",
                 FileSize = 568,
                 UserId = StaticNet.NetLogic.UserID,
+                ImageData = image,
             };
             saveResult = StaticNet.NetLogic.SaveImage(saveImageInfo);
             if (saveResult)

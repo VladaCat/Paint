@@ -13,10 +13,10 @@ namespace Team_Project_Paint
     public partial class MainForm : Form
     {
         private PaintColor _curentcolor = new PaintColor(0, 0, 0);
-        private BusinessLogic _bl;
+        public BusinessLogic _bl;
         private ShapePoint _lastPonit;
         private EShapeType _currentMode;
-        private PaintBitmap _currentBitmap;
+        public PaintBitmap _currentBitmap;
         private PaintBitmap _bufferedBitmap;
         private bool _isMoveMode = false;
         private bool _isSelectMode = false;
@@ -385,6 +385,7 @@ namespace Team_Project_Paint
         private void saveRemoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormsManager.remoteSaveForm.ShowDialog();
+
             
         }
 
