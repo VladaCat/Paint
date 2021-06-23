@@ -8,7 +8,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 {
     public class BusinessLogic : IBusinessLogic
     {
-        private IStorage _storage;
+        public IStorage _storage;
         private IShapeFactory _shape;
         private IShape _newshape;
         private IJsonLogic _jsonlogic;
