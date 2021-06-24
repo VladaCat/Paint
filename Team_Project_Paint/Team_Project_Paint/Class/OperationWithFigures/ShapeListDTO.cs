@@ -31,5 +31,9 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         [JsonProperty]
         public EShapeType Name { get; set; }
+
+        [JsonProperty]
+
+        public List<ShapePoint> ShapePoints { get; set; }
     }
 }

@@ -6,19 +6,21 @@ namespace Team_Project_Paint.Class
 {
     public class Curve : AbstractShape
     {
-        private List<ShapePoint> _points = new List<ShapePoint>();
 
-        public Curve() : base(EShapeType.Curve) { }
+        public Curve() : base(EShapeType.Curve) {
+            ShapePoints = new List<ShapePoint>();
+        }
+        
 
         public override void Draw(PaintGraphics graphics)
         {
-            if (_points.Count > 1)
+            if (ShapePoints.Count > 1)
             {
-                for (int i = 0; i < _points.Count - 1; i++)
+                for (int i = 0; i < ShapePoints.Count - 1; i++)
                 {
-                    graphics.DrawLine(new PaintPen(new PaintSolidBrush(Color), Thickness), _points[i], _points[i + 1]);
+                    graphics.DrawLine(new PaintPen(new PaintSolidBrush(Color), Thickness), ShapePoints[i], ShapePoints[i + 1]);
                 }
-                foreach (ShapePoint point in _points)
+                foreach (ShapePoint point in ShapePoints)
                 {
                     graphics.MySmoothingMode = EPaintSmoothingMode.AntiAlias;
                     graphics.FillEllipse(new PaintSolidBrush(Color),
@@ -34,7 +36,7 @@ namespace Team_Project_Paint.Class
         {
             if (EShapeStatus == FigureDrawingClass.EShapeStatus.NOT_STARTED)
             {
-                _points.Add(new ShapePoint(point.ToPoint()));
+                ShapePoints.Add(new ShapePoint(point.ToPoint()));
                 EShapeStatus = FigureDrawingClass.EShapeStatus.IN_PROGRESS;
             }
         }
@@ -43,7 +45,7 @@ namespace Team_Project_Paint.Class
         {
             if (EShapeStatus == FigureDrawingClass.EShapeStatus.IN_PROGRESS)
             {
-                _points.Add(new ShapePoint(point.ToPoint()));
+                ShapePoints.Add(new ShapePoint(point.ToPoint()));
             }
         }
 
@@ -51,7 +53,7 @@ namespace Team_Project_Paint.Class
         {
             if (EShapeStatus == FigureDrawingClass.EShapeStatus.IN_PROGRESS)
             {
-                _points.Add(new ShapePoint(point.ToPoint()));
+                ShapePoints.Add(new ShapePoint(point.ToPoint()));
                 EShapeStatus = FigureDrawingClass.EShapeStatus.DONE;
             }
         }
