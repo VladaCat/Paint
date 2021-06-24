@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Drawing.Imaging;
+using System.IO;
 using Team_Project_Paint.Interfaces;
 using Team_Project_Paint.PaintEnum;
 
@@ -6,10 +8,11 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 {
     public class BusinessLogic : IBusinessLogic
     {
-        private IStorage _storage;
+        public IStorage _storage;
         private IShapeFactory _shape;
         private IShape _newshape;
         private IJsonLogic _jsonlogic;
+
 
         public int Numb { get; set; }
 
@@ -190,6 +193,24 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         {
             _jsonlogic.JsonSerialize(_storage.GetAll());
             File.WriteAllText(fileName, _jsonlogic.File);
+        }
+
+        public string RemoteSave(PaintBitmap bitmap,string fileType)
+        {
+            Stream srcStream;
+            byte[] srcArray;
+
+            srcStream = new MemoryStream();
+            EncoderParameters ec = new EncoderParameters();
+            bitmap.Save(srcStream, ImageFormat.Png);
+
+            srcStream.Position = 0;
+            srcArray = new byte[srcStream.Length];
+            srcStream.Read(srcArray, 0, Convert.ToInt32(srcStream.Length));
+
+            var savedimage = Convert.ToBase64String(srcArray);
+
+            return savedimage;
         }
     }
 }

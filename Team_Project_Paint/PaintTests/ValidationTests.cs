@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Team_Project_Paint.Class.Helpers;
+
+using Team_Project_Paint.Helpers;
 
 namespace PaintTests
 {

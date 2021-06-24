@@ -154,7 +154,6 @@
     <Compile Include="Interfaces\IShape.cs" />
     <Compile Include="OnlinePaint\ClientServerDTO\AutorizationResultData.cs" />
     <Compile Include="OnlinePaint\ClientServerDTO\NewUserData.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\SavedImage.cs" />
     <Compile Include="OnlinePaint\ClientServerDTO\SaveImageInfo.cs" />
     <Compile Include="OnlinePaint\ClientServerDTO\UserAutorizationData.cs" />
     <Compile Include="Program.cs" />

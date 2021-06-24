@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,11 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         public void Save(string filename)
         {
             _image.Save(filename);
+        }
+        
+        public void Save(Stream srcStream, ImageFormat format)
+        {
+            _image.Save(srcStream, format);
         }
         public static PaintImage FromFile(string filename)
         {

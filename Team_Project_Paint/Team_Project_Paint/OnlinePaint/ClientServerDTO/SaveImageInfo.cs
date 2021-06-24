@@ -13,5 +13,6 @@ namespace Team_Project_Paint.Net
       /*  public DateTime CreationDate { get; set; }*/
         public int FileSize { get; set; }
         public int UserId { get; set; }
+        public string ImageData { get; set; }
     }
 }
