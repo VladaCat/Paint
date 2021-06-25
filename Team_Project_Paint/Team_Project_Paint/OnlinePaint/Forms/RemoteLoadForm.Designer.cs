@@ -34,7 +34,8 @@ namespace Team_Project_Paint
             this.fileNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fileSizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLoadImage = new System.Windows.Forms.Button();
+            this.txtImageId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRemoteLoad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,27 +77,36 @@ namespace Team_Project_Paint
             this.fileSizeColumn.Name = "fileSizeColumn";
             this.fileSizeColumn.ReadOnly = true;
             // 
-            // button1
+            // btnLoadImage
             // 
-            this.button1.Location = new System.Drawing.Point(213, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLoadImage.Location = new System.Drawing.Point(213, 10);
+            this.btnLoadImage.Name = "btnLoadImage";
+            this.btnLoadImage.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadImage.TabIndex = 1;
+            this.btnLoadImage.Text = "Load";
+            this.btnLoadImage.UseVisualStyleBackColor = true;
+            this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
+            // 
+            // txtImageId
+            // 
+            this.txtImageId.Location = new System.Drawing.Point(308, 12);
+            this.txtImageId.Name = "txtImageId";
+            this.txtImageId.Size = new System.Drawing.Size(100, 20);
+            this.txtImageId.TabIndex = 2;
             // 
             // RemoteLoadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtImageId);
+            this.Controls.Add(this.btnLoadImage);
             this.Controls.Add(this.dataGridRemoteLoad);
             this.Name = "RemoteLoadForm";
             this.Text = "RemoteLoadForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRemoteLoad)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -107,6 +117,7 @@ namespace Team_Project_Paint
         private System.Windows.Forms.DataGridViewTextBoxColumn fileNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileSizeColumn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLoadImage;
+        private System.Windows.Forms.TextBox txtImageId;
     }
 }

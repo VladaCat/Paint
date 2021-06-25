@@ -17,9 +17,11 @@ namespace Team_Project_Paint
         {
             var mainForm = FormsManager.mainForm;
             bool saveResult = false;
-            var image = mainForm._bl.RemoteSave(mainForm._currentBitmap, cmbImageFormat.Text);
+
             if (cmbImageFormat.Text == "bmp" || cmbImageFormat.Text == "png" || cmbImageFormat.Text == "jpeg")
             {
+                var image = mainForm._bl.RemoteSaveBitmap(mainForm._currentBitmap, cmbImageFormat.Text);
+
                 SaveImageInfo saveImageInfo = new SaveImageInfo()
                 {
                     Name = txtFileName.Text,

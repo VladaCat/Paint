@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using Team_Project_Paint.Interfaces;
@@ -195,7 +196,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             File.WriteAllText(fileName, _jsonlogic.File);
         }
 
-        public string RemoteSave(PaintBitmap bitmap,string fileType)
+        public string RemoteSaveBitmap(PaintBitmap bitmap,string fileType)
         {
             Stream srcStream;
             byte[] srcArray;
@@ -211,6 +212,18 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             var savedimage = Convert.ToBase64String(srcArray);
 
             return savedimage;
+        }
+
+        public void RemoteLoadBitmap(string image, PaintBitmap bitmap)
+        {
+            Stream dstStream;
+            byte[] dstArray;
+
+            dstArray = Convert.FromBase64String(image);
+
+            dstStream = new MemoryStream(dstArray);
+
+            //bitmap = Image.FromStream(dstStream);
         }
     }
 }
