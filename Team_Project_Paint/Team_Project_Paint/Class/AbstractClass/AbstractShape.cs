@@ -35,6 +35,8 @@ namespace Team_Project_Paint.Class
             set { _eHsapeStatus = value; }
         }
 
+        public List<ShapePoint> ShapePoints { get; set; }
+
         public abstract void Draw(PaintGraphics graphics);
 
         public virtual void MouseClick(ShapePoint point)

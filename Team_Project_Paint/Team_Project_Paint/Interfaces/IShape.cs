@@ -15,6 +15,7 @@ namespace Team_Project_Paint.Interfaces
 
         ShapePoint Location { get; set; }
         ShapePoint FinishLocation { get; set; }
+        List<ShapePoint> ShapePoints { get; set; }
 
         PaintColor Color { get; set; }
         ShapeSize Size { get; set; }

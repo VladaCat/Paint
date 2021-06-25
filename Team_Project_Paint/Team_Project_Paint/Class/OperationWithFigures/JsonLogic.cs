@@ -94,11 +94,12 @@ namespace Team_Project_Paint.Class.OperationWithFigures
                     case EShapeType.Curve:
                         list.Add(new Curve()
                         {
+                            ShapePoints = item.ShapePoints,
                             Color = item.Color,
                             Thickness = item.Thickness,
                             FinishLocation = item.FinishLocation,
                             Location = item.Location,
-                        });
+                        });;
                         break;
                     case EShapeType.Triangle:
                         list.Add(new Triangle()
