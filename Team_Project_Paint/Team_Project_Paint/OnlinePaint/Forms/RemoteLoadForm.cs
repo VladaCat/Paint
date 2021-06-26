@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Team_Project_Paint.Net;
 using Team_Project_Paint.OnlinePaint.Helpers;
@@ -30,10 +31,11 @@ namespace Team_Project_Paint
                 if (loadImageResult.ImageType == "json")
                 {
                     mainForm._bl.JsonOpen(loadImageResult.ImageData, mainForm._currentBitmap);
+                    mainForm.Repaint();
                 }
                 else if (loadImageResult.ImageType == "jpg" || loadImageResult.ImageType == "png" || loadImageResult.ImageType == "bmp")
                 {
-                    mainForm._bl.RemoteLoadBitmap(loadImageResult.ImageData, mainForm._currentBitmap);
+                    mainForm.pictureBoxMain.Image = Image.FromStream(mainForm._bl.RemoteLoadBitmap(loadImageResult.ImageData, mainForm._currentBitmap));
                 }
             
                 Hide();

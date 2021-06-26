@@ -44,7 +44,7 @@ namespace Team_Project_Paint
             
         }
 
-        private void Repaint()
+        public void Repaint()
         {
             if (_bl.isBoolCount())
             {

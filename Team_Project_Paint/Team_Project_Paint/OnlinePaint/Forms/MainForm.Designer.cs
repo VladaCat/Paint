@@ -326,28 +326,28 @@ namespace Team_Project_Paint
             // opentoolStripMenuItem
             // 
             this.opentoolStripMenuItem.Name = "opentoolStripMenuItem";
-            this.opentoolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.opentoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.opentoolStripMenuItem.Text = "Open...";
             this.opentoolStripMenuItem.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
             // openRemoteToolStripMenuItem
             // 
             this.openRemoteToolStripMenuItem.Name = "openRemoteToolStripMenuItem";
-            this.openRemoteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.openRemoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openRemoteToolStripMenuItem.Text = "Open Remote...";
             this.openRemoteToolStripMenuItem.Click += new System.EventHandler(this.openRemoteToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save As...";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
             // saveRemoteToolStripMenuItem
             // 
             this.saveRemoteToolStripMenuItem.Name = "saveRemoteToolStripMenuItem";
-            this.saveRemoteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.saveRemoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveRemoteToolStripMenuItem.Text = "Save Remote...";
             this.saveRemoteToolStripMenuItem.Click += new System.EventHandler(this.saveRemoteToolStripMenuItem_Click);
             // 
@@ -555,8 +555,6 @@ namespace Team_Project_Paint
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBoxMain;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton DotButton;
         private System.Windows.Forms.ToolStripButton LineButton;
@@ -598,6 +596,7 @@ namespace Team_Project_Paint
         private System.Windows.Forms.ToolStripMenuItem openRemoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveRemoteToolStripMenuItem;
         private System.Windows.Forms.Label lblUserInfo;
+        public System.Windows.Forms.PictureBox pictureBoxMain;
     }
 }
 

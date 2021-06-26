@@ -42,7 +42,7 @@ namespace Team_Project_Paint.Net
 
                     LastLoadImageResultData = loadImageResultData;
 
-                    if (loadImageResultData.SaveImageResult == true)
+                    if (loadImageResultData.LoadImageResult == true)
                     {
                         return true;
                     }

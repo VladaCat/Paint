@@ -214,7 +214,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
             return savedimage;
         }
 
-        public void RemoteLoadBitmap(string image, PaintBitmap bitmap)
+        public Stream RemoteLoadBitmap(string image, PaintBitmap bitmap)
         {
             Stream dstStream;
             byte[] dstArray;
@@ -223,7 +223,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
             dstStream = new MemoryStream(dstArray);
 
-            //bitmap = Image.FromStream(dstStream);
+            return dstStream;
         }
     }
 }
