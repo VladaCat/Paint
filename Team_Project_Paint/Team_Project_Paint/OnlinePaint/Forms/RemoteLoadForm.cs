@@ -84,6 +84,7 @@ namespace Team_Project_Paint
             };
 
             GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
+            FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
 
         }
 
@@ -103,6 +104,24 @@ namespace Team_Project_Paint
                     SavedFileInfo = new List<SavedFileInfo>()
                 };
                 return getFilesListResultData;
+            }
+        }
+
+        private void FillFilesDataGrid(List<SavedFileInfo> savedFilesList)
+        {
+                for (int i = 0; i < savedFilesList.Count; i++)
+            {
+                dataGridRemoteLoad.Rows.Add();
+
+                dataGridRemoteLoad.Rows[i].Cells[0].Value = savedFilesList[i].ImageId;
+                dataGridRemoteLoad.Rows[i].Cells[1].Value = savedFilesList[i].ImageName;
+                dataGridRemoteLoad.Rows[i].Cells[2].Value = savedFilesList[i].ImageType;
+                dataGridRemoteLoad.Rows[i].Cells[3].Value = savedFilesList[i].CreateDate;
+                dataGridRemoteLoad.Rows[i].Cells[4].Value = savedFilesList[i].FileSize;
+                
+
+                //dataGridRemoteLoad.Rows[i].Cells["FileName"].Value = savedFilesList[i].ImageId;
+
             }
         }
     }

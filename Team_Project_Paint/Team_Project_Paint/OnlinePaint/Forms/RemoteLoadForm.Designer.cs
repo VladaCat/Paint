@@ -30,53 +30,34 @@ namespace Team_Project_Paint
         private void InitializeComponent()
         {
             this.dataGridRemoteLoad = new System.Windows.Forms.DataGridView();
-            this.fileIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileSizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLoadImage = new System.Windows.Forms.Button();
             this.txtImageId = new System.Windows.Forms.TextBox();
             this.btnTemoLoadFiles = new System.Windows.Forms.Button();
+            this.fileIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImageType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileSizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRemoteLoad)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridRemoteLoad
             // 
+            this.dataGridRemoteLoad.AllowUserToAddRows = false;
+            this.dataGridRemoteLoad.AllowUserToDeleteRows = false;
+            this.dataGridRemoteLoad.AllowUserToOrderColumns = true;
             this.dataGridRemoteLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridRemoteLoad.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fileIdColumn,
             this.fileNameColumn,
+            this.ImageType,
             this.createDateColumn,
             this.fileSizeColumn});
             this.dataGridRemoteLoad.Location = new System.Drawing.Point(3, 39);
             this.dataGridRemoteLoad.Name = "dataGridRemoteLoad";
+            this.dataGridRemoteLoad.ReadOnly = true;
             this.dataGridRemoteLoad.Size = new System.Drawing.Size(776, 388);
             this.dataGridRemoteLoad.TabIndex = 0;
-            // 
-            // fileIdColumn
-            // 
-            this.fileIdColumn.HeaderText = "ID";
-            this.fileIdColumn.Name = "fileIdColumn";
-            this.fileIdColumn.ReadOnly = true;
-            this.fileIdColumn.Visible = false;
-            // 
-            // fileNameColumn
-            // 
-            this.fileNameColumn.HeaderText = "File Name";
-            this.fileNameColumn.Name = "fileNameColumn";
-            this.fileNameColumn.ReadOnly = true;
-            // 
-            // createDateColumn
-            // 
-            this.createDateColumn.HeaderText = "Create Date";
-            this.createDateColumn.Name = "createDateColumn";
-            this.createDateColumn.ReadOnly = true;
-            // 
-            // fileSizeColumn
-            // 
-            this.fileSizeColumn.HeaderText = "Size";
-            this.fileSizeColumn.Name = "fileSizeColumn";
-            this.fileSizeColumn.ReadOnly = true;
             // 
             // btnLoadImage
             // 
@@ -105,6 +86,36 @@ namespace Team_Project_Paint
             this.btnTemoLoadFiles.UseVisualStyleBackColor = true;
             this.btnTemoLoadFiles.Click += new System.EventHandler(this.btnTemoLoadFiles_Click);
             // 
+            // fileIdColumn
+            // 
+            this.fileIdColumn.HeaderText = "ID";
+            this.fileIdColumn.Name = "fileIdColumn";
+            this.fileIdColumn.ReadOnly = true;
+            // 
+            // fileNameColumn
+            // 
+            this.fileNameColumn.HeaderText = "File Name";
+            this.fileNameColumn.Name = "fileNameColumn";
+            this.fileNameColumn.ReadOnly = true;
+            // 
+            // ImageType
+            // 
+            this.ImageType.HeaderText = "Image Type";
+            this.ImageType.Name = "ImageType";
+            this.ImageType.ReadOnly = true;
+            // 
+            // createDateColumn
+            // 
+            this.createDateColumn.HeaderText = "Create Date";
+            this.createDateColumn.Name = "createDateColumn";
+            this.createDateColumn.ReadOnly = true;
+            // 
+            // fileSizeColumn
+            // 
+            this.fileSizeColumn.HeaderText = "Size";
+            this.fileSizeColumn.Name = "fileSizeColumn";
+            this.fileSizeColumn.ReadOnly = true;
+            // 
             // RemoteLoadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,12 +136,13 @@ namespace Team_Project_Paint
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridRemoteLoad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fileIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fileNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fileSizeColumn;
         private System.Windows.Forms.Button btnLoadImage;
         private System.Windows.Forms.TextBox txtImageId;
         private System.Windows.Forms.Button btnTemoLoadFiles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImageType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileSizeColumn;
     }
 }
