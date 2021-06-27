@@ -73,6 +73,11 @@
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
     <Compile Include="Class\Net\INetLogic.cs" />
+    <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListRequest.cs" />
+    <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListInfo.cs" />
+    <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListResultData.cs" />
+    <Compile Include="Class\Net\UseCases\GetFilesListCase\IGetFilesListRequest.cs" />
+    <Compile Include="Class\Net\UseCases\GetFilesListCase\SavedFileInfo.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\ILoadImageRequest.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageInfo.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageRequest.cs" />

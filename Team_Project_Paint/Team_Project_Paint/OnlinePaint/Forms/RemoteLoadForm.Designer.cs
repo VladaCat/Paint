@@ -36,6 +36,7 @@ namespace Team_Project_Paint
             this.fileSizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLoadImage = new System.Windows.Forms.Button();
             this.txtImageId = new System.Windows.Forms.TextBox();
+            this.btnTemoLoadFiles = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRemoteLoad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,11 +95,22 @@ namespace Team_Project_Paint
             this.txtImageId.Size = new System.Drawing.Size(100, 20);
             this.txtImageId.TabIndex = 2;
             // 
+            // btnTemoLoadFiles
+            // 
+            this.btnTemoLoadFiles.Location = new System.Drawing.Point(22, 9);
+            this.btnTemoLoadFiles.Name = "btnTemoLoadFiles";
+            this.btnTemoLoadFiles.Size = new System.Drawing.Size(75, 23);
+            this.btnTemoLoadFiles.TabIndex = 3;
+            this.btnTemoLoadFiles.Text = "LoadFiles";
+            this.btnTemoLoadFiles.UseVisualStyleBackColor = true;
+            this.btnTemoLoadFiles.Click += new System.EventHandler(this.btnTemoLoadFiles_Click);
+            // 
             // RemoteLoadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTemoLoadFiles);
             this.Controls.Add(this.txtImageId);
             this.Controls.Add(this.btnLoadImage);
             this.Controls.Add(this.dataGridRemoteLoad);
@@ -119,5 +131,6 @@ namespace Team_Project_Paint
         private System.Windows.Forms.DataGridViewTextBoxColumn fileSizeColumn;
         private System.Windows.Forms.Button btnLoadImage;
         private System.Windows.Forms.TextBox txtImageId;
+        private System.Windows.Forms.Button btnTemoLoadFiles;
     }
 }

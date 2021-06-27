@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Team_Project_Paint.Class.OperationWithFigures;
@@ -71,6 +72,37 @@ namespace Team_Project_Paint
                     LoadImageResultMessage = "Bad"
                 };
                 return loadImageResultData;
+            }
+        }
+
+        private void btnTemoLoadFiles_Click(object sender, EventArgs e)
+        {
+
+            GetFilesListInfo getFilesListInfo = new GetFilesListInfo()
+            {
+                UserId = StaticNet.NetLogic.UserID
+            };
+
+            GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
+
+        }
+
+        private GetFilesListResultData GetFilesList(GetFilesListInfo getFilesListInfo)
+        {
+            var request = new GetFilesListRequest(getFilesListInfo, StaticNet.NetLogic.PaintServerUrl);
+            if (request.Execute())
+            {
+                return request.LastGetFilesListResultData;
+            }
+            else
+            {
+                GetFilesListResultData getFilesListResultData = new GetFilesListResultData()
+                {
+                    GetFilesListResult = false,
+                    GetFilesListResultMessage = "Bad",
+                    SavedFileInfo = new List<SavedFileInfo>()
+                };
+                return getFilesListResultData;
             }
         }
     }
