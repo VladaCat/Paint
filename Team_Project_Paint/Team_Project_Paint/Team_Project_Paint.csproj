@@ -73,17 +73,21 @@
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
     <Compile Include="Class\Net\INetLogic.cs" />
-    <Compile Include="Class\Net\ISaveImageRequest.cs" />
-    <Compile Include="Class\Net\IUserAutorizationRequest.cs" />
-    <Compile Include="Class\Net\IUserRegistrationRequest.cs" />
+    <Compile Include="Class\Net\UseCases\LoadImageCase\ILoadImageRequest.cs" />
+    <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageInfo.cs" />
+    <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageRequest.cs" />
+    <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageResultData.cs" />
+    <Compile Include="Class\Net\UseCases\SaveImageCase\ISaveImageRequest.cs" />
+    <Compile Include="Class\Net\UseCases\AutorizationCase\IUserAutorizationRequest.cs" />
+    <Compile Include="Class\Net\UseCases\RegistrationCase\IUserRegistrationRequest.cs" />
     <Compile Include="Class\Net\NetLogic.cs" />
-    <Compile Include="Class\Net\SaveImageRequest.cs" />
+    <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageRequest.cs" />
     <Compile Include="Class\Net\StaticNet.cs" />
-    <Compile Include="Class\Net\UserAutorizationRequest.cs" />
-    <Compile Include="Class\Net\UserRegistrationRequest.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\RegistrationResultData.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\SaveImageResultData.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\UserRegistrationData.cs" />
+    <Compile Include="Class\Net\UseCases\AutorizationCase\UserAutorizationRequest.cs" />
+    <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationRequest.cs" />
+    <Compile Include="Class\Net\UseCases\RegistrationCase\RegistrationResultData.cs" />
+    <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageResultData.cs" />
+    <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationData.cs" />
     <Compile Include="OnlinePaint\FormsManager.cs" />
     <Compile Include="OnlinePaint\Forms\DummyForm.cs">
       <SubType>Form</SubType>
@@ -152,10 +156,10 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IShape.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\AutorizationResultData.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\NewUserData.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\SaveImageInfo.cs" />
-    <Compile Include="OnlinePaint\ClientServerDTO\UserAutorizationData.cs" />
+    <Compile Include="Class\Net\UseCases\AutorizationCase\AutorizationResultData.cs" />
+    <Compile Include="Class\Net\UseCases\RegistrationCase\NewUserData.cs" />
+    <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageInfo.cs" />
+    <Compile Include="Class\Net\UseCases\AutorizationCase\UserAutorizationData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Class\FigureDrawingClass\RoundingRect.cs" />
@@ -250,6 +254,7 @@
     <None Include="Resources\line.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="OnlinePaint\ClientServerDTO\" />
     <Folder Include="SQL_Request\" />
   </ItemGroup>
   <ItemGroup>
