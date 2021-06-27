@@ -216,6 +216,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         public Stream RemoteLoadBitmap(string image, PaintBitmap bitmap)
         {
+
             Stream dstStream;
             byte[] dstArray;
 

@@ -17,7 +17,7 @@ namespace Team_Project_Paint
         private ShapePoint _lastPonit;
         private EShapeType _currentMode;
         public PaintBitmap _currentBitmap;
-        private PaintBitmap _bufferedBitmap;
+        public PaintBitmap _bufferedBitmap;
         private bool _isMoveMode = false;
         private bool _isSelectMode = false;
         private bool _isStartMove = false;

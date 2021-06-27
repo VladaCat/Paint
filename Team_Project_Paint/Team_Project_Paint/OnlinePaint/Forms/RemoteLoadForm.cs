@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.Net;
 using Team_Project_Paint.OnlinePaint.Helpers;
 
@@ -28,6 +29,12 @@ namespace Team_Project_Paint
 
             if (loadImageResult.LoadImageResult)
             {
+                mainForm._bl.Clear();
+                mainForm._currentBitmap = new PaintBitmap(mainForm.pictureBoxMain.Width, mainForm.pictureBoxMain.Height);
+                mainForm._bufferedBitmap = mainForm._currentBitmap.Clone() as PaintBitmap;
+                mainForm.pictureBoxMain.Image = mainForm._currentBitmap.ToImage();
+                mainForm.Repaint();
+
                 if (loadImageResult.ImageType == "json")
                 {
                     mainForm._bl.JsonOpen(loadImageResult.ImageData, mainForm._currentBitmap);
