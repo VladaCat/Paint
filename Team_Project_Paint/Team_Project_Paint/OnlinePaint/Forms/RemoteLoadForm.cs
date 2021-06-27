@@ -16,45 +16,6 @@ namespace Team_Project_Paint
             InitializeComponent();
         }
 
-        private void btnLoadImage_Click(object sender, System.EventArgs e)
-        {
-            var mainForm = FormsManager.mainForm;
-
-            LoadImageInfo loadImageInfo = new LoadImageInfo()
-            {
-                UserId = StaticNet.NetLogic.UserID,
-                ImageId = Convert.ToInt32(txtImageId.Text)
-            };
-
-            LoadImageResultData loadImageResult = LoadImage(loadImageInfo);
-
-            if (loadImageResult.LoadImageResult)
-            {
-                mainForm._bl.Clear();
-                mainForm._currentBitmap = new PaintBitmap(mainForm.pictureBoxMain.Width, mainForm.pictureBoxMain.Height);
-                mainForm._bufferedBitmap = mainForm._currentBitmap.Clone() as PaintBitmap;
-                mainForm.pictureBoxMain.Image = mainForm._currentBitmap.ToImage();
-                mainForm.Repaint();
-
-                if (loadImageResult.ImageType == "json")
-                {
-                    mainForm._bl.JsonOpen(loadImageResult.ImageData, mainForm._currentBitmap);
-                    mainForm.Repaint();
-                }
-                else if (loadImageResult.ImageType == "jpg" || loadImageResult.ImageType == "png" || loadImageResult.ImageType == "bmp")
-                {
-                    mainForm.pictureBoxMain.Image = Image.FromStream(mainForm._bl.RemoteLoadBitmap(loadImageResult.ImageData, mainForm._currentBitmap));
-                }
-            
-                Hide();
-            }
-            else
-            {
-                MessageBox.Show("Open image failed");
-            }
-
-        }
-
         private LoadImageResultData LoadImage(LoadImageInfo loadImageInfo)
         {
             var request = new LoadImageRequest(loadImageInfo, StaticNet.NetLogic.PaintServerUrl);
@@ -73,19 +34,6 @@ namespace Team_Project_Paint
                 };
                 return loadImageResultData;
             }
-        }
-
-        private void btnTemoLoadFiles_Click(object sender, EventArgs e)
-        {
-
-            GetFilesListInfo getFilesListInfo = new GetFilesListInfo()
-            {
-                UserId = StaticNet.NetLogic.UserID
-            };
-
-            GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
-            FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
-
         }
 
         private GetFilesListResultData GetFilesList(GetFilesListInfo getFilesListInfo)
@@ -109,19 +57,70 @@ namespace Team_Project_Paint
 
         private void FillFilesDataGrid(List<SavedFileInfo> savedFilesList)
         {
-                for (int i = 0; i < savedFilesList.Count; i++)
+            dataGridRemoteLoad.Rows.Clear();
+
+            foreach (var el in savedFilesList)
             {
-                dataGridRemoteLoad.Rows.Add();
+                var i = dataGridRemoteLoad.Rows.Add();
 
-                dataGridRemoteLoad.Rows[i].Cells[0].Value = savedFilesList[i].ImageId;
-                dataGridRemoteLoad.Rows[i].Cells[1].Value = savedFilesList[i].ImageName;
-                dataGridRemoteLoad.Rows[i].Cells[2].Value = savedFilesList[i].ImageType;
-                dataGridRemoteLoad.Rows[i].Cells[3].Value = savedFilesList[i].CreateDate;
-                dataGridRemoteLoad.Rows[i].Cells[4].Value = savedFilesList[i].FileSize;
-                
+                dataGridRemoteLoad.Rows[i].Cells[0].Value = el.ImageId;
+                dataGridRemoteLoad.Rows[i].Cells[1].Value = el.ImageName;
+                dataGridRemoteLoad.Rows[i].Cells[2].Value = el.ImageType;
+                dataGridRemoteLoad.Rows[i].Cells[3].Value = el.CreateDate;
+                dataGridRemoteLoad.Rows[i].Cells[4].Value = el.FileSize;
+            }
+        }
 
-                //dataGridRemoteLoad.Rows[i].Cells["FileName"].Value = savedFilesList[i].ImageId;
+        private void dataGridRemoteLoad_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+                var mainForm = FormsManager.mainForm;
 
+            LoadImageInfo loadImageInfo = new LoadImageInfo()
+            {
+                UserId = StaticNet.NetLogic.UserID,
+                ImageId = Convert.ToInt32(dataGridRemoteLoad.Rows[e.RowIndex].Cells[0].Value)
+            };
+
+            LoadImageResultData loadImageResult = LoadImage(loadImageInfo);
+
+            if (loadImageResult.LoadImageResult)
+            {
+                mainForm._bl.Clear();
+                mainForm._currentBitmap = new PaintBitmap(mainForm.pictureBoxMain.Width, mainForm.pictureBoxMain.Height);
+                mainForm._bufferedBitmap = mainForm._currentBitmap.Clone() as PaintBitmap;
+                mainForm.pictureBoxMain.Image = mainForm._currentBitmap.ToImage();
+                mainForm.Repaint();
+
+                if (loadImageResult.ImageType == "json")
+                {
+                    mainForm._bl.JsonOpen(loadImageResult.ImageData, mainForm._currentBitmap);
+                    mainForm.Repaint();
+                }
+                else if (loadImageResult.ImageType == "jpg" || loadImageResult.ImageType == "png" || loadImageResult.ImageType == "bmp")
+                {
+                    mainForm.pictureBoxMain.Image = Image.FromStream(mainForm._bl.RemoteLoadBitmap(loadImageResult.ImageData, mainForm._currentBitmap));
+                }
+
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Open image failed");
+            }
+
+        }
+
+        private void RemoteLoadForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                GetFilesListInfo getFilesListInfo = new GetFilesListInfo()
+                {
+                    UserId = StaticNet.NetLogic.UserID
+                };
+
+                GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
+                FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
             }
         }
     }
