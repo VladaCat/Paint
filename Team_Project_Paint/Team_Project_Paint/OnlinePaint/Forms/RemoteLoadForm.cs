@@ -36,6 +36,13 @@ namespace Team_Project_Paint
             }
         }
 
+        private void btnTemoLoadFiles_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
         private GetFilesListResultData GetFilesList(GetFilesListInfo getFilesListInfo)
         {
             var request = new GetFilesListRequest(getFilesListInfo, StaticNet.NetLogic.PaintServerUrl);
@@ -69,11 +76,26 @@ namespace Team_Project_Paint
                 dataGridRemoteLoad.Rows[i].Cells[3].Value = el.CreateDate;
                 dataGridRemoteLoad.Rows[i].Cells[4].Value = el.FileSize;
             }
+
         }
 
-        private void dataGridRemoteLoad_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void RemoteLoadForm_VisibleChanged(object sender, EventArgs e)
         {
-                var mainForm = FormsManager.mainForm;
+            if (Visible)
+            {
+                GetFilesListInfo getFilesListInfo = new GetFilesListInfo()
+                {
+                    UserId = StaticNet.NetLogic.UserID
+                };
+
+                GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
+                FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
+            }
+        }
+
+        private void dataGridRemoteLoad_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var mainForm = FormsManager.mainForm;
 
             LoadImageInfo loadImageInfo = new LoadImageInfo()
             {
@@ -106,21 +128,6 @@ namespace Team_Project_Paint
             else
             {
                 MessageBox.Show("Open image failed");
-            }
-
-        }
-
-        private void RemoteLoadForm_VisibleChanged(object sender, EventArgs e)
-        {
-            if (Visible)
-            {
-                GetFilesListInfo getFilesListInfo = new GetFilesListInfo()
-                {
-                    UserId = StaticNet.NetLogic.UserID
-                };
-
-                GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
-                FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
             }
         }
     }
