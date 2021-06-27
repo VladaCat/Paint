@@ -16,6 +16,7 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
 
         public int Numb { get; set; }
+        public IShape SelectedFigure { get; set; }
 
         public BusinessLogic(IStorage storage, IShapeFactory shape, IJsonLogic jsonLogic)
         {
@@ -105,7 +106,28 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
         public bool IsSelectShape(ShapePoint e)
         {
+
+            // for (int i = _storage.GetCount() - 1; i >= 0; i--)
+            //    { var currentFigure = _storage.GetShapeForIndex(i);
+            //    if (currentFigure.EShapeStatus==FigureDrawingClass.EShapeStatus.DONE)
+            //    {
+            //        var bb = currentFigure.GetBoundingBox();
+            //        if (e.X>=bb.X && e.X<=bb.X+bb.Width && e.Y>=bb.Y && e.Y<=bb.Y+bb.Height )
+            //        {
+            //            Numb = i;
+            //            SelectedFigure = currentFigure;
+
+            //            return true;
+            //        }
+            //    }
+
+            //}
+            //SelectedFigure = null;
+            //return false;
+
+
             bool isSelect = false;
+
 
             for (int i = _storage.GetCount() - 1; i >= 0; i--)
             {

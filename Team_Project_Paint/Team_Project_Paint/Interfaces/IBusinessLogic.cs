@@ -36,6 +36,7 @@ namespace Team_Project_Paint.Interfaces
         bool isBoolCount();
 
         bool IsSelectShape(ShapePoint e);
+        IShape SelectedFigure { get; set; }
 
         void UpdatePicture(PaintBitmap paintBitmap);
 
