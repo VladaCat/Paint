@@ -97,6 +97,11 @@
     <Compile Include="Class\Net\UseCases\RegistrationCase\RegistrationResultData.cs" />
     <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageResultData.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationData.cs" />
+    <Compile Include="Class\Net\UseCases\StatisticsCase\IStatisticsRequest.cs" />
+    <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticInfo.cs" />
+    <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticItem.cs" />
+    <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticRequest.cs" />
+    <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticResultData.cs" />
     <Compile Include="OnlinePaint\FormsManager.cs" />
     <Compile Include="OnlinePaint\Forms\DummyForm.cs">
       <SubType>Form</SubType>

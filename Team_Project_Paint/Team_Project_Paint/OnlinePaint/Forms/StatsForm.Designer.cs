@@ -31,14 +31,22 @@ namespace Team_Project_Paint
         {
             this.dataGridStatistics = new System.Windows.Forms.DataGridView();
             this.backBtn = new System.Windows.Forms.Button();
+            this.StatParameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistics)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridStatistics
             // 
+            this.dataGridStatistics.AllowUserToAddRows = false;
+            this.dataGridStatistics.AllowUserToDeleteRows = false;
             this.dataGridStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStatistics.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StatParameter,
+            this.StatValue});
             this.dataGridStatistics.Location = new System.Drawing.Point(24, 72);
             this.dataGridStatistics.Name = "dataGridStatistics";
+            this.dataGridStatistics.ReadOnly = true;
             this.dataGridStatistics.Size = new System.Drawing.Size(741, 334);
             this.dataGridStatistics.TabIndex = 0;
             // 
@@ -52,6 +60,19 @@ namespace Team_Project_Paint
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // StatParameter
+            // 
+            this.StatParameter.HeaderText = "Parameter";
+            this.StatParameter.Name = "StatParameter";
+            this.StatParameter.ReadOnly = true;
+            this.StatParameter.Width = 300;
+            // 
+            // StatValue
+            // 
+            this.StatValue.HeaderText = "Value";
+            this.StatValue.Name = "StatValue";
+            this.StatValue.ReadOnly = true;
+            // 
             // StatsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -62,6 +83,7 @@ namespace Team_Project_Paint
             this.Name = "StatsForm";
             this.Text = "Paint";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StatsForm_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.StatsForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistics)).EndInit();
             this.ResumeLayout(false);
 
@@ -71,5 +93,7 @@ namespace Team_Project_Paint
 
         private System.Windows.Forms.DataGridView dataGridStatistics;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatParameter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatValue;
     }
 }
