@@ -56,7 +56,7 @@ namespace Team_Project_Paint
         {
             dataGridRemoteImages.Rows.Clear();
 
-
+            
             foreach (var el in savedFilesList)
             {
                 var i = dataGridRemoteImages.Rows.Add();
@@ -68,6 +68,7 @@ namespace Team_Project_Paint
                 dataGridRemoteImages.Rows[i].Cells[4].Value = el.FileSize;
                 dataGridRemoteImages.Rows[i].Cells[5].Value = "Delete";
             }
+            
         }
 
         private bool SaveImageRaster(string fileName, string fileType)

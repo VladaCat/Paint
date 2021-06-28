@@ -39,7 +39,7 @@ namespace Team_Project_Paint.Net
 
                     LastDeleteImageResultData = deleteImageResultData;
 
-                    if (deleteImageResultData.LoadImageResult == true)
+                    if (deleteImageResultData.DeleteImageResult == true)
                     {
                         return true;
                     }
