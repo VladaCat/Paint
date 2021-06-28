@@ -3,7 +3,7 @@ namespace Team_Project_Paint.Net
 {
     public class DeleteImageResultData
     {
-        public bool LoadImageResult { get; set; }
-        public string LoadImageResultMessage { get; set; }
+        public bool DeleteImageResult { get; set; }
+        public string DeleteImageResultMessage { get; set; }
     }
 }

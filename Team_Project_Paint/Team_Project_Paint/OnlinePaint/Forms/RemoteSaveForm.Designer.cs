@@ -29,8 +29,8 @@ namespace Team_Project_Paint
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.cmbImageFormat = new System.Windows.Forms.ComboBox();
@@ -93,6 +93,7 @@ namespace Team_Project_Paint
             this.dataGridRemoteImages.ReadOnly = true;
             this.dataGridRemoteImages.Size = new System.Drawing.Size(776, 388);
             this.dataGridRemoteImages.TabIndex = 3;
+            this.dataGridRemoteImages.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridRemoteImages_CellClick);
             this.dataGridRemoteImages.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridRemoteImages_CellDoubleClick);
             // 
             // fileIdColumn
@@ -115,18 +116,18 @@ namespace Team_Project_Paint
             // 
             // createDateColumn
             // 
-            dataGridViewCellStyle9.Format = "G";
-            dataGridViewCellStyle9.NullValue = null;
-            this.createDateColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.createDateColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.createDateColumn.HeaderText = "Create Date";
             this.createDateColumn.Name = "createDateColumn";
             this.createDateColumn.ReadOnly = true;
             // 
             // fileSizeColumn
             // 
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.fileSizeColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.fileSizeColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.fileSizeColumn.HeaderText = "Size";
             this.fileSizeColumn.Name = "fileSizeColumn";
             this.fileSizeColumn.ReadOnly = true;
