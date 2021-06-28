@@ -21,6 +21,7 @@ namespace Team_Project_Paint.Interfaces
         ShapeSize Size { get; set; }
         EShapeType Name { get; }
         EShapeStatus EShapeStatus { get; set; }
+        PaintRectangle GetBoundingBox();
         void MouseClick(ShapePoint point);
         void MouseDown(ShapePoint point);
         void MouseUp(ShapePoint point);

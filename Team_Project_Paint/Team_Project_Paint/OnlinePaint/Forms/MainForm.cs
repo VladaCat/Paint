@@ -159,39 +159,76 @@ namespace Team_Project_Paint
         private void DotButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Dot;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Line;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
         }
 
         private void CurveButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Curve;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
         }
 
         private void RectangleButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Rect;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
         }
 
         private void EllipseButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Ellipse;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
         }
         private void TriangleButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Triangle;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
         }
         private void HexagonButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.Hexagon;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
         }
 
         private void RoundingRectButton_Click(object sender, EventArgs e)
         {
             _currentMode = EShapeType.RoundingRect;
+            UncheckChildren(toolStrip1, sender);
+            Deselect();
+        }
+
+        private void Deselect()
+        {
+            if (_isSelectMode)
+            {
+                SelectBtn_Click(null, null);
+            }
+        }
+        private void UncheckChildren(ToolStrip toolBar, object skipControl)
+        {
+            foreach(var c in toolBar.Items)
+            {
+               if (c is ToolStripButton)
+                {
+                    if (c!=skipControl)
+                    {
+                        ((ToolStripButton)c).Checked = false;
+                    }
+                }
+            }
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
@@ -332,6 +369,7 @@ namespace Team_Project_Paint
                 selectBtn.Text = TEXT_FOR_SELECT_ON;
                 moveBtn.Enabled = true;
                 deleteBtn.Enabled = true;
+                UncheckChildren(toolStrip1, sender);
             }
             else
             {

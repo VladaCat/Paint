@@ -21,6 +21,7 @@ namespace Team_Project_Paint.Class
         {
             get => name;
         }
+        
 
         public int Numb { get; set; }
         public bool IsSelected { get; set; }
@@ -35,9 +36,43 @@ namespace Team_Project_Paint.Class
             set { _eHsapeStatus = value; }
         }
 
+        
         public List<ShapePoint> ShapePoints { get; set; }
 
         public abstract void Draw(PaintGraphics graphics);
+
+        public virtual PaintRectangle GetBoundingBox()
+        {
+            //Location, FinishLocation
+            int x, y, height, width;
+
+            if ((Location.X) < (FinishLocation.X))
+            {
+                x = Location.X;
+                width = FinishLocation.X - Location.X;
+            }
+            else
+            {
+                x = FinishLocation.X;
+                width = Location.X - FinishLocation.X;
+
+            }
+
+            if ((Location.Y)<(FinishLocation.Y))
+            {
+                y = Location.Y;
+                height = FinishLocation.Y - Location.Y;
+            }
+            else
+            {
+                y = FinishLocation.Y;
+                height = Location.Y - FinishLocation.Y;
+            }
+
+
+            return new PaintRectangle(x, y, width, height);
+
+        }
 
         public virtual void MouseClick(ShapePoint point)
         {
@@ -71,6 +106,6 @@ namespace Team_Project_Paint.Class
             }
         }
 
-        public void SelectShape(List<IShape> shapeList, MouseEventArgs e) { }
+       // public void SelectShape(List<IShape> shapeList, MouseEventArgs e) { }
     }
 }
