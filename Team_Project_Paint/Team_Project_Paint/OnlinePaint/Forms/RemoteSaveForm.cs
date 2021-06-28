@@ -16,7 +16,12 @@ namespace Team_Project_Paint
 
         private void btnSave_Click(object sender, System.EventArgs e)
         {
-
+            bool saveImageResult= SaveImage(txtFileName.Text, cmbImageFormat.Text);
+            if (saveImageResult)
+            {
+                MessageBox.Show("Remote Image saved successfully");
+            }
+            RequeryRemoteFilesList();
         }
 
 
@@ -24,13 +29,7 @@ namespace Team_Project_Paint
         {
             if (Visible)
             {
-                GetFilesListInfo getFilesListInfo = new GetFilesListInfo()
-                {
-                    UserId = StaticNet.NetLogic.UserID
-                };
-
-                GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
-                FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
+                RequeryRemoteFilesList();
             }
         }
 
@@ -117,7 +116,7 @@ namespace Team_Project_Paint
             }
         }
 
-       
+
         private bool DeleteRemoteImage(int imageId, int userId)
         {
             DeleteImageInfo deleteImageInfo = new DeleteImageInfo()
@@ -150,7 +149,7 @@ namespace Team_Project_Paint
                 string imageName = dataGridRemoteImages.Rows[e.RowIndex].Cells[1].Value.ToString();
                 int imageId = Convert.ToInt32(dataGridRemoteImages.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                var result = MessageBox.Show("Выбранный файл будет перезписан", "", MessageBoxButtons.YesNo);
+                var result = MessageBox.Show("Выбранный файл будет перезаписан", "", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     if (DeleteRemoteImage(imageId, StaticNet.NetLogic.UserID))
@@ -179,7 +178,19 @@ namespace Team_Project_Paint
 
         private void dataGridRemoteImages_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+            if (e.ColumnIndex==5)
+            {
+                var msgBoxResult = MessageBox.Show("Do you really want to delete this picture?",
+                                "Confirm Deletion", MessageBoxButtons.YesNo);
+                if (msgBoxResult == DialogResult.Yes)
+                {
+                    DeleteRemoteImage(Convert.ToInt32(dataGridRemoteImages.Rows[e.RowIndex].Cells[0].Value), StaticNet.NetLogic.UserID);
+                }
+                RequeryRemoteFilesList();
+            }
 
+            
         }
     }
 }
