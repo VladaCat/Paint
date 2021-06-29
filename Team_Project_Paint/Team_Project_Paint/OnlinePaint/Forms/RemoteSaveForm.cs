@@ -39,17 +39,17 @@ namespace Team_Project_Paint
 
         private GetFilesListResultData GetFilesList(GetFilesListInfo getFilesListInfo)
         {
-            var request = new GetFilesListRequest(getFilesListInfo, StaticNet.NetLogic.PaintServerUrl);
-            if (request.Execute())
+            var request = new GetFilesListRequestGen<GetFilesListInfo, GetFilesListResultData>(getFilesListInfo, StaticNet.NetLogic.PaintServerUrl);
+            if (request.Execute() == System.Net.HttpStatusCode.OK)
             {
-                return request.LastGetFilesListResultData;
+                return request.LastResponceDTO;
             }
             else
             {
                 GetFilesListResultData getFilesListResultData = new GetFilesListResultData()
                 {
                     GetFilesListResult = false,
-                    GetFilesListResultMessage = "Bad",
+                    GetFilesListResultMessage = ((int)request.LastHttpStatusCode).ToString() + request.LastHttpStatusCode.ToString() + request.LastHttpStatusText,
                     SavedFileInfo = new List<SavedFileInfo>()
                 };
                 return getFilesListResultData;
@@ -160,7 +160,16 @@ namespace Team_Project_Paint
             };
 
             GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
-            FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
+            
+            if (getFilesListResultData.GetFilesListResult)
+            {
+                FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
+            }
+            else
+            {
+                MessageBox.Show("Cant load saved files list\n" + getFilesListResultData.GetFilesListResultMessage);
+            }
+            
         }
 
         private void dataGridRemoteImages_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

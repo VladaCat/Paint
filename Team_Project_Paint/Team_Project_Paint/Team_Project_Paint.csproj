@@ -83,6 +83,7 @@
     <Compile Include="Class\Net\UseCases\DeleteImageCase\IDeleteImageRequest.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListRequest.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListInfo.cs" />
+    <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListResultData.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\IGetFilesListRequest.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\SavedFileInfo.cs" />
