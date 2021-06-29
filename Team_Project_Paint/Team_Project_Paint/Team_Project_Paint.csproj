@@ -72,7 +72,9 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\Net\BoolStringType.cs" />
     <Compile Include="Class\Net\INetLogic.cs" />
+    <Compile Include="Class\Net\UseCases\AutorizationCase\UserAutorizationRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\BaseCase\RequestBase.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageInfo.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageResultData.cs" />

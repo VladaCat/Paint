@@ -16,10 +16,12 @@ namespace Team_Project_Paint.Net
         string LastName { get; }
 
         
-        bool AutorizeUser(UserAutorizationData userAutorizationData);
+        //bool AutorizeUser(UserAutorizationData userAutorizationData);
 
-        bool RegisterUser(UserRegistrationData userRegistrationData);
-        bool RegisterUserGen(UserRegistrationData userRegistrationData);
+        BoolStringType AutorizeUserGen(UserAutorizationData userAutorizationData);
+
+        //bool RegisterUser(UserRegistrationData userRegistrationData);
+        BoolStringType RegisterUserGen(UserRegistrationData userRegistrationData);
         bool SaveImage(SaveImageInfo saveImageInfo);
     }
 }

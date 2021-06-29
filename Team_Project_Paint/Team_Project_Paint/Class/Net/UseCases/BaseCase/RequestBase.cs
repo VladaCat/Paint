@@ -36,15 +36,13 @@ namespace Team_Project_Paint.Net
                 }
                 catch (System.Exception)
                 {
-                    LastHttpStatusText = response.StatusDescription + "\n" + response.Content;
+                    LastHttpStatusText = ((int)response.StatusCode).ToString() + "\n" + response.StatusDescription + "\n" + response.Content;
                     return response.StatusCode;
-                    //throw;
                 }
             }
             else
             {// responce HTTP status is not 200
-                
-                LastHttpStatusText = response.StatusDescription + "\n" + response.Content;
+                LastHttpStatusText = ((int)response.StatusCode).ToString() + "\n" + response.StatusDescription + "\n" + response.Content;
                 return response.StatusCode;
             }
         }

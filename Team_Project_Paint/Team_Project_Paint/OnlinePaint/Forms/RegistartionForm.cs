@@ -22,7 +22,7 @@ namespace Team_Project_Paint
         private void signUpBtn_Click(object sender, EventArgs e)
         {
             bool isValid = true;
-            bool regiserResult = false;
+            BoolStringType registerResult=null ;
 
             Validation validation = new Validation();
 
@@ -61,14 +61,15 @@ namespace Team_Project_Paint
                 };
 
                 //regiserResult = StaticNet.NetLogic.RegisterUser(userRegistrationData);
-                regiserResult = StaticNet.NetLogic.RegisterUserGen(userRegistrationData);
+                registerResult = StaticNet.NetLogic.RegisterUserGen(userRegistrationData);
             }
             else
             {
                 MessageBox.Show("Please enter correct value");
             }
 
-            if (regiserResult)
+            
+            if ((registerResult==null)?  false: registerResult.BooleanValue    )
             {
                 FormsManager.autorizationForm.txtLogin.Text = txtEmail.Text;
                 FormsManager.autorizationForm.txtPassword.Text = txtPassword.Text;
@@ -77,7 +78,7 @@ namespace Team_Project_Paint
             }
             else
             {
-                MessageBox.Show("Registration failed");
+                MessageBox.Show("Registration failed \n" + registerResult.StringValue );
             }
 
 
