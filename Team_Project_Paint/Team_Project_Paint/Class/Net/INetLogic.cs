@@ -22,6 +22,10 @@ namespace Team_Project_Paint.Net
 
         //bool RegisterUser(UserRegistrationData userRegistrationData);
         BoolStringType RegisterUserGen(UserRegistrationData userRegistrationData);
-        bool SaveImage(SaveImageInfo saveImageInfo);
+        //bool SaveImage(SaveImageInfo saveImageInfo);
+
+        BoolStringType SaveImageGen(SaveImageInfo saveImageInfo);
+
+
     }
 }

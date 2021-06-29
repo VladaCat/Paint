@@ -16,12 +16,16 @@ namespace Team_Project_Paint
 
         private void btnSave_Click(object sender, System.EventArgs e)
         {
-            bool saveImageResult= SaveImage(txtFileName.Text, cmbImageFormat.Text);
-            if (saveImageResult)
+            BoolStringType saveImageResult= SaveImage(txtFileName.Text, cmbImageFormat.Text);
+            if (saveImageResult.BooleanValue)
             {
-                MessageBox.Show("Remote Image saved successfully");
+                RequeryRemoteFilesList();
             }
-            RequeryRemoteFilesList();
+            else
+            {
+                MessageBox.Show("Save Image Error\n" + saveImageResult.StringValue);
+            }
+            
         }
 
 
@@ -71,7 +75,7 @@ namespace Team_Project_Paint
             
         }
 
-        private bool SaveImageRaster(string fileName, string fileType)
+        private BoolStringType SaveImageRaster(string fileName, string fileType)
         {
             var mainForm = FormsManager.mainForm;
             var image = mainForm._bl.RemoteSaveBitmap(mainForm._currentBitmap, fileType);
@@ -84,9 +88,9 @@ namespace Team_Project_Paint
                 UserId = StaticNet.NetLogic.UserID,
                 ImageData = image,
             };
-            return StaticNet.NetLogic.SaveImage(saveImageInfo);
+            return StaticNet.NetLogic.SaveImageGen(saveImageInfo);
         }
-        private bool SaveImageJSON(string fileName, string fileType)
+        private BoolStringType SaveImageJSON(string fileName, string fileType)
         {
             var mainForm = FormsManager.mainForm;
             JsonLogic jsonLogic = new JsonLogic();
@@ -99,12 +103,12 @@ namespace Team_Project_Paint
                 UserId = StaticNet.NetLogic.UserID,
                 ImageData = jsonLogic.File,
             };
-            return StaticNet.NetLogic.SaveImage(saveImageInfo);
+            return StaticNet.NetLogic.SaveImageGen(saveImageInfo);
 
         }
 
 
-        private bool SaveImage(string fileName, string fileType)
+        private BoolStringType SaveImage(string fileName, string fileType)
         {
             if (fileType == "bmp" || fileType == "png" || fileType == "jpeg")
             {
@@ -155,13 +159,14 @@ namespace Team_Project_Paint
                 {
                     if (DeleteRemoteImage(imageId, StaticNet.NetLogic.UserID))
                     {
-                        if (SaveImage(imageName, imageType))
+                        BoolStringType saveImageResult = SaveImage(imageName, imageType);
+                        if (saveImageResult.BooleanValue)
                         {
-                            MessageBox.Show("Image overwriten succesfully");
+                            RequeryRemoteFilesList();
                         }
                         else
                         {
-                            MessageBox.Show("Something goes wrong");
+                            MessageBox.Show("Cant save image after deletion\n" + saveImageResult.StringValue);
                         }
                     }
                     else

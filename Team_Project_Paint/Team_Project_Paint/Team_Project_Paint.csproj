@@ -99,6 +99,7 @@
     <Compile Include="Class\Net\UseCases\AutorizationCase\UserAutorizationRequest.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationRequest.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\RegistrationResultData.cs" />
+    <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageResultData.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationData.cs" />
     <Compile Include="Class\Net\UseCases\StatisticsCase\IStatisticsRequest.cs" />

@@ -43,6 +43,11 @@ namespace Team_Project_Paint.Net
 
             if (request.Execute() == HttpStatusCode.OK)
             {
+                
+                UserID = request.LastResponceDTO.UserId;
+                Login = request.LastResponceDTO.Login;
+                FirstName = request.LastResponceDTO.FirstName;
+                LastName = request.LastResponceDTO.LastName;
                 return new BoolStringType()
                 {
                     BooleanValue = true,
@@ -92,19 +97,38 @@ namespace Team_Project_Paint.Net
                 };
         }
 
-        public bool SaveImage(SaveImageInfo savedImageInfo)
+        //public bool SaveImage(SaveImageInfo savedImageInfo)
+        //{
+        //    var request = new SaveImageRequest(savedImageInfo, PaintServerUrl);
+        //    if (request.Execute())
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+
+        //        return false;
+        //    }
+        //}
+
+        public BoolStringType SaveImageGen(SaveImageInfo saveImageInfo)
         {
-            var request = new SaveImageRequest(savedImageInfo, PaintServerUrl);
-            if (request.Execute())
+            var request = new SaveImageRequestGen<SaveImageInfo, SaveImageResultData>(saveImageInfo, PaintServerUrl);
+            if (request.Execute() == HttpStatusCode.OK)
             {
-                return true;
+
+                return new BoolStringType()
+                {
+                    BooleanValue = true,
+                    StringValue = request.LastHttpStatusText
+                };
             }
             else
-            {
-
-                return false;
-            }
+                return new BoolStringType()
+                {
+                    BooleanValue = false,
+                    StringValue = request.LastHttpStatusText
+                };
         }
-
     }
 }
