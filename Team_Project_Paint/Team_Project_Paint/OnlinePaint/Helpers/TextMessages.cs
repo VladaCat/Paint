@@ -4,40 +4,38 @@ namespace Team_Project_Paint
 {
     public static class TextMessages
     {
-        public static string txtNoSuchUser
-        { get => "Пользователя с таким логином не существует"; }
-        public static string txtInvalidPassword
-        { get => "Пароль не соответствует этому логину"; }
+        
+        
         public static string txtDuplicateLogin
-        { get => "Такой логин уже есть"; }
+        { get => "Duplicate login. Can't create user with the same login"; }
         
         // под вопросом
-        public static string txtIncorrectLogin
-        { get => "Не введен логин, либо логин некорректен. Логин должен быть корректным адресом электронной почты."; }
+        public static string txtLoginIsNotEmail
+        { get => "Incorrect login. Login must be valid e-mail address"; }
 
-        public static string txtIncorrectName
-        { get => "Имя и фамилия должны быть длиной не менее 2 символов и не более 30 символов"; }
+        public static string txtIncorrectNameLength
+        { get => "First name and Last name can't be shorter than 2 characters, and longer than 30 characters"; }
 
-        public static string txtIncorrectPasswordMessage1
-        { get => "Пароль должен иметь длину от 8 до 16 символов."; }
+        public static string txtIncorrectPasswordLength
+        { get => "Password's length should be from 8 to 16 characters"; }
 
-        public static string txtIncorrectPasswordMessage2
-        { get => "Пароль должен содержать как минимум одну строчую букву."; }
+        public static string txtNoSmallCharactersInPassword
+        { get => "Password should contain at least one small letter"; }
 
-        public static string txtIncorrectPasswordMessage3
-        { get => "Пароль должен содержать как минимум 1 заглавную букву."; }
+        public static string txtNoCapitalCharactersInPassword
+        { get => "Password should contain at least one capital letter"; }
 
-        public static string txtIncorrectPasswordMessage4
-        { get => "Пароль должен содержать как минимум одну цифру."; }
+        public static string txtNoDigitsInPassword
+        { get => "Password should contain at least one digit"; }
 
         public static string txtIncorrectPasswordMessage5
         { get => "Ok"; }
 
         public static string txtDiferentPasswords
-        { get => "Введенные пароли не совпадают"; }
+        { get => "Entered passwords are not equal"; }
 
         public static string txtConfirmSaveOnExit
-        { get => "Все несохраненные изменения будут потеряны. Вы уверены, что хотите выйти?"; }
+        { get => "Are you really want to exit? All unsaved data will be lost."; }
 
 
 
