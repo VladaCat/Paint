@@ -77,6 +77,7 @@
     <Compile Include="Class\Net\UseCases\AutorizationCase\UserAutorizationRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\BaseCase\RequestBase.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageInfo.cs" />
+    <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageResultData.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DelteImageRequest.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\IDeleteImageRequest.cs" />

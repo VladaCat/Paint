@@ -122,15 +122,33 @@ namespace Team_Project_Paint
         }
 
 
-        private bool DeleteRemoteImage(int imageId, int userId)
+        private BoolStringType DeleteRemoteImage(int imageId, int userId)
         {
             DeleteImageInfo deleteImageInfo = new DeleteImageInfo()
             {
                 ImageId = imageId,
                 UserId = userId
             };
-            DeleteImageRequest deleteImageRequest = new DeleteImageRequest(deleteImageInfo, StaticNet.NetLogic.PaintServerUrl);
-            return (deleteImageRequest.Execute());
+            var deleteImageRequest = new DeleteImageRequestGen<DeleteImageInfo, DeleteImageResultData>(deleteImageInfo, StaticNet.NetLogic.PaintServerUrl);
+             
+            if (deleteImageRequest.Execute()==System.Net.HttpStatusCode.OK)
+            {
+                var response = new BoolStringType()
+                {
+                    BooleanValue = true,
+                    StringValue = deleteImageRequest.LastHttpStatusText
+                };
+                return response;
+            }
+            else
+            {
+                var response = new BoolStringType()
+                {
+                    BooleanValue = false,
+                    StringValue = deleteImageRequest.LastHttpStatusText
+                };
+                return response;
+            }
 
         }
 
@@ -157,7 +175,8 @@ namespace Team_Project_Paint
                 var result = MessageBox.Show("Выбранный файл будет перезаписан", "", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    if (DeleteRemoteImage(imageId, StaticNet.NetLogic.UserID))
+                    var deleteImageResult = DeleteRemoteImage(imageId, StaticNet.NetLogic.UserID);
+                    if (deleteImageResult.BooleanValue )
                     {
                         BoolStringType saveImageResult = SaveImage(imageName, imageType);
                         if (saveImageResult.BooleanValue)
@@ -171,7 +190,7 @@ namespace Team_Project_Paint
                     }
                     else
                     {
-                        MessageBox.Show("Something goes wrong");
+                        MessageBox.Show("Cant delete saved image\n" + deleteImageResult.StringValue );
                     }
 
                 }
