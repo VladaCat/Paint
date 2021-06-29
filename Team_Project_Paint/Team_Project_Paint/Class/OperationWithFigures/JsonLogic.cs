@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-
 using System.Collections.Generic;
 using Team_Project_Paint.Interfaces;
 using Team_Project_Paint.PaintEnum;

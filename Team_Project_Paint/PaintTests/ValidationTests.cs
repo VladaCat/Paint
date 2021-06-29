@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Team_Project_Paint.Helpers;
 
@@ -41,29 +36,6 @@ namespace PaintTests
 
             Assert.AreEqual(exp, act);
         }
-
-        //[TestCase("Qq123456", true)]
-        //[TestCase("0_.594>Aa", true)]
-        //[TestCase("12345678Aa", true)]
-        //[TestCase("QWERty12", true)]
-        //[TestCase("P@$$w0rdQ", true)]
-        //[TestCase("AQWSedfjgut47386", true)]
-        //[TestCase("YTR fkd21", true)]
-        //[TestCase("12345678", false)]
-        //[TestCase("Aq1234", false)]
-        //[TestCase("aqwe1234", false)]
-        //[TestCase("QWERREWQ", false)]
-        //[TestCase("QWERTTY3", false)]
-        //[TestCase("QWERTDASWqawe1235", false)]
-
-
-        //public void ValidationPassword(string password, bool exp)
-        //{
-        //    var act = _validation.PasswordValidate(password);
-
-        //    Assert.AreEqual(exp, act);
-        //}
-
 
 
         [TestCase("Dima", true)]

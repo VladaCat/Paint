@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Windows.Forms;
 using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.PaintEnum;
 using Team_Project_Paint.Interfaces;
@@ -43,7 +42,6 @@ namespace Team_Project_Paint.Class
 
         public virtual PaintRectangle GetBoundingBox()
         {
-            //Location, FinishLocation
             int x, y, height, width;
 
             if ((Location.X) < (FinishLocation.X))
@@ -105,7 +103,5 @@ namespace Team_Project_Paint.Class
                 EShapeStatus = EShapeStatus.DONE;
             }
         }
-
-       // public void SelectShape(List<IShape> shapeList, MouseEventArgs e) { }
     }
 }

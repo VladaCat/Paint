@@ -41,7 +41,7 @@ namespace Team_Project_Paint.Net
                 }
             }
             else
-            {// responce HTTP status is not 200
+            {
                 LastHttpStatusText = ((int)response.StatusCode).ToString() + "\n" + response.StatusDescription + "\n" + response.Content;
                 return response.StatusCode;
             }
