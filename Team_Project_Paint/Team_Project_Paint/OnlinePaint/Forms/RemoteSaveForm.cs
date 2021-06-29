@@ -210,9 +210,17 @@ namespace Team_Project_Paint
                                 "Confirm Deletion", MessageBoxButtons.YesNo);
                 if (msgBoxResult == DialogResult.Yes)
                 {
-                    DeleteRemoteImage(Convert.ToInt32(dataGridRemoteImages.Rows[e.RowIndex].Cells[0].Value), StaticNet.NetLogic.UserID);
+                   var deleteImageResult= DeleteRemoteImage(Convert.ToInt32(dataGridRemoteImages.Rows[e.RowIndex].Cells[0].Value), StaticNet.NetLogic.UserID);
+                    if (deleteImageResult.BooleanValue)
+                    {
+                        RequeryRemoteFilesList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cant delete this image\n" + deleteImageResult.StringValue);
+                    }
                 }
-                RequeryRemoteFilesList();
+                
             }
 
             
