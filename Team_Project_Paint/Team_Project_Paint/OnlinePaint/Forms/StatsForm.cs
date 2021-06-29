@@ -27,8 +27,7 @@ namespace Team_Project_Paint
 
         private void StatsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FormsManager.mainForm.Show();
-            Hide();
+            
         }
         private void RequeryRemoteStatistics()
         {
@@ -81,6 +80,13 @@ namespace Team_Project_Paint
                 //GetStatistics( new StatisticInfo() { UserId=StaticNet.NetLogic.UserID });
                 RequeryRemoteStatistics();
             }
+        }
+
+        private void StatsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            FormsManager.mainForm.Show();
+            Hide();
         }
     }
 }

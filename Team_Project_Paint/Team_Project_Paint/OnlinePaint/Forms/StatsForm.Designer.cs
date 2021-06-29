@@ -30,9 +30,9 @@ namespace Team_Project_Paint
         private void InitializeComponent()
         {
             this.dataGridStatistics = new System.Windows.Forms.DataGridView();
-            this.backBtn = new System.Windows.Forms.Button();
             this.StatParameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistics)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,16 +50,6 @@ namespace Team_Project_Paint
             this.dataGridStatistics.Size = new System.Drawing.Size(741, 334);
             this.dataGridStatistics.TabIndex = 0;
             // 
-            // backBtn
-            // 
-            this.backBtn.Location = new System.Drawing.Point(33, 27);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(75, 23);
-            this.backBtn.TabIndex = 1;
-            this.backBtn.Text = "Back";
-            this.backBtn.UseVisualStyleBackColor = true;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
-            // 
             // StatParameter
             // 
             this.StatParameter.HeaderText = "Parameter";
@@ -73,6 +63,16 @@ namespace Team_Project_Paint
             this.StatValue.Name = "StatValue";
             this.StatValue.ReadOnly = true;
             // 
+            // backBtn
+            // 
+            this.backBtn.Location = new System.Drawing.Point(33, 27);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(75, 23);
+            this.backBtn.TabIndex = 1;
+            this.backBtn.Text = "Back";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
             // StatsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -82,6 +82,7 @@ namespace Team_Project_Paint
             this.Controls.Add(this.dataGridStatistics);
             this.Name = "StatsForm";
             this.Text = "Paint";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StatsForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StatsForm_FormClosed);
             this.VisibleChanged += new System.EventHandler(this.StatsForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistics)).EndInit();
