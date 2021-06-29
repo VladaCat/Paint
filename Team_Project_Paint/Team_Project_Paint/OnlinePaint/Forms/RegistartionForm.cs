@@ -22,29 +22,37 @@ namespace Team_Project_Paint
         private void signUpBtn_Click(object sender, EventArgs e)
         {
             bool isValid = true;
-            BoolStringType registerResult=null ;
+            BoolStringType registerResult = null;
+            string ValidationMessage="";
 
             Validation validation = new Validation();
 
             if (validation.EmailValidate(txtEmail.Text) == false)
             {
                 isValid = false;
+                ValidationMessage += TextMessages.txtLoginIsNotEmail +"\n";
             }
             if (validation.FirstLastNameValidation(txtFirstName.Text) == false)
             {
                 isValid = false;
+                ValidationMessage += TextMessages.txtIncorrectNameLength + "\n";
             }
             if (validation.FirstLastNameValidation(txtLastName.Text) == false)
             {
                 isValid = false;
+                ValidationMessage += TextMessages.txtIncorrectNameLength + "\n";
             }
-            if (validation.PasswordValidate(txtPassword.Text).result == false)
+
+            var validationResult = validation.PasswordValidate(txtPassword.Text);
+            if (validationResult.result == false)
             {
                 isValid = false;
+                ValidationMessage += validationResult.message + "\n";
             }
             if (txtPassword.Text != txtConfirmPassword.Text)
             {
                 isValid = false;
+                ValidationMessage += TextMessages.txtDiferentPasswords +"\n";
             }
 
 
@@ -65,7 +73,7 @@ namespace Team_Project_Paint
             }
             else
             {
-                MessageBox.Show("Please enter correct value");
+                MessageBox.Show(ValidationMessage);
             }
 
             
@@ -78,7 +86,7 @@ namespace Team_Project_Paint
             }
             else
             {
-                MessageBox.Show("Registration failed \n" + registerResult.StringValue );
+                MessageBox.Show("Registration failed \n" + registerResult?.StringValue );
             }
 
 

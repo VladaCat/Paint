@@ -65,7 +65,7 @@ namespace Team_Project_Paint.Helpers
                 message = TextMessages.txtIncorrectPasswordMessage5;
                 return (result, message);
 
-            //return Regex.IsMatch(password, @"^(?=.{8,16}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).*$");
+            
 
 
 
