@@ -62,7 +62,7 @@ namespace Team_Project_Paint.Helpers
                 return (result, message);
             }
 
-                message = TextMessages.txtIncorrectPasswordMessage5;
+                message = TextMessages.txtPasswordOk;
                 return (result, message);
 
             

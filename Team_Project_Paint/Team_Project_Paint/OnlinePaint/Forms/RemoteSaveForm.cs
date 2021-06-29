@@ -228,13 +228,8 @@ namespace Team_Project_Paint
                     {
                         MessageBox.Show("Cant delete this image\n" + deleteImageResult.StringValue);
                     }
-                }
-                
+                }   
             }
-
-            
         }
-
-        
     }
 }

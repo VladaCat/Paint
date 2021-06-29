@@ -28,7 +28,7 @@ namespace Team_Project_Paint
         public static string txtNoDigitsInPassword
         { get => "Password should contain at least one digit"; }
 
-        public static string txtIncorrectPasswordMessage5
+        public static string txtPasswordOk
         { get => "Ok"; }
 
         public static string txtDiferentPasswords
