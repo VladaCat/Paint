@@ -1,5 +1,4 @@
 ﻿using System;
-/*using System.Drawing;*/
 using Team_Project_Paint.Class;
 using Team_Project_Paint.PaintEnum;
 using System.Drawing.Drawing2D;

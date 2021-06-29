@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Class.OperationWithFigures
 {
@@ -14,9 +10,6 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         protected Image _image;
 
         public abstract object Clone();
-        //{
-        //    return _image.Clone();
-        //}
         
         public Image ToImage()
         {

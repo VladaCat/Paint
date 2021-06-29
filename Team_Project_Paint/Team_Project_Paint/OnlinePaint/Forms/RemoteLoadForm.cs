@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Team_Project_Paint.Class.OperationWithFigures;
 using Team_Project_Paint.Net;
-using Team_Project_Paint.OnlinePaint.Helpers;
+
 
 namespace Team_Project_Paint
 {
@@ -16,12 +16,12 @@ namespace Team_Project_Paint
             InitializeComponent();
         }
 
-        private LoadImageResultData LoadImage(LoadImageInfo loadImageInfo)
+        private LoadImageResultData LoadImageGen (LoadImageInfo loadImageInfo)
         {
-            var request = new LoadImageRequest(loadImageInfo, StaticNet.NetLogic.PaintServerUrl);
-            if (request.Execute())
+            var request = new LoadImageRequestGen<LoadImageInfo, LoadImageResultData>(loadImageInfo, StaticNet.NetLogic.PaintServerUrl);
+            if (request.Execute()==System.Net.HttpStatusCode.OK)
             {
-                return request.LastLoadImageResultData;
+                return request.LastResponceDTO;
             }
             else
             {
@@ -30,7 +30,7 @@ namespace Team_Project_Paint
                     ImageData = "",
                     ImageType = "",
                     LoadImageResult = false,
-                    LoadImageResultMessage = "Bad"
+                    LoadImageResultMessage = "Load Image Error\n" + request.LastHttpStatusText
                 };
                 return loadImageResultData;
             }
@@ -45,17 +45,17 @@ namespace Team_Project_Paint
 
         private GetFilesListResultData GetFilesList(GetFilesListInfo getFilesListInfo)
         {
-            var request = new GetFilesListRequest(getFilesListInfo, StaticNet.NetLogic.PaintServerUrl);
-            if (request.Execute())
+            var request = new GetFilesListRequestGen<GetFilesListInfo, GetFilesListResultData>(getFilesListInfo, StaticNet.NetLogic.PaintServerUrl);
+            if (request.Execute()==System.Net.HttpStatusCode.OK)
             {
-                return request.LastGetFilesListResultData;
+                return request.LastResponceDTO;
             }
             else
             {
                 GetFilesListResultData getFilesListResultData = new GetFilesListResultData()
                 {
                     GetFilesListResult = false,
-                    GetFilesListResultMessage = "Bad",
+                    GetFilesListResultMessage = ((int)request.LastHttpStatusCode).ToString() + request.LastHttpStatusCode.ToString() + request.LastHttpStatusText,
                     SavedFileInfo = new List<SavedFileInfo>()
                 };
                 return getFilesListResultData;
@@ -89,7 +89,15 @@ namespace Team_Project_Paint
                 };
 
                 GetFilesListResultData getFilesListResultData = GetFilesList(getFilesListInfo);
-                FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
+                if (getFilesListResultData.GetFilesListResult)
+                {
+                    FillFilesDataGrid(getFilesListResultData.SavedFileInfo);
+                }
+                else
+                {
+                    MessageBox.Show("Cant load saved files list\n" + getFilesListResultData.GetFilesListResultMessage);
+                }
+
             }
         }
 
@@ -103,7 +111,7 @@ namespace Team_Project_Paint
                 ImageId = Convert.ToInt32(dataGridRemoteLoad.Rows[e.RowIndex].Cells[0].Value)
             };
 
-            LoadImageResultData loadImageResult = LoadImage(loadImageInfo);
+            LoadImageResultData loadImageResult = LoadImageGen(loadImageInfo);
 
             if (loadImageResult.LoadImageResult)
             {
@@ -127,7 +135,7 @@ namespace Team_Project_Paint
             }
             else
             {
-                MessageBox.Show("Open image failed");
+                MessageBox.Show("Open image failed\n"+loadImageResult.LoadImageResultMessage);
             }
         }
     }

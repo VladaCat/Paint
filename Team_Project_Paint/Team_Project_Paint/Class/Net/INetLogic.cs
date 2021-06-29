@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Team_Project_Paint.Net
 {
     public interface INetLogic
@@ -15,9 +10,9 @@ namespace Team_Project_Paint.Net
         string FirstName { get; }
         string LastName { get; }
 
-        bool AutorizeUser(UserAutorizationData userAutorizationData);
 
-        bool RegisterUser(UserRegistrationData userRegistrationData);
-        bool SaveImage(SaveImageInfo saveImageInfo);
+        BoolStringType AutorizeUserGen(UserAutorizationData userAutorizationData);
+        BoolStringType RegisterUserGen(UserRegistrationData userRegistrationData);
+        BoolStringType SaveImageGen(SaveImageInfo saveImageInfo);
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 using Team_Project_Paint.Class;
 using Team_Project_Paint.Class.FigureDrawingClass;
 using Team_Project_Paint.Class.OperationWithFigures;

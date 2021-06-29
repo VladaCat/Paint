@@ -72,36 +72,31 @@
     <Compile Include="Class\FigureDrawingClass\Curve.cs" />
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
+    <Compile Include="Class\Net\BoolStringType.cs" />
     <Compile Include="Class\Net\INetLogic.cs" />
+    <Compile Include="Class\Net\UseCases\AutorizationCase\UserAutorizationRequestGen.cs" />
+    <Compile Include="Class\Net\UseCases\BaseCase\RequestBase.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageInfo.cs" />
+    <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageResultData.cs" />
-    <Compile Include="Class\Net\UseCases\DeleteImageCase\DelteImageRequest.cs" />
-    <Compile Include="Class\Net\UseCases\DeleteImageCase\IDeleteImageRequest.cs" />
-    <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListRequest.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListInfo.cs" />
+    <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\GetFilesListResultData.cs" />
-    <Compile Include="Class\Net\UseCases\GetFilesListCase\IGetFilesListRequest.cs" />
     <Compile Include="Class\Net\UseCases\GetFilesListCase\SavedFileInfo.cs" />
-    <Compile Include="Class\Net\UseCases\LoadImageCase\ILoadImageRequest.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageInfo.cs" />
-    <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageRequest.cs" />
+    <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageResultData.cs" />
-    <Compile Include="Class\Net\UseCases\SaveImageCase\ISaveImageRequest.cs" />
-    <Compile Include="Class\Net\UseCases\AutorizationCase\IUserAutorizationRequest.cs" />
-    <Compile Include="Class\Net\UseCases\RegistrationCase\IUserRegistrationRequest.cs" />
+    <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationRequestGen.cs" />
     <Compile Include="Class\Net\NetLogic.cs" />
-    <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageRequest.cs" />
     <Compile Include="Class\Net\StaticNet.cs" />
-    <Compile Include="Class\Net\UseCases\AutorizationCase\UserAutorizationRequest.cs" />
-    <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationRequest.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\RegistrationResultData.cs" />
+    <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\SaveImageCase\SaveImageResultData.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationData.cs" />
-    <Compile Include="Class\Net\UseCases\StatisticsCase\IStatisticsRequest.cs" />
     <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticInfo.cs" />
     <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticItem.cs" />
-    <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticRequest.cs" />
     <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticResultData.cs" />
+    <Compile Include="Class\Net\UseCases\StatisticsCase\StatisticsRequestGen.cs" />
     <Compile Include="OnlinePaint\FormsManager.cs" />
     <Compile Include="OnlinePaint\Forms\DummyForm.cs">
       <SubType>Form</SubType>
@@ -121,8 +116,6 @@
     <Compile Include="OnlinePaint\Forms\RemoteSaveForm.Designer.cs">
       <DependentUpon>RemoteSaveForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OnlinePaint\Helpers\RemoteFileInfo.cs" />
-    <Compile Include="OnlinePaint\Helpers\RemoteFileInfoSource.cs" />
     <Compile Include="OnlinePaint\Helpers\TextMessages.cs" />
     <Compile Include="OnlinePaint\Helpers\Validation.cs" />
     <Compile Include="Class\OperationWithFigures\BusinessLogic.cs" />
@@ -268,7 +261,6 @@
     <None Include="Resources\line.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="OnlinePaint\ClientServerDTO\" />
     <Folder Include="SQL_Request\" />
   </ItemGroup>
   <ItemGroup>
