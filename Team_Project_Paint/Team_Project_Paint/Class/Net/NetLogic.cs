@@ -51,6 +51,21 @@ namespace Team_Project_Paint.Net
             }
         }
 
+        public bool RegisterUserGen(UserRegistrationData userRegistrationData)
+        {
+            //throw new NotImplementedException();
+            var request = new UserRegistrationRequestGen<UserRegistrationData, RegistrationResultData>(userRegistrationData, PaintServerUrl);
+
+                if (request.Execute()==HttpStatusCode.OK)
+            {
+                return true;
+            }
+                else
+            {
+                return false;
+            }
+        }
+
         public bool SaveImage(SaveImageInfo savedImageInfo)
         {
             var request = new SaveImageRequest(savedImageInfo, PaintServerUrl);

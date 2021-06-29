@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Team_Project_Paint.Class.Net.UseCases.RegistrationCase
+namespace Team_Project_Paint.Net
 {
-    class UserRegistrationRequestGen
+    class UserRegistrationRequestGen<REQUESTTYPE, RESPONCETYPE> : RequestBase<REQUESTTYPE, RESPONCETYPE>
     {
+        public UserRegistrationRequestGen(REQUESTTYPE requestDTO, string paintServerUrl)
+            :base(requestDTO, paintServerUrl)
+        {
+            _paintServerUrl = paintServerUrl;
+            _paintServiceUrl = "/auth/register";
+        }
     }
 }

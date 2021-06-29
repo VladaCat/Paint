@@ -11,11 +11,13 @@ namespace Team_Project_Paint.Net
         protected string _paintServiceUrl;
         protected REQUESTTYPE _requestDTO;
         public HttpStatusCode LastHttpStatusCode { get; private set; }
+        public string LastHttpStatusText { get; set; }
         public RESPONCETYPE LastResponceDTO { get; private set; }
        
         public RequestBase(REQUESTTYPE requestDTO, string paintServerUrl)
             {
                  _paintServerUrl = paintServerUrl;
+                   _requestDTO = requestDTO;
             }
 
         public virtual HttpStatusCode Execute()
@@ -34,12 +36,15 @@ namespace Team_Project_Paint.Net
                 }
                 catch (System.Exception)
                 {
-                    throw;
+                    LastHttpStatusText = response.StatusDescription + "\n" + response.Content;
+                    return response.StatusCode;
+                    //throw;
                 }
             }
             else
             {// responce HTTP status is not 200
-                //TODO CHANGE!!!!
+                
+                LastHttpStatusText = response.StatusDescription + "\n" + response.Content;
                 return response.StatusCode;
             }
         }

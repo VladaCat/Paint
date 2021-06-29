@@ -15,9 +15,11 @@ namespace Team_Project_Paint.Net
         string FirstName { get; }
         string LastName { get; }
 
+        
         bool AutorizeUser(UserAutorizationData userAutorizationData);
 
         bool RegisterUser(UserRegistrationData userRegistrationData);
+        bool RegisterUserGen(UserRegistrationData userRegistrationData);
         bool SaveImage(SaveImageInfo saveImageInfo);
     }
 }

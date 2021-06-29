@@ -39,7 +39,7 @@ namespace Team_Project_Paint.Net
 
                     if (autorizationResultData.AutorizationResultCode == 200)
                     {
-                        return 
+                        return true; 
                     }
                     else
                     {

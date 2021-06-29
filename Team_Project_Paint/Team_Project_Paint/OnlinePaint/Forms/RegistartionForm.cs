@@ -60,7 +60,8 @@ namespace Team_Project_Paint
                     LastName = txtLastName.Text
                 };
 
-                regiserResult = StaticNet.NetLogic.RegisterUser(userRegistrationData);
+                //regiserResult = StaticNet.NetLogic.RegisterUser(userRegistrationData);
+                regiserResult = StaticNet.NetLogic.RegisterUserGen(userRegistrationData);
             }
             else
             {
