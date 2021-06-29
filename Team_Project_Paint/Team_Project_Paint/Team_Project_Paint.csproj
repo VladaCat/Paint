@@ -88,6 +88,7 @@
     <Compile Include="Class\Net\UseCases\LoadImageCase\ILoadImageRequest.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageInfo.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageRequest.cs" />
+    <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageResultData.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\SaveImageCase\ISaveImageRequest.cs" />

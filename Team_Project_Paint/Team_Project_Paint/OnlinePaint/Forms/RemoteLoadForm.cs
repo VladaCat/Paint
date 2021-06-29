@@ -16,12 +16,12 @@ namespace Team_Project_Paint
             InitializeComponent();
         }
 
-        private LoadImageResultData LoadImage(LoadImageInfo loadImageInfo)
+        private LoadImageResultData LoadImageGen (LoadImageInfo loadImageInfo)
         {
-            var request = new LoadImageRequest(loadImageInfo, StaticNet.NetLogic.PaintServerUrl);
-            if (request.Execute())
+            var request = new LoadImageRequestGen<LoadImageInfo, LoadImageResultData>(loadImageInfo, StaticNet.NetLogic.PaintServerUrl);
+            if (request.Execute()==System.Net.HttpStatusCode.OK)
             {
-                return request.LastLoadImageResultData;
+                return request.LastResponceDTO;
             }
             else
             {
@@ -30,7 +30,7 @@ namespace Team_Project_Paint
                     ImageData = "",
                     ImageType = "",
                     LoadImageResult = false,
-                    LoadImageResultMessage = "Bad"
+                    LoadImageResultMessage = "Load Image Error\n" + request.LastHttpStatusText
                 };
                 return loadImageResultData;
             }
@@ -103,7 +103,7 @@ namespace Team_Project_Paint
                 ImageId = Convert.ToInt32(dataGridRemoteLoad.Rows[e.RowIndex].Cells[0].Value)
             };
 
-            LoadImageResultData loadImageResult = LoadImage(loadImageInfo);
+            LoadImageResultData loadImageResult = LoadImageGen(loadImageInfo);
 
             if (loadImageResult.LoadImageResult)
             {
@@ -127,7 +127,7 @@ namespace Team_Project_Paint
             }
             else
             {
-                MessageBox.Show("Open image failed");
+                MessageBox.Show("Open image failed\n"+loadImageResult.LoadImageResultMessage);
             }
         }
     }
