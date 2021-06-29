@@ -27,8 +27,7 @@ namespace Team_Project_Paint
 
         private void StatsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FormsManager.mainForm.Show();
-            Hide();
+            
         }
         private void RequeryRemoteStatistics()
         {
@@ -38,7 +37,17 @@ namespace Team_Project_Paint
             };
 
            StatisticResultData statisticResultData = GetStatistics(statisticsInfo);
-            FillStatisticsDataGrid(statisticResultData.StatisticItems);
+            
+            if (statisticResultData.StatisticResult)
+            {
+                FillStatisticsDataGrid(statisticResultData.StatisticItems);
+            }
+            else
+            {
+                MessageBox.Show("Cant load user statistics\n" + statisticResultData.StatisticResultMessage);
+            }
+            
+            
         }
         private void FillStatisticsDataGrid(List<StatisticItem> statisticItems)
         {
@@ -57,17 +66,17 @@ namespace Team_Project_Paint
         }
         private StatisticResultData GetStatistics(StatisticInfo statisticInfo)
         {
-            var request = new StatisticRequest(statisticInfo, StaticNet.NetLogic.PaintServerUrl);
-            if (request.Execute())
+            var request = new StatisticsRequestGen<StatisticInfo, StatisticResultData>(statisticInfo, StaticNet.NetLogic.PaintServerUrl);
+            if (request.Execute()==System.Net.HttpStatusCode.OK)
             {
-                return request.LastStatisticResultData;
+                return request.LastResponceDTO;
             }
             else
             {
                 StatisticResultData statisticResultData = new StatisticResultData()
                 {
                     StatisticResult = false,
-                    StatisticResultMessage = "Bad",
+                    StatisticResultMessage = request.LastHttpStatusText,
                     StatisticItems = new List<StatisticItem>()
                 };
                 return statisticResultData;
@@ -81,6 +90,13 @@ namespace Team_Project_Paint
                 //GetStatistics( new StatisticInfo() { UserId=StaticNet.NetLogic.UserID });
                 RequeryRemoteStatistics();
             }
+        }
+
+        private void StatsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            FormsManager.mainForm.Show();
+            Hide();
         }
     }
 }

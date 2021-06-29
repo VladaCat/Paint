@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Net
 {
-    public interface IGetFilesListRequest
-    {
-        GetFilesListResultData LastGetFilesListResultData { get; }
-        HttpStatusCode LastHttpStatusCode { get; }
-        bool Execute();
-    }
+    //public interface IGetFilesListRequest
+    //{
+    //    GetFilesListResultData LastGetFilesListResultData { get; }
+    //    HttpStatusCode LastHttpStatusCode { get; }
+    //    bool Execute();
+    //}
 }

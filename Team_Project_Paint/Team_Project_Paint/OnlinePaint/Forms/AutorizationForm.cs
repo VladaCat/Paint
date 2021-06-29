@@ -25,29 +25,25 @@ namespace Team_Project_Paint
         private void signInBtn_Click(object sender, EventArgs e)
         {
 
-            bool authResult = false;
+            BoolStringType authResult = null;
             //TODO add validation. If successful - create request
             var userAutorizationData = new UserAutorizationData()
             {
                 Login = txtLogin.Text,
                 Password=txtPassword.Text
             };
-            authResult= StaticNet.NetLogic.AutorizeUser(userAutorizationData);
-
-            if (authResult) //TODO: add condition
+            authResult= StaticNet.NetLogic.AutorizeUserGen(userAutorizationData);
+            if (authResult.BooleanValue) 
             {
-                
                 FormsManager.mainForm.Show();
                 Hide();
                 txtPassword.Text = "";
             }
             else
             {
-                MessageBox.Show("Something gone wrong");
+                MessageBox.Show("Autorization failed \n" + authResult.StringValue);
             }
-            
         }
-
         private void signUpLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             

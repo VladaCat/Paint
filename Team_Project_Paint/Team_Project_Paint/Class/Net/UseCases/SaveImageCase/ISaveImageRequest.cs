@@ -8,10 +8,10 @@ using Team_Project_Paint.Net;
 
 namespace Team_Project_Paint.Net
 {
-   public interface ISaveImageRequest
-    {
-        SaveImageResultData LastSaveImageResultData{ get; }
-        HttpStatusCode LastHttpStatusCode { get; }
-        bool Execute();
-    }
+   //public interface ISaveImageRequest
+   // {
+   //     SaveImageResultData LastSaveImageResultData{ get; }
+   //     HttpStatusCode LastHttpStatusCode { get; }
+   //     bool Execute();
+   // }
 }
