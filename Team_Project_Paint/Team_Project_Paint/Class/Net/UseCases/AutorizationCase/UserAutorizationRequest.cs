@@ -1,11 +1,6 @@
 ﻿using RestSharp;
 using RestSharp.Serialization.Json;
 using System.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Net
 {
@@ -44,7 +39,7 @@ namespace Team_Project_Paint.Net
 
                     if (autorizationResultData.AutorizationResultCode == 200)
                     {
-                        return true;
+                        return 
                     }
                     else
                     {

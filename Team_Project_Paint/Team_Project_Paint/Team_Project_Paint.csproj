@@ -73,6 +73,7 @@
     <Compile Include="Class\FigureDrawingClass\Dot.cs" />
     <Compile Include="Class\FigureDrawingClass\Ellipse.cs" />
     <Compile Include="Class\Net\INetLogic.cs" />
+    <Compile Include="Class\Net\UseCases\BaseCase\RequestBase.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageInfo.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DeleteImageResultData.cs" />
     <Compile Include="Class\Net\UseCases\DeleteImageCase\DelteImageRequest.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageInfo.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageRequest.cs" />
     <Compile Include="Class\Net\UseCases\LoadImageCase\LoadImageResultData.cs" />
+    <Compile Include="Class\Net\UseCases\RegistrationCase\UserRegistrationRequestGen.cs" />
     <Compile Include="Class\Net\UseCases\SaveImageCase\ISaveImageRequest.cs" />
     <Compile Include="Class\Net\UseCases\AutorizationCase\IUserAutorizationRequest.cs" />
     <Compile Include="Class\Net\UseCases\RegistrationCase\IUserRegistrationRequest.cs" />
