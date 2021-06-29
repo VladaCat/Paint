@@ -25,7 +25,7 @@ namespace Team_Project_Paint.Helpers
             }
             else
             {
-                message = TextMessages.txtIncorrectPasswordMessage1;
+                message = TextMessages.txtIncorrectPasswordLength;
                 return (result, message);
             }
 
@@ -36,7 +36,7 @@ namespace Team_Project_Paint.Helpers
             else
             {
                 result = false;
-                message = TextMessages.txtIncorrectPasswordMessage2;
+                message = TextMessages.txtNoSmallCharactersInPassword;
                 return (result, message);
             }
 
@@ -47,7 +47,7 @@ namespace Team_Project_Paint.Helpers
             else
             {
                 result = false;
-                message = TextMessages.txtIncorrectPasswordMessage3;
+                message = TextMessages.txtNoCapitalCharactersInPassword;
                 return (result, message);
             }
 
@@ -58,7 +58,7 @@ namespace Team_Project_Paint.Helpers
             else
             {
                 result = false;
-                message = TextMessages.txtIncorrectPasswordMessage4;
+                message = TextMessages.txtNoDigitsInPassword;
                 return (result, message);
             }
 
