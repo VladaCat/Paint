@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Team_Project_Paint.Net
 {
-   public interface IStatisticsRequest
-    {
-        GetFilesListResultData LastStatisticResultData { get; }
-        HttpStatusCode LastHttpStatusCode { get; }
-        bool Execute();
-    }
+//   public interface IStatisticsRequest
+//    {
+//        GetFilesListResultData LastStatisticResultData { get; }
+//        HttpStatusCode LastHttpStatusCode { get; }
+//        bool Execute();
+//    }
 }
