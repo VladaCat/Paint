@@ -89,6 +89,7 @@ namespace Team_Project_Paint
             {
                 //GetStatistics( new StatisticInfo() { UserId=StaticNet.NetLogic.UserID });
                 RequeryRemoteStatistics();
+                lblStatistics.Text = $"User {StaticNet.NetLogic.FirstName} {StaticNet.NetLogic.LastName} statistics";
             }
         }
 

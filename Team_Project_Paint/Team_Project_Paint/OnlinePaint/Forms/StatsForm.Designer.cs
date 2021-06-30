@@ -33,6 +33,7 @@ namespace Team_Project_Paint
             this.StatParameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backBtn = new System.Windows.Forms.Button();
+            this.lblStatistics = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistics)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,11 +74,22 @@ namespace Team_Project_Paint
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // lblStatistics
+            // 
+            this.lblStatistics.AutoSize = true;
+            this.lblStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblStatistics.Location = new System.Drawing.Point(335, 23);
+            this.lblStatistics.Name = "lblStatistics";
+            this.lblStatistics.Size = new System.Drawing.Size(150, 25);
+            this.lblStatistics.TabIndex = 2;
+            this.lblStatistics.Text = "User Statistics";
+            // 
             // StatsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblStatistics);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.dataGridStatistics);
             this.Name = "StatsForm";
@@ -87,6 +99,7 @@ namespace Team_Project_Paint
             this.VisibleChanged += new System.EventHandler(this.StatsForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistics)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,5 +109,6 @@ namespace Team_Project_Paint
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatParameter;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatValue;
+        private System.Windows.Forms.Label lblStatistics;
     }
 }
