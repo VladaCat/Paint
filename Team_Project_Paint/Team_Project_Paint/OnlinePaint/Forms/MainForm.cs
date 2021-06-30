@@ -270,7 +270,24 @@ namespace Team_Project_Paint
             }
             else if (saveFileDialog1.FileName != "" && saveFileDialog1.FileName != "saveFileDialog1")
             {
-                _currentBitmap.Save(saveFileDialog1.FileName);
+                System.Drawing.Imaging.ImageFormat imageFormat;
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        imageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                        break;
+                    case 2:
+                        imageFormat = System.Drawing.Imaging.ImageFormat.Bmp;
+                        break;
+                    case 3:
+                        imageFormat = System.Drawing.Imaging.ImageFormat.Png;
+                        break;
+                    default:
+                        imageFormat = System.Drawing.Imaging.ImageFormat.Png;
+                        break;
+                }
+                
+                _currentBitmap.Save(saveFileDialog1.FileName, imageFormat);
             }
         }
 
@@ -310,6 +327,7 @@ namespace Team_Project_Paint
                 else
                 {
                     _currentBitmap = (PaintBitmap)PaintImage.FromFile(openFileDialog1.FileName);
+                    _bufferedBitmap = _currentBitmap.Clone() as PaintBitmap;
                     pictureBoxMain.Image = _currentBitmap.ToImage();
                     Repaint();
                 }
