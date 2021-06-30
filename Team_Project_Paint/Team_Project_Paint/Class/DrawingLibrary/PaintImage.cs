@@ -15,9 +15,9 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         {
             return _image;
         }
-        public void Save(string filename)
+        public void Save(string filename, ImageFormat imageFormat)
         {
-            _image.Save(filename);
+            _image.Save(filename, imageFormat);
         }
         
         public void Save(Stream srcStream, ImageFormat format)

@@ -224,7 +224,25 @@ namespace Team_Project_Paint.Class.OperationWithFigures
 
             srcStream = new MemoryStream();
             EncoderParameters ec = new EncoderParameters();
-            bitmap.Save(srcStream, ImageFormat.Png);
+
+            ImageFormat imageFormat;
+            switch (fileType)
+            {
+                case "jpeg":
+                    imageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                    break;
+                case "bmp":
+                    imageFormat = System.Drawing.Imaging.ImageFormat.Bmp;
+                    break;
+                case "png":
+                    imageFormat = System.Drawing.Imaging.ImageFormat.Png;
+                    break;
+                default:
+                    imageFormat = System.Drawing.Imaging.ImageFormat.Png;
+                    break;
+            }
+
+            bitmap.Save(srcStream, imageFormat);
 
             srcStream.Position = 0;
             srcArray = new byte[srcStream.Length];

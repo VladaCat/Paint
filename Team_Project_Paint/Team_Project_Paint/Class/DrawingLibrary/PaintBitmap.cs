@@ -10,7 +10,11 @@ namespace Team_Project_Paint.Class.OperationWithFigures
         }
         public PaintBitmap(int width, int height)
         {
-            this._image = new Bitmap(width, height);
+            this._image = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            using (Graphics g = Graphics.FromImage(_image))
+            {
+                g.Clear(Color.White);
+            }
         }
 
         public override object Clone()
